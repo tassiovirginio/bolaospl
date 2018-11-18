@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="manifest" href="css/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" type="text/css" title="Stylesheet"/>
+    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" type="text/css" title="Stylesheet"/>
+    <link rel="stylesheet" href="css/dashboard.css" type="text/css" title="Stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap-daterangepicker-master/daterangepicker.css"/>
+    <meta charset="utf-8"/>
+    <title>Bolão</title>
+    <link rel="shortcut icon" href="imgs/favicon.ico"/>
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span>Bolão</span>
+            </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+            //#if Pagina01
+//@                <li><a wicket:id="pagina01" style="color: #FFFFFF;" href="/">
+//@                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+//@                    Página 01</a></li>
+            //#endif
+            //#if Pagina02
+//@                <li><a wicket:id="pagina02"  style="color: #FFFFFF;" href="/">
+//@                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
+//@                    Página 02</a></li>
+            //#endif
+                <li><a  style="color: #FFFFFF;" href="/">
+                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                    Página 03</a></li>
+                <li><a style="color: #FFFFFF;" href="/">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    Sair</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container" style="width:80%; height:80%" >
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
+            <div class="panel panel-default">
+                <br>
+                <div class="panel-body fundocinza">
+                    <wicket:child/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+<script src="bootstrap-3.3.5-dist/js/npm.js"></script>
+<script type="text/javascript" src="bootstrap-daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="bootstrap-daterangepicker-master/daterangepicker.js"></script>
+
+</body>
+</html>

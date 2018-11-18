@@ -1,0 +1,14 @@
+.DS_Store
+.idea/
+seletivo.iml
+target/
+seletivo.lck
+seletivo.log
+seletivo.properties
+seletivo.script
+*.jasper
+*.pdf
+*.bkp.sql
+*.log
+logs
+dependency-reduced-pom.xml

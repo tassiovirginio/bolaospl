@@ -1,0 +1,9 @@
+target/
+products/
+bin/
+*.class
+*.bkp
+.directory
+
+
+
