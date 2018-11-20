@@ -19,12 +19,18 @@ public class WicketApplication extends WebApplication  {
 
 	@Override
 	public void init() {
+		
+//		getServletContext().get
+//		getServletResponse().getDocument();
+		
         getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND);
         getApplicationSettings().setUploadProgressUpdatesEnabled(true);
 		getRequestCycleSettings().addResponseFilter(new AjaxServerAndClientTimeFilter());
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this));
 		getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+		getMarkupSettings().setStripComments(true);
+		getMarkupSettings().setStripWicketTags(true);
 		getDebugSettings().setAjaxDebugModeEnabled(false);
 		getResourceSettings().setThrowExceptionOnMissingResource(false);
 		getDebugSettings().setDevelopmentUtilitiesEnabled(true);
