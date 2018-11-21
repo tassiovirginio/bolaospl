@@ -1,6 +1,6 @@
 package br.ufba.reuse.bolao.business;
 
-import br.ufba.reuse.bolao.business.daos.GrupoDAO;
+import br.ufba.reuse.bolao.business.daos.CampeonatoDAO;
 import br.ufba.reuse.bolao.entities.Campeonato;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
