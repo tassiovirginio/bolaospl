@@ -1,6 +1,8 @@
 package br.ufba.reuse.bolao;
 
-import br.ufba.reuse.bolao.pages.Pagina01;
+import br.ufba.reuse.bolao.pages.LoginPage;
+
+import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.response.filter.AjaxServerAndClientTimeFilter;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -10,18 +12,14 @@ import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 @Component
 public class WicketApplication extends WebApplication  {
-
-
+	
 	@Override
-	public Class<Pagina01> getHomePage() {
-		return Pagina01.class;
+	public Class<? extends Page> getHomePage() {
+		return LoginPage.class;
 	}
 
 	@Override
 	public void init() {
-		
-//		getServletContext().get
-//		getServletResponse().getDocument();
 		
         getResourceSettings().setResourcePollFrequency(Duration.ONE_SECOND);
         getApplicationSettings().setUploadProgressUpdatesEnabled(true);

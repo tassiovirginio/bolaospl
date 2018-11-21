@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
     <feature automatic="selected" name="BolaoSPL"/>
-    <feature manual="selected" name="Pagina02"/>
+    <feature manual="selected" name="Pagina01"/>
 </configuration>
