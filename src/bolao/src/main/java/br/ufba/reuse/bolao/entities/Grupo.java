@@ -17,6 +17,7 @@ public class Grupo implements Serializable {
     
     private String descricao;
     
+    /** Adicionar notacao de relacionamento de banco de dados **/
     private List<Usuario> participantes;
     
     private Usuario dono;

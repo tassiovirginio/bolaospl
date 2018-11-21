@@ -14,7 +14,6 @@ public class Time implements Serializable {
 
     private String nome;
 
-
     public Long getId() {
         return id;
     }

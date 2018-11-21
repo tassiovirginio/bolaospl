@@ -16,6 +16,7 @@ public class Campeonato implements Serializable {
     
     private String nome;
     
+    /** Adicionar notacao de relacionamento de banco de dados **/
     List<Jogo> jogos;
     
     public String getNome() {
