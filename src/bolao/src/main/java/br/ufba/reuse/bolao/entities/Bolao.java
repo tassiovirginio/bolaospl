@@ -2,10 +2,9 @@ package br.ufba.reuse.bolao.entities;
 
 import javax.persistence.*;
 
-import antlr.collections.List;
-
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Bolao implements Serializable {

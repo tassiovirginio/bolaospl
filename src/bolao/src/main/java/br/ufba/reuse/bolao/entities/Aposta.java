@@ -16,9 +16,9 @@ public class Aposta implements Serializable {
     
     private Jogo jogo;
     
-    private int placar_01;
+    private Integer placar01;
     
-    private int placar_02;
+    private Integer placar02;
     
     private Time timeApostado;
     
@@ -43,21 +43,21 @@ public class Aposta implements Serializable {
 	public void setJogo(Jogo jogo) {
 		this.jogo = jogo;
 	}
-
-	public int getPlacar_01() {
-		return placar_01;
+	
+	public Integer getPlacar01() {
+		return placar01;
 	}
 
-	public void setPlacar_01(int placar_01) {
-		this.placar_01 = placar_01;
+	public void setPlacar01(Integer placar01) {
+		this.placar01 = placar01;
 	}
 
-	public int getPlacar_02() {
-		return placar_02;
+	public Integer getPlacar02() {
+		return placar02;
 	}
 
-	public void setPlacar_02(int placar_02) {
-		this.placar_02 = placar_02;
+	public void setPlacar02(Integer placar02) {
+		this.placar02 = placar02;
 	}
 
 	public Time getTimeApostado() {

@@ -1,9 +1,11 @@
 package br.ufba.reuse.bolao.entities;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Campeonato implements Serializable {
@@ -17,7 +19,7 @@ public class Campeonato implements Serializable {
     private String nome;
     
     /** Adicionar notacao de relacionamento de banco de dados **/
-    List<Jogo> jogos;
+    private List<Jogo> jogos;
     
     public String getNome() {
 		return nome;

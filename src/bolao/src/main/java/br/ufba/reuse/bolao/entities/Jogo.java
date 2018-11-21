@@ -1,9 +1,10 @@
 package br.ufba.reuse.bolao.entities;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Jogo implements Serializable {

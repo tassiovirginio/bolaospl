@@ -1,16 +1,13 @@
 package br.ufba.reuse.bolao.business;
 
-import br.ufba.reuse.bolao.business.daos.GrupoDAO;
-import br.ufba.reuse.bolao.entities.Grupo;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
-import static org.hibernate.criterion.Restrictions.*;
+import br.ufba.reuse.bolao.business.daos.GrupoDAO;
+import br.ufba.reuse.bolao.entities.Grupo;
 
 @Component
 @Transactional
