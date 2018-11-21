@@ -2,6 +2,8 @@ package br.ufba.reuse.bolao.pages;
 
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.pages.base.BasePage;
+
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -15,6 +17,10 @@ public class Pagina01 extends BasePage {
 
     public Pagina01() {
         System.out.println(usuarioBusiness.size());
+        
+        
+//        CheckBox checkbox01 = new CheckBox("checkbox01");
+//        add(checkbox01);
     }
 
 }
