@@ -20,3 +20,10 @@ Tássio Guerreiro Antunes Virgínio
 Verônica Luzia Reis Santos
 
 Tutorial para executar a linha de produto:
+
+-> para configurar as dependencias do maven no eclipse.
+mvn eclipse:eclipse
+
+-> configurar o source do projeto no eclipse.
+Properties -> Java Build Path -> Source add (src/bolao/src/main/java)
+
