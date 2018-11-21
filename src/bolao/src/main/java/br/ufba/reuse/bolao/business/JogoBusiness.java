@@ -31,7 +31,7 @@ public class JogoBusiness {
         return dao.listAll();
     }
 
-    public Grupo findById(Long id){
+    public Jogo findById(Long id){
         return dao.findById(id);
     }
 

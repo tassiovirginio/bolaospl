@@ -31,7 +31,7 @@ public class CampeonatoBusiness {
         return dao.listAll();
     }
 
-    public Grupo findById(Long id){
+    public Campeonato findById(Long id){
         return dao.findById(id);
     }
 
