@@ -315,25 +315,6 @@
 			<type>jar</type>
 		</dependency>
 
-		<!-- Quartz framework -->
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>1.8.6</version>
-		</dependency>
-
-		<!--<dependency> -->
-		<!--<groupId>javax.servlet</groupId> -->
-		<!--<artifactId>javax.servlet-api</artifactId> -->
-		<!--<version>3.1.0</version> -->
-		<!--<scope>provided</scope> -->
-		<!--</dependency> -->
-
-		<dependency>
-			<groupId>br.ufba.reuse</groupId>
-			<artifactId>bolao</artifactId>
-			<version>1.0</version>
-		</dependency>
 	</dependencies>
 
 	<repositories>

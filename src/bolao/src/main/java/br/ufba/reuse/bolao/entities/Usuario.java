@@ -21,7 +21,7 @@ public class Usuario implements Serializable {
     private String celular;
 
     private String email;
-
+    
     public Long getId() {
         return id;
     }
