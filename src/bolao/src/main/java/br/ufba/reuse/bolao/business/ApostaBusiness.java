@@ -31,7 +31,7 @@ public class ApostaBusiness {
         return dao.listAll();
     }
 
-    public Grupo findById(Long id){
+    public Aposta findById(Long id){
         return dao.findById(id);
     }
 
