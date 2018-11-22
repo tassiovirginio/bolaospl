@@ -19,7 +19,7 @@ public class Campeonato implements Serializable {
     private String nome;
     
     /** Adicionar notacao de relacionamento de banco de dados **/
-    private List<Jogo> jogos;
+//    private List<Jogo> jogos;
     
     public String getNome() {
 		return nome;
@@ -29,13 +29,13 @@ public class Campeonato implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Jogo> getJogos() {
-		return jogos;
-	}
-
-	public void setJogos(List<Jogo> jogos) {
-		this.jogos = jogos;
-	}
+//	public List<Jogo> getJogos() {
+//		return jogos;
+//	}
+//
+//	public void setJogos(List<Jogo> jogos) {
+//		this.jogos = jogos;
+//	}
 	
 	
   //private TipoCampeonato campeonato;

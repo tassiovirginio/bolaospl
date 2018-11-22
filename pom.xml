@@ -28,6 +28,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.wicketstuff</groupId>
+			<artifactId>htmlvalidator</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1200-jdbc41</version>
@@ -362,18 +368,22 @@
 
 
 	<build>
+		<sourceDirectory>
+		      ${project.basedir}/src/bolao/src/main/java
+		    </sourceDirectory>
 		<resources>
 			<resource>
 				<filtering>false</filtering>
-				<directory>src/main/resources</directory>
+				<directory>src/bolao/src/main/resources</directory>
 			</resource>
 			<resource>
 				<filtering>false</filtering>
-				<directory>src/main/webapp</directory>
+				<directory>src/bolao/src/main/webapp</directory>
 			</resource>
 			<resource>
 				<filtering>true</filtering>
-				<directory>src/main/java</directory>
+				<!-- <directory>src/main/java</directory> -->
+				<directory>src/bolao/src/main/java</directory>
 				<includes>
 					<include>**</include>
 				</includes>

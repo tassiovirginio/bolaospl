@@ -16,7 +16,7 @@ public class Bolao implements Serializable {
     private Long id;
     
     /** Adicionar notacao de relacionamento de banco de dados **/
-    private List<Aposta> apostas;
+//    private List<Aposta> apostas;
     
     private Grupo grupo;
     
@@ -40,14 +40,14 @@ public class Bolao implements Serializable {
 	public Long getId() {
 	       return id;
 	}
-
-    public List<Aposta> getApostas() {
-		return apostas;
-	}
-
-	public void setApostas(List<Aposta> apostas) {
-		this.apostas = apostas;
-	}
+//
+//    public List<Aposta> getApostas() {
+//		return apostas;
+//	}
+//
+//	public void setApostas(List<Aposta> apostas) {
+//		this.apostas = apostas;
+//	}
 
 	public Grupo getGrupo() {
 		return grupo;

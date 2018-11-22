@@ -4,8 +4,6 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import br.ufba.reuse.bolao.pages.base.BasePage;
-
 @MountPath("login")
 public class LoginPage extends WebPage{
 	private static final long serialVersionUID = 1L;

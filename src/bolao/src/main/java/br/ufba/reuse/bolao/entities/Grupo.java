@@ -18,7 +18,7 @@ public class Grupo implements Serializable {
     private String descricao;
     
     /** Adicionar notacao de relacionamento de banco de dados **/
-    private List<Usuario> participantes;
+//    private List<Usuario> participantes;
     
     private Usuario dono;
 
@@ -38,13 +38,13 @@ public class Grupo implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public List<Usuario> getParticipantes() {
-		return participantes;
-	}
-
-	public void setParticipantes(List<Usuario> participantes) {
-		this.participantes = participantes;
-	}
+//	public List<Usuario> getParticipantes() {
+//		return participantes;
+//	}
+//
+//	public void setParticipantes(List<Usuario> participantes) {
+//		this.participantes = participantes;
+//	}
 
 	public Long getId() {
         return id;
