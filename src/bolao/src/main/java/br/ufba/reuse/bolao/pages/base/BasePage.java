@@ -24,13 +24,13 @@ public class BasePage extends WebPage {
         //#endif
 
       //#if Pagina02
-        Link pagina02 = new Link("pagina02") {
-            @Override
-            public void onClick() {
-                BasePage.this.setResponsePage(Pagina02.class);
-            }
-        };
-        add(pagina02);
+//@        Link pagina02 = new Link("pagina02") {
+//@            @Override
+//@            public void onClick() {
+//@                BasePage.this.setResponsePage(Pagina02.class);
+//@            }
+//@        };
+//@        add(pagina02);
       //#endif
         
         Link loginPage = new Link("loginPage") {

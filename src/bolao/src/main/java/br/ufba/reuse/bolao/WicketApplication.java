@@ -19,7 +19,7 @@ import br.ufba.reuse.bolao.pages.LoginPage;
 
 @Component
 public class WicketApplication extends WebApplication {
-
+	
 	@Override
 	public Class<? extends Page> getHomePage() {
 		return LoginPage.class;
@@ -46,7 +46,7 @@ public class WicketApplication extends WebApplication {
 		System.out.println("clearCommentsHtml");
 		String root = this.getServletContext().getRealPath("/");
 		File file = new File(root);
-		file = file.getParentFile().getParentFile().getParentFile();
+		file = file.getParentFile().getParentFile();//.getParentFile();
 		root = file.getAbsolutePath() + "/target/classes";
 		System.out.println("clearCommentsHtml: " + root);
 		listFilesAndFilesSubDirectories(root);

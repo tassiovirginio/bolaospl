@@ -28,12 +28,6 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.wicketstuff</groupId>
-			<artifactId>htmlvalidator</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1200-jdbc41</version>
@@ -351,26 +345,8 @@
 	</repositories>
 
 
-
-	<!--<pluginRepositories> -->
-	<!--<pluginRepository> -->
-	<!--<id>apache.snapshots</id> -->
-	<!--<name>Apache Snapshots</name> -->
-	<!--<url>http://repository.apache.org/content/groups/snapshots-group/</url> -->
-	<!--<releases> -->
-	<!--<enabled>false</enabled> -->
-	<!--</releases> -->
-	<!--<snapshots> -->
-	<!--<enabled>true</enabled> -->
-	<!--</snapshots> -->
-	<!--</pluginRepository> -->
-	<!--</pluginRepositories> -->
-
-
 	<build>
-		<sourceDirectory>
-		      ${project.basedir}/src/bolao/src/main/java
-		    </sourceDirectory>
+		<sourceDirectory>src/bolao/src/main/java</sourceDirectory>
 		<resources>
 			<resource>
 				<filtering>false</filtering>
@@ -431,6 +407,8 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
 				<configuration>
+					<classesDirectory>${project.basedir}/target/classes</classesDirectory>
+					<webAppSourceDirectory>${project.basedir}/target/classes</webAppSourceDirectory>
 					<!-- http://docs.codehaus.org/display/JETTY/Maven+Jetty+Plugin -->
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 					<connectors>

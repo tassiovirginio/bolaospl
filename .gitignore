@@ -4,6 +4,6 @@ bin/
 *.class
 *.bkp
 .directory
-
+db/
 
 

@@ -2,5 +2,4 @@
 <configuration>
     <feature automatic="selected" name="BolaoSPL"/>
     <feature manual="selected" name="Pagina01"/>
-    <feature manual="selected" name="Pagina02"/>
 </configuration>
