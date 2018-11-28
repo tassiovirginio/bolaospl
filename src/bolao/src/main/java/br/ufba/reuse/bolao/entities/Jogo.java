@@ -21,6 +21,9 @@ public class Jogo implements Serializable {
     
     private Campeonato campeonato;
     
+//adicionar relacionamento com a tabela aposta criando
+//aqui uma conexao com a lista de apostas
+
     public Time getTime_01() {
 		return time_01;
 	}
