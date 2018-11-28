@@ -5,10 +5,10 @@ import org.apache.wicket.markup.html.link.Link;
 import org.wicketstuff.annotation.mount.MountPath;
 
 @MountPath("signUp")
-public class SignUpPage extends WebPage{
+public class BolaoPage extends WebPage{
 	private static final long serialVersionUID = 1L;
 
-	public SignUpPage() {
+	public BolaoPage() {
 		
 //		private String login;
 		
