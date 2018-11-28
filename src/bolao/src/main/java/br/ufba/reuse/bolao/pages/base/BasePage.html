@@ -4,87 +4,115 @@
 <html xmlns:wicket="http://wicket.apache.org">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="manifest" href="css/manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" type="text/css" title="Stylesheet"/>
-    <link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap-theme.min.css" type="text/css" title="Stylesheet"/>
-    <link rel="stylesheet" href="css/dashboard.css" type="text/css" title="Stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="bootstrap-daterangepicker-master/daterangepicker.css"/>
-    <meta charset="utf-8"/>
-    <title>Bolão</title>
-    <link rel="shortcut icon" href="imgs/favicon.ico"/>
-    <link href="css/base.css" rel="stylesheet" type="text/css">
-</head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>SISBOLAO</title>
+		<link rel="showtcut icon" href="../favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/foundation.min.css" />
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/owl.theme.default.css">
 
-<body>
+		<script src="js/script.js"></script>
+	</head>
+	<body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">
-                <span>Bolão</span>
-            </a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-            <!--
-            //#if Pagina01  
-            -->
-                <li><a wicket:id="pagina01" style="color: #FFFFFF;" href="/">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Página 01</a></li>
-            <!--
-            //#endif  
-            -->
-            <!--
-            //#if Pagina02
-//@            -->
-//@                <li><a wicket:id="pagina02"  style="color: #FFFFFF;" href="/">
-//@                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-//@                    Página 02</a></li>
-//@            <!--
-            //#endif
-            -->
-            
-            <li><a wicket:id="loginPage"  style="color: #FFFFFF;" href="/">
-                    <span class="glyphicon glyphicon-education" aria-hidden="true"></span>
-                    Login</a></li>
-                    
-                <li><a  style="color: #FFFFFF;" href="/">
-                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                    Página 03</a></li>
-                <li><a style="color: #FFFFFF;" href="/">
-                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    Sair</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+		<!-- HEADER -->
+
+		<header class="bol--nav">
+			<div class="row align-justify align-middle">
+				<div class="small-5 medium-3 columns">
+				<a href="~/">
+					<img class="main-logo" src="img/logo.png" />
+				</a>
+				</div>
+		
+				<div class="medium-7 hide-for-small-only columns">
+				<ul class="bol--nav-medium--list">
+					<li data-toggle="bol--dropdown" class="bol--nav-medium--list--item bol--nav-medium--list--item__divisor">
+					<a href="#"><i class="fas fa-user-circle-o" aria-hidden="true"></i>  Olá {{usuario.nome}}</a>
+					</li>
+					<li data-toggle="bol--dropdown" class="bol--nav-medium--list--item">
+					<a href="#" >Logout <i class="fas fa-sign-out" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+				</div>
+		
+				<div class="small-4 show-for-small-only columns">
+				<ul class="bol--nav--list">
+					<li class="bol--nav--list--item">
+					<a href="#">
+						<i class="fas fa-user-circle-o" aria-hidden="true"></i>
+					</a>
+					</li>
+					<li data-toggle="bol--dropdown" class="bol--nav-management--list--item">
+					<a href="#" click="sm.isDropdownVisible = !sm.isDropdownVisible">
+						<i class="fas fa-bars" aria-hidden="true"></i>
+					</a>
+					</li>
+				</ul>
+				</div>
+		
+				<div class="small-12 show-for-small-only columns">
+				<ul class="bol--dropdown">
+					<li class="bol--dropdown--item">
+					<a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+					</li>
+				</ul>
+				</div>
+		
+				<label class="columns small-12 show-for-small-only">
+				<select class="management--small-menu"
+						name=""
+						required
+				></select>
+				</label>
+			</div>
+		</header>
+
+		<!-- /HEADER -->
+
+		<section class="bol--body">
+			<div class="row align-center bol--body--min-height">
+				<div class="medium-3 hide-for-small-only bol--body--menu">
+					<!-- MENU -->
+					<div class="bol--menu--user-big-icon">
+							<i class="fas fa-user-circle" aria-hidden="true"></i>
+						  </div>
+						  <ul class="bol--body--menu--list">
+							<li class="bol--body--menu--list--item">
+							  <a href="#"><i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-id-card" aria-hidden="true"></i> Detalhes de Conta</a>
+							</li>
+							<li class="bol--body--menu--list--item">
+							  <a href="#"><i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-pen" aria-hidden="true"></i> Novo Bolao</a>
+							</li>
+							<li class="bol--body--menu--list--item">
+							  <a href="#"><i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-credit-card" aria-hidden="true"></i> Ranking</a>
+							</li>
+							<li class="bol--body--menu--list--item">
+							  <a href="#"><i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-comments" aria-hidden="true"></i> Grupos</a>
+							</li>
+							
+						  </ul>
+					<!-- MENU -->
+				</div>
+				<div class="columns small-12 medium-9 bol--body--info"> <!--background gray-->
+					<div class="row bol--body--margin align-center align-top">
+						<!-- CONTENT SHOULD GO HERE -->
+
+					</div>
+				</div>
+			</div>
+		</section>
 
 
-<div class="container" style="width:80%; height:80%" >
-    <div class="row">
-        <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2 main">
-            <div class="panel panel-default">
-                <br>
-                <div class="panel-body fundocinza">
-                    <wicket:child/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+		<footer>
+			<p>Sisbolao - All rights Reserved</p>
+		</footer>
+
+	</body>	
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
