@@ -1,8 +1,8 @@
-#Projeto SISBOLAO 
+# Projeto SISBOLAO 
 	
 	É um projeto de linha de produto de software de Bolão.
 
-###Desenvolvedores: 
+### Desenvolvedores: 
 
  - Douglésia Thiália dos Santos Rocha
  - Fernando Cezar R. Borges
@@ -27,7 +27,7 @@ O sistema roda com o maven e com o gradle.
 
 ---
 
-###Tutorial Gradle:
+### Tutorial Gradle:
 
 para fazer a configuração do eclipse:
 
@@ -39,7 +39,7 @@ para rodar o sistema:
 
 ---
 
-###Tutorial Maven:
+### Tutorial Maven:
 
 para configurar as dependencias do maven no eclipse.
 
