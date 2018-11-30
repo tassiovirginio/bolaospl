@@ -7,14 +7,10 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
-    maven {url = 'http://repo2.maven.org/maven2/'}
-    maven {url = 'https://oss.sonatype.org/content/repositories/staging/'}
-    maven {url = 'http://mirrors.ibiblio.org/maven2/'}
-    maven {url = 'https://oss.sonatype.org/content/repositories/releases/'}
-    maven {url = 'http://repo.spring.io/libs-milestone/'}
-    maven {url = 'http://repo.spring.io/libs-release-remote/'}
-    maven {url = 'https://plugins.gradle.org/m2/'}
+	mavenCentral()
+	jcenter()
+	google()
+    //mavenLocal()
 }
 
 dependencies {
