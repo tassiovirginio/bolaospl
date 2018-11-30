@@ -1,3 +1,5 @@
+![GitHub Logo](bolaospl/src/bolao/src/main/webapp/img/logo.png)
+
 # Projeto SISBOLAO 
 	
 	É um projeto de linha de produto de software de Bolão.
