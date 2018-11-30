@@ -1,29 +1,53 @@
-Projeto SISBOLAO 
+<img src="https://raw.githubusercontent.com/tassiovirginio/bolaospl/master/src/bolao/src/main/webapp/img/logo.png" width="100"/>
+
+# Projeto SISBOLAO 
+	
 	É um projeto de linha de produto de software de Bolão.
 
-Desenvolvedores: 
+### Desenvolvedores: 
 
-Douglésia Thiália dos Santos Rocha
+ - Douglésia Thiália dos Santos Rocha
+ - Fernando Cezar R. Borges
+ - Franklin de Jesus Silva
+ - Joselito Mota Júnior
+ - Railana dos Santos Santana
+ - Sara Mendes Oliveira Lima
+ - Tássio Guerreiro Antunes Virgínio
+ - Verônica Luzia Reis Santos
 
-Fernando Cezar R. Borges
+---
 
-Franklin de Jesus Silva
 
-Joselito Mota Júnior
+Pré-requisitos: 
+ - ter o JDK 8 instalado [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
+ - Gradle 5 [download](https://gradle.org/install/) *
+ - ou o Maven 3 [download](https://maven.apache.org/download.cgi)
+ 
+O sistema roda com o maven e com o gradle.
 
-Railana dos Santos Santana
+**Sugiro utilizar o Grade.*
 
-Sara Mendes Oliveira Lima
+---
 
-Tássio Guerreiro Antunes Virgínio
+### Tutorial Gradle:
 
-Verônica Luzia Reis Santos
+para fazer a configuração do eclipse:
 
-Tutorial para executar a linha de produto:
+	gredle eclipse
 
--> para configurar as dependencias do maven no eclipse.
-mvn eclipse:eclipse
+para rodar o sistema:
 
--> configurar o source do projeto no eclipse.
-Properties -> Java Build Path -> Source add (src/bolao/src/main/java)
+	gredle appRun
+
+---
+
+### Tutorial Maven:
+
+para configurar as dependencias do maven no eclipse.
+
+	mvn eclipse:eclipse
+
+configurar o source do projeto no eclipse.
+
+	Properties -> Java Build Path -> Source add (src/bolao/src/main/java)
 

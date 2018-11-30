@@ -5,5 +5,10 @@ bin/
 *.bkp
 .directory
 db/
-
+.gradle/
+.vscode/
+build/
+.classpath
+.project
+.settings
 
