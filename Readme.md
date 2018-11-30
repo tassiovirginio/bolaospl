@@ -1,4 +1,4 @@
-![GitHub Logo](https://raw.githubusercontent.com/tassiovirginio/bolaospl/master/src/bolao/src/main/webapp/img/logo.png =100x)
+<img src="https://raw.githubusercontent.com/tassiovirginio/bolaospl/master/src/bolao/src/main/webapp/img/logo.png" width="100"/>
 
 # Projeto SISBOLAO 
 	
