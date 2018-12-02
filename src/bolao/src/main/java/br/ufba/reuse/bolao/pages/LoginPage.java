@@ -31,7 +31,6 @@ public class LoginPage extends WebPage {
 		add(new Link("SignUp") {
             @Override
             public void onClick() {
-              
                 setResponsePage(new SignUpPage());
             }
     	});
@@ -45,9 +44,9 @@ public class LoginPage extends WebPage {
 				if(usuarioLogado != null) {
 					setResponsePage(Pagina01.class);
 					getSession().setAttribute("usuario", usuarioLogado);
-                    setResponsePage(new Pagina01());
+                    setResponsePage(new ListGrupoPage());
                 } else {
-                    error("Login Inv·lido");
+                    error("Login Inv√°lido");
 				}
 			};
 		};
