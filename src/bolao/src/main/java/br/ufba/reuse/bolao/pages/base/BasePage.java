@@ -6,8 +6,10 @@ import org.apache.wicket.markup.html.link.Link;
 
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
-import br.ufba.reuse.bolao.pages.Pagina01;
+import br.ufba.reuse.bolao.pages.DetalhesUsuarioPage;
+import br.ufba.reuse.bolao.pages.ListGrupoPage;
 import br.ufba.reuse.bolao.pages.Pagina02;
+import br.ufba.reuse.bolao.pages.RankingPage;
 
 public class BasePage extends WebPage {
 
@@ -18,6 +20,27 @@ public class BasePage extends WebPage {
     	Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
     	
     	add(new Label("usuarioLogado",usuarioLogado.getNome()));
+    	
+    	add(new Link("linkRanking") {
+            @Override
+            public void onClick() {
+                setResponsePage(new RankingPage());
+            }
+    	});
+    	
+    	add(new Link("linkGrupos") {
+            @Override
+            public void onClick() {
+                setResponsePage(new ListGrupoPage());
+            }
+    	});
+    	
+    	add(new Link("linkDetalhes") {
+            @Override
+            public void onClick() {
+                setResponsePage(new DetalhesUsuarioPage(usuarioLogado));
+            }
+    	});
     	
     	add(new Link("linkLogout") {
             @Override

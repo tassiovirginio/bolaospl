@@ -42,7 +42,7 @@ public class LoginPage extends WebPage {
 				Usuario usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
 				
 				if(usuarioLogado != null) {
-					setResponsePage(Pagina01.class);
+					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuarioLogado);
                     setResponsePage(new ListGrupoPage());
                 } else {

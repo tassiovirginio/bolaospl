@@ -22,7 +22,7 @@
                 <feature mandatory="true" name="Resultados"/>
                 <feature name="RankingEspecifico"/>
                 <feature mandatory="true" name="Integrantes"/>
-                <alt name="Premiação">
+                <alt name="Premiacao">
                     <feature name="Online"/>
                     <feature name="Offline"/>
                 </alt>

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
     <feature automatic="selected" name="BolaoSPL"/>
-    <feature manual="selected" name="Pagina01"/>
-    <feature manual="selected" name="Pagina02"/>
+    <feature automatic="selected" name="Base"/>
+    <feature automatic="selected" name="Campeonatos"/>
+    <feature automatic="selected" manual="selected" name="Copa"/>
+    <feature manual="selected" name="FaseGrupos"/>
+    <feature manual="selected" name="FaseMataMata"/>
+    <feature manual="selected" name="PontosCorridos"/>
+    <feature automatic="selected" name="Bolao"/>
+    <feature automatic="selected" name="Apostas"/>
+    <feature automatic="selected" name="Ganhador"/>
+    <feature manual="selected" name="GanhadorPorPlacar"/>
+    <feature automatic="unselected" name="GanhadorPorTime"/>
+    <feature automatic="selected" name="Placar"/>
+    <feature automatic="selected" name="Resultados"/>
+    <feature manual="selected" name="RankingEspecifico"/>
+    <feature automatic="selected" name="Integrantes"/>
+    <feature automatic="selected" manual="selected" name="Premiacao"/>
+    <feature manual="selected" name="Online"/>
+    <feature automatic="unselected" name="Offline"/>
+    <feature automatic="selected" name="Ranking"/>
+    <feature automatic="selected" name="Financeiro"/>
+    <feature manual="selected" name="Aporte"/>
 </configuration>

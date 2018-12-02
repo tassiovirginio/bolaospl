@@ -69,9 +69,9 @@ public class SignUpPage extends WebPage {
 
 					Usuario usuario = usuarioBusiness.realizarLogin(email, senha);
 					
-					setResponsePage(Pagina01.class);
+					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuario);
-					setResponsePage(new Pagina01());
+					setResponsePage(new ListGrupoPage());
 				}
 			};
 		};
