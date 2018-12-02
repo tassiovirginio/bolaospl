@@ -47,7 +47,7 @@ public class LoginPage extends WebPage {
 					getSession().setAttribute("usuario", usuarioLogado);
                     setResponsePage(new Pagina01());
                 } else {
-                    error("Login Inv·lido");
+                    error("Login Inv√°lido");
 				}
 			};
 		};
