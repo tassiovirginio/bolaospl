@@ -30,6 +30,8 @@ public class SignUpPage extends WebPage {
 	private String senha;
 
 	private Date dataNascimento;
+	
+	private String celular;
 
 	public SignUpPage() {
 
@@ -54,15 +56,19 @@ public class SignUpPage extends WebPage {
 					email = null;
 					senha = null;
 					dataNascimento = null;
+					celular = null;
 				} else {
 					Usuario user = new Usuario();
 
 					user.setNome(nome);
 					user.setEmail(email);
 					user.setSenha(senha);
+					user.setCelular(celular);
+					
 					usuarioBusiness.save(user);
 
 					Usuario usuario = usuarioBusiness.realizarLogin(email, senha);
+					
 					setResponsePage(Pagina01.class);
 					getSession().setAttribute("usuario", usuario);
 					setResponsePage(new Pagina01());
@@ -73,6 +79,8 @@ public class SignUpPage extends WebPage {
 		form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
 
 		form.add(new TextField<String>("email", new PropertyModel<String>(this, "email")));
+		
+		form.add(new TextField<String>("celular", new PropertyModel<String>(this, "celular")));
 
 		form.add(new PasswordTextField("senha", new PropertyModel<String>(this, "senha")));
 
