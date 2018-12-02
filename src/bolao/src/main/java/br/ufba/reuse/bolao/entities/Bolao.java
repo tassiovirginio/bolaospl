@@ -15,23 +15,24 @@ public class Bolao implements Serializable {
     @GeneratedValue
     private Long id;
     
-    /** Adicionar notacao de relacionamento de banco de dados **/
-//    private List<Aposta> apostas;
+    @OneToMany
+    private List<Aposta> apostas;
     
+    @ManyToOne
     private Grupo grupo;
     
+    @ManyToOne
     private Campeonato campeonato;
     
+    @ManyToOne
     private Jogo jogo;
     
-    private String nomeBolao;
+    private String nome;
     
-    private Date dataCriacao;
+    private Date criacao;
     
-    private Date dataFechamento;
+    private Date fechamento;
     
-    /** Adicionar notacao de relacionamento de banco de dados 
-    private List<Jogo> jogos; **/
 
 	public void setId(Long id) {
         this.id = id;
@@ -40,14 +41,6 @@ public class Bolao implements Serializable {
 	public Long getId() {
 	       return id;
 	}
-//
-//    public List<Aposta> getApostas() {
-//		return apostas;
-//	}
-//
-//	public void setApostas(List<Aposta> apostas) {
-//		this.apostas = apostas;
-//	}
 
 	public Grupo getGrupo() {
 		return grupo;
@@ -72,29 +65,38 @@ public class Bolao implements Serializable {
 	public void setJogo(Jogo jogo) {
 		this.jogo = jogo;
 	}
+	
 
-	public String getNomeBolao() {
-		return nomeBolao;
+	public List<Aposta> getApostas() {
+		return apostas;
 	}
 
-	public void setNomeBolao(String nomeBolao) {
-		this.nomeBolao = nomeBolao;
+	public void setApostas(List<Aposta> apostas) {
+		this.apostas = apostas;
 	}
 
-	public Date getDataCriacao() {
-		return dataCriacao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Date getDataFechamento() {
-		return dataFechamento;
+	public Date getCriacao() {
+		return criacao;
 	}
 
-	public void setDataFechamento(Date dataFechamento) {
-		this.dataFechamento = dataFechamento;
+	public void setCriacao(Date criacao) {
+		this.criacao = criacao;
+	}
+
+	public Date getFechamento() {
+		return fechamento;
+	}
+
+	public void setFechamento(Date fechamento) {
+		this.fechamento = fechamento;
 	}
 
 	@Override
@@ -102,9 +104,9 @@ public class Bolao implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Bolao candidato = (Bolao) o;
+        Bolao obj = (Bolao) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

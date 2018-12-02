@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Time implements Serializable {
@@ -13,8 +14,20 @@ public class Time implements Serializable {
     private Long id;
 
     private String nome;
+    
+    @OneToMany
+    private List<Campeonato> campeonatos;
+    
 
-    public Long getId() {
+    public List<Campeonato> getCampeonatos() {
+		return campeonatos;
+	}
+
+	public void setCampeonatos(List<Campeonato> campeonatos) {
+		this.campeonatos = campeonatos;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -35,9 +48,9 @@ public class Time implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Time candidato = (Time) o;
+        Time obj = (Time) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

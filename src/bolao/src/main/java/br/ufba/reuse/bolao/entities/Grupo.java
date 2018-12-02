@@ -16,13 +16,22 @@ public class Grupo implements Serializable {
     private String nome;
     
     private String descricao;
+
+    @OneToMany
+    private List<Usuario> participantes;
     
-    /** Adicionar notacao de relacionamento de banco de dados **/
-//    private List<Usuario> participantes;
-    
+    @ManyToOne
     private Usuario dono;
 
-    public Usuario getDono() {
+    public List<Usuario> getParticipantes() {
+		return participantes;
+	}
+
+	public void setParticipantes(List<Usuario> participantes) {
+		this.participantes = participantes;
+	}
+
+	public Usuario getDono() {
 		return dono;
 	}
 
@@ -37,14 +46,6 @@ public class Grupo implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-//	public List<Usuario> getParticipantes() {
-//		return participantes;
-//	}
-//
-//	public void setParticipantes(List<Usuario> participantes) {
-//		this.participantes = participantes;
-//	}
 
 	public Long getId() {
         return id;
@@ -67,9 +68,9 @@ public class Grupo implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Grupo candidato = (Grupo) o;
+        Grupo obj = (Grupo) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

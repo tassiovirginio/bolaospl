@@ -11,4 +11,7 @@ build/
 .classpath
 .project
 .settings
-
+db.*
+h2.*
+h2/
+.settings/

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Campeonato implements Serializable {
@@ -17,9 +18,9 @@ public class Campeonato implements Serializable {
     private Long id;
     
     private String nome;
-    
-    /** Adicionar notacao de relacionamento de banco de dados **/
-//    private List<Jogo> jogos;
+
+    @OneToMany
+    private List<Jogo> jogos;
     
     public String getNome() {
 		return nome;
@@ -28,20 +29,16 @@ public class Campeonato implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+    
+    public List<Jogo> getJogos() {
+		return jogos;
+	}
 
-//	public List<Jogo> getJogos() {
-//		return jogos;
-//	}
-//
-//	public void setJogos(List<Jogo> jogos) {
-//		this.jogos = jogos;
-//	}
-	
-	
-  //private TipoCampeonato campeonato;
-    
-    
-    public Long getId() {
+	public void setJogos(List<Jogo> jogos) {
+		this.jogos = jogos;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -54,9 +51,9 @@ public class Campeonato implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Campeonato candidato = (Campeonato) o;
+        Campeonato obj = (Campeonato) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

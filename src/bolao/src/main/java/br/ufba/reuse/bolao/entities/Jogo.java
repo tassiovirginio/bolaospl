@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Jogo implements Serializable {
@@ -15,29 +16,29 @@ public class Jogo implements Serializable {
     @GeneratedValue
     private Long id;
     
-    private Time time_01;
+    @ManyToOne
+    private Time time1;
     
-    private Time time_02;
+    @ManyToOne
+    private Time time2;
     
+    @ManyToOne
     private Campeonato campeonato;
     
-//adicionar relacionamento com a tabela aposta criando
-//aqui uma conexao com a lista de apostas
-
-    public Time getTime_01() {
-		return time_01;
+	public Time getTime1() {
+		return time1;
 	}
 
-	public void setTime_01(Time time_01) {
-		this.time_01 = time_01;
+	public void setTime1(Time time1) {
+		this.time1 = time1;
 	}
 
-	public Time getTime_02() {
-		return time_02;
+	public Time getTime2() {
+		return time2;
 	}
 
-	public void setTime_02(Time time_02) {
-		this.time_02 = time_02;
+	public void setTime2(Time time2) {
+		this.time2 = time2;
 	}
 
 	public Campeonato getCampeonato() {
@@ -61,9 +62,9 @@ public class Jogo implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Jogo candidato = (Jogo) o;
+        Jogo obj = (Jogo) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

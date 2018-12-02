@@ -1,35 +1,12 @@
 package br.ufba.reuse.bolao.business;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.ufba.reuse.bolao.business.daos.TimeDAO;
+import br.ufba.reuse.bolao.business.daos.util.BusinessGeneric;
 import br.ufba.reuse.bolao.entities.Time;
 
 @Component
 @Transactional
-public class TimeBusiness {
-
-    @Autowired
-    private TimeDAO dao;
-
-    public int size(){
-        return dao.size();
-    }
-
-    public void save(Time candidato){
-        dao.save(candidato);
-    }
-
-    public List<Time> listAll(){
-        return dao.listAll();
-    }
-
-    public Time findById(Long id){
-        return dao.findById(id);
-    }
-
-}
+public class TimeBusiness extends BusinessGeneric<TimeDAO, Time> {}

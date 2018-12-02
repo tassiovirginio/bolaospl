@@ -12,29 +12,22 @@ public class Aposta implements Serializable {
     @GeneratedValue
     private Long id;
     
-    private Aposta aposta;
-    
+    @ManyToOne
     private Jogo jogo;
     
     private Integer placar01;
     
     private Integer placar02;
     
+    @ManyToOne
     private Time timeApostado;
     
-    //private Bolao bolao;
+    @ManyToOne
+    private Bolao bolao;
     
     public Long getId() {
         return id;
     }
-
-    public Aposta getAposta() {
-		return aposta;
-	}
-
-	public void setAposta(Aposta aposta) {
-		this.aposta = aposta;
-	}
 
 	public Jogo getJogo() {
 		return jogo;
@@ -77,9 +70,9 @@ public class Aposta implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Aposta candidato = (Aposta) o;
+        Aposta obj = (Aposta) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

@@ -22,7 +22,18 @@ public class Usuario implements Serializable {
 
     private String email;
     
-    public Long getId() {
+    @OneToMany
+    private List<Grupo> grupos;
+    
+    public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+
+	Long getId() {
         return id;
     }
 
@@ -67,9 +78,9 @@ public class Usuario implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Usuario candidato = (Usuario) o;
+        Usuario obj = (Usuario) o;
 
-        if (!id.equals(candidato.id)) return false;
+        if (!id.equals(obj.id)) return false;
 
         return true;
     }

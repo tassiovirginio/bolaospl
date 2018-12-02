@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
-public class HibernateDAOGenerico<T, ID extends Serializable> {
+public class DAOGeneric<T, ID extends Serializable> {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,7 +29,7 @@ public class HibernateDAOGenerico<T, ID extends Serializable> {
         return sessionFactory.getCurrentSession();
     }
 
-    public HibernateDAOGenerico() {
+    public DAOGeneric() {
         this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 
