@@ -35,10 +35,10 @@
 				<li data-toggle="bol--dropdown"
 					class="bol--nav-medium--list--item bol--nav-medium--list--item__divisor">
 					<a href="#"><i class="fas fa-user-circle-o" aria-hidden="true"></i>
-						Olá {{usuario.nome}}</a>
+						Olá <span wicket:id="usuarioLogado"></span></a>
 				</li>
 				<li data-toggle="bol--dropdown" class="bol--nav-medium--list--item">
-					<a href="#">Logout <i class="fas fa-sign-out"
+					<a href="#" wicket:id="linkLogout">Logout <i class="fas fa-sign-out"
 						aria-hidden="true"></i></a>
 				</li>
 			</ul>

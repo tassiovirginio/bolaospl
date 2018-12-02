@@ -13,7 +13,7 @@ import org.hibernate.criterion.Order;
 import static org.hibernate.criterion.Restrictions.*;
 
 @Transactional
-public class BusinessGeneric<T extends DAOGeneric, Y extends Serializable> {
+public class BusinessGeneric<T extends DAOGeneric<Y,Long>, Y extends Serializable> {
 
     @Autowired
     protected T dao;

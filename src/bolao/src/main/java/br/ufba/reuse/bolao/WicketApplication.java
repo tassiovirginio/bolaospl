@@ -12,14 +12,20 @@ import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.response.filter.AjaxServerAndClientTimeFilter;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.time.Duration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
+import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
 
 @Component
 public class WicketApplication extends WebApplication {
-	
+
+	@Autowired
+	private UsuarioBusiness usuarioBusiness;
+
 	@Override
 	public Class<? extends Page> getHomePage() {
 		return LoginPage.class;
@@ -40,13 +46,15 @@ public class WicketApplication extends WebApplication {
 		getResourceSettings().setThrowExceptionOnMissingResource(false);
 		getDebugSettings().setDevelopmentUtilitiesEnabled(true);
 		new AnnotatedMountScanner().scanPackage(this.getClass().getPackage().getName() + ".pages").mount(this);
+
+		cargaTeste();
 	}
-	
+
 	private void clearCommentsHtml() {
 		System.out.println("clearCommentsHtml");
 		String root = this.getServletContext().getRealPath("/");
 		File file = new File(root);
-		file = file.getParentFile().getParentFile();//.getParentFile();
+		file = file.getParentFile().getParentFile();// .getParentFile();
 		root = file.getAbsolutePath() + "/target/classes";
 		System.out.println("clearCommentsHtml: " + root);
 		listFilesAndFilesSubDirectories(root);
@@ -78,7 +86,8 @@ public class WicketApplication extends WebApplication {
 			String currentLine;
 
 			while ((currentLine = reader.readLine()) != null) {
-				if (currentLine.trim().startsWith("//@"))continue;
+				if (currentLine.trim().startsWith("//@"))
+					continue;
 				writer.write(currentLine + System.getProperty("line.separator"));
 			}
 			writer.close();
@@ -87,9 +96,25 @@ public class WicketApplication extends WebApplication {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return successful;
 
+	}
+
+	private void cargaTeste() {
+
+		System.out.println("Criando Usuário Administrador...");
+
+		Usuario uAdmin = usuarioBusiness.getByEmail("admin@admin.com");
+
+		if (uAdmin == null) {
+			Usuario usuarioAdmin = new Usuario();
+			usuarioAdmin.setEmail("admin@admin.com");
+			usuarioAdmin.setSenha("admin");
+			usuarioAdmin.setCelular("99 9999-9999");
+			usuarioAdmin.setNome("Administrador");
+			usuarioBusiness.save(usuarioAdmin);
+		}
 	}
 
 }

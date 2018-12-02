@@ -42,6 +42,10 @@ public class DAOGeneric<T, ID extends Serializable> {
     public void delete(T entity) {
         session().delete(entity);
     }
+    
+    public void delete(ID id) {
+        session().delete(id);
+    }
 
     public T findById(ID id) {
         return (T) session().get(clazz(), id);
