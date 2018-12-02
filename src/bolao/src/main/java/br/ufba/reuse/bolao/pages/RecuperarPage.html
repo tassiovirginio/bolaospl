@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" xmlns:wicket="http://wicket.apache.org">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,14 +21,18 @@
 		<div class="small-12 medium-6 bol--full-login--img"></div>
 		<div class="small-12 medium-6">
 			<div class="bol--sign-in--container">
-				<img src="img/logo.png" class="bol--sign-in--container--logo" />
+				<a href="#" wicket:id="linkLoginPage"
+					class="bol--sign-up--container--navegation-helper pointer-object">
+					<i class="fas fa-arrow-alt-circle-left"></i> Voltar a página de
+					login
+				</a> <img src="img/logo.png" class="bol--sign-in--container--logo" />
 				<div style="color: red;" wicket:id="feedback">[Feedback Panel]</div>
-				<form action="#">
+				
+				<form action="" wicket:id="form">
 					<h2 class="">Recuperar Senha:</h2>
-					<label class="solid-label"> Email <input
-						class="solid-input" type="text" />
-					</label> <input type="submit" value="Recuperar"
-						class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
+					<label class="solid-label"> Email 
+					<input wicket:id="email" class="solid-input" type="text" />
+					</label> <input type="submit" value="Recuperar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
 					<br />
 				</form>
 			</div>
