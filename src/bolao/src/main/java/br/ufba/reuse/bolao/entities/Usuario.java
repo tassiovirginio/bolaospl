@@ -20,6 +20,7 @@ public class Usuario implements Serializable {
 
     private String celular;
 
+    @Column(name = "email",unique=true)
     private String email;
     
     @OneToMany

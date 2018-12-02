@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
+import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
 
@@ -25,6 +27,9 @@ public class WicketApplication extends WebApplication {
 
 	@Autowired
 	private UsuarioBusiness usuarioBusiness;
+	
+	@Autowired
+	private GrupoBusiness grupoBusiness;
 
 	@Override
 	public Class<? extends Page> getHomePage() {
@@ -115,6 +120,33 @@ public class WicketApplication extends WebApplication {
 			usuarioAdmin.setNome("Administrador");
 			usuarioBusiness.save(usuarioAdmin);
 		}
+		
+		Usuario usuario01 = usuarioBusiness.getByEmail("usuario01@ufba.br");
+
+		if (usuario01 == null) {
+			usuario01 = new Usuario();
+			usuario01.setEmail("usuario01@ufba.br");
+			usuario01.setSenha("123");
+			usuario01.setCelular("99 9999-9999");
+			usuario01.setNome("Usuario01");
+			usuarioBusiness.save(usuario01);
+			
+			
+			Grupo grupo1 = new Grupo();
+			grupo1.setNome("LES");
+			grupo1.setDescricao("Grupo do Laboratório LES");
+			grupo1.setDono(usuario01);
+			grupoBusiness.save(grupo1);
+			
+			Grupo grupo2 = new Grupo();
+			grupo2.setNome("INES");
+			grupo2.setDescricao("Grupo do Laboratório INES");
+			grupo2.setDono(usuario01);
+			grupoBusiness.save(grupo2);
+			
+		}
+		
+		
 	}
 
 }
