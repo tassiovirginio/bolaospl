@@ -1,30 +1,80 @@
 package br.ufba.reuse.bolao.pages;
 
+import java.util.Date;
+
+import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Usuario;
 
 @MountPath("signUp")
 public class SignUpPage extends WebPage{
 	private static final long serialVersionUID = 1L;
 	
+	@SpringBean
+	private UsuarioBusiness usuarioBusiness;
+	
+	private String nome;
+	
+	private String email;
+	
+	private String senha;
+	
+	private Date dataNascimento;
+	
 	public SignUpPage() {
 		
-		Link realizarCadastro = new Link("realizarCadastro") {
+		add(new Link("LoginPage") {
             @Override
             public void onClick() {
-                setResponsePage(LoginPage.class);
+              
+                setResponsePage(new LoginPage());
             }
-        };
-        add(realizarCadastro);
-
-
+    	});
+		
+		
+		Form form = new Form("form") {
+			protected void onSubmit() {
+					
+				Usuario usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
+				
+				if(usuarioLogado != null) {
+					 error("Usuário já cadastrado. Por favor, faça o login!");
+                } 
+				else
+				{
+					Usuario user = new Usuario();
+					
+					user.setNome(nome);
+					user.setEmail(email);
+					user.setSenha(senha);
+					usuarioBusiness.save(user);
+					
+					usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
+					
+					getSession().setAttribute("usuario", usuarioLogado);
+                    setResponsePage(new Pagina01());
+				}
+			};
+		};
+		
+		form.add(new TextField<String>("nome",new PropertyModel<String>(this, "nome")));
+		
+		form.add(new TextField<String>("email",new PropertyModel<String>(this, "email")));
+		
+		form.add(new PasswordTextField("senha",new PropertyModel<String>(this, "senha")));
+		
+		form.add(new DateTextField("dataNascimento",new PropertyModel<Date>(this, "dataNascimento")));
+		
+		add(form);
 	}
 
 }

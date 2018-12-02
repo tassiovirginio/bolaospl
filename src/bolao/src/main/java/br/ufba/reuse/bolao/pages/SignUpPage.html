@@ -20,22 +20,23 @@
 			</div>
 			<div class="small-12 medium-6">
 				<div class="bol--sign-up--container">
-					<a href="index.html" class="bol--sign-up--container--navegation-helper pointer-object">
+					<a href="#" wicket:id="LoginPage" class="bol--sign-up--container--navegation-helper pointer-object">
 						<i class="fas fa-arrow-alt-circle-left"></i> Voltar a página de login
 					</a>
 					<img src="img/logo.png" class="bol--sign-up--container--logo" />
 
+				<form action="" wicket:id="form">
 					
 					<h2 class="">Preencha os campos abaixo:</h2>
 					<label class="solid-label">
 						Nome Completo
-						<input class="solid-input" type="text" />
+						<input class="solid-input" type="text" wicket:id="nome" />
 					</label>
 					<label class="solid-label">
 						Data Nascimento
-						<input class="solid-input" type="date" />
+						<input class="solid-input" type="text" wicket:id="dataNascimento" />
 					</label>
-
+					<!--
 					<div class="row align-self-top">
 						<span class="solid-label columns small-12" style="padding-top: 0.5rem;padding-bottom: 0.5rem;">Sexo:</span>
 						<label class="solid-label columns small-6 medium-4">
@@ -46,17 +47,24 @@
 						  <input type="radio" name="signupSex" value="2">
 						  <span class="solid-radio--name">Feminino</span>
 						</label>
-					  </div>
+					  </div> 
+					  -->
 
 					<label class="solid-label">
 						Email
-						<input class="solid-input" type="email" />
+						<input class="solid-input" type="text" wicket:id="email" />
 					</label>
 					<label class="solid-label">
 						Senha
-						<input class="solid-input" type="password" />
+						<input class="solid-input" type="password" wicket:id="senha" />
 					</label>
+					
+					
 					<input type="submit" value="Cadastrar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
+				</form>
+		
+					
+					
 					<br />
 				</div>
 			</div>

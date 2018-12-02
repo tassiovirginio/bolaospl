@@ -20,8 +20,15 @@ public class UsuarioBusiness extends BusinessGeneric<UsuarioDAO, Usuario> {
 		System.out.println("email: " + email + " - senha: " + senha + " - usuario: " + usuarioRetorno);
 
 		return usuarioRetorno;
+	
 	}
-
+	
+	public Usuario encontraUsuarioCadastrado(String email)
+	{
+		Usuario usuarioRetorno = dao.findByCriteriaReturnUniqueResult(eq("email", email));
+		return usuarioRetorno;
+	}
+	
 	public Usuario getByEmail(String email) {
 		return dao.findByCriteriaReturnUniqueResult(eq("email", email));
 	}
