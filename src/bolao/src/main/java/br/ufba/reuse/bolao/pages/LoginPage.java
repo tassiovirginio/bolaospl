@@ -28,6 +28,13 @@ public class LoginPage extends WebPage {
 		
 		add(new FeedbackPanel("feedback"));
 		
+		add(new Link("linkRecuperar") {
+            @Override
+            public void onClick() {
+                setResponsePage(new RecuperarPage());
+            }
+    	});
+		
 		add(new Link("SignUp") {
             @Override
             public void onClick() {
