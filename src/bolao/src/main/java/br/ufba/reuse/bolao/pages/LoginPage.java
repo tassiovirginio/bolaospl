@@ -28,6 +28,14 @@ public class LoginPage extends WebPage {
 		
 		add(new FeedbackPanel("feedback"));
 		
+		add(new Link("SignUp") {
+            @Override
+            public void onClick() {
+              
+                setResponsePage(new SignUpPage());
+            }
+    	});
+		
 		Form form = new Form("form") {
 			protected void onSubmit() {
 				System.out.println("loginForm: " + email + " - " + senha);
@@ -39,7 +47,7 @@ public class LoginPage extends WebPage {
 					getSession().setAttribute("usuario", usuarioLogado);
                     setResponsePage(new Pagina01());
                 } else {
-                    error("Login Inv√°lido");
+                    error("Login Inv·lido");
 				}
 			};
 		};
