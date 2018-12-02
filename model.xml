@@ -3,11 +3,44 @@
     <properties/>
     <struct>
         <and abstract="true" mandatory="true" name="BolaoSPL">
-            <feature name="Pagina01"/>
-            <feature name="Pagina02"/>
+            <feature mandatory="true" name="Base"/>
+            <or mandatory="true" name="Campeonatos">
+                <and name="Copa">
+                    <feature name="FaseGrupos"/>
+                    <feature name="FaseMataMata"/>
+                </and>
+                <feature name="PontosCorridos"/>
+            </or>
+            <and mandatory="true" name="Bolao">
+                <and mandatory="true" name="Apostas">
+                    <alt mandatory="true" name="Ganhador">
+                        <feature name="GanhadorPorPlacar"/>
+                        <feature name="GanhadorPorTime"/>
+                    </alt>
+                    <feature mandatory="true" name="Placar"/>
+                </and>
+                <feature mandatory="true" name="Resultados"/>
+                <feature name="RankingEspecifico"/>
+                <feature mandatory="true" name="Integrantes"/>
+                <alt name="Premiação">
+                    <feature name="Online"/>
+                    <feature name="Offline"/>
+                </alt>
+            </and>
+            <feature mandatory="true" name="Ranking"/>
+            <and name="Financeiro">
+                <feature name="Aporte"/>
+            </and>
         </and>
     </struct>
-    <constraints/>
+    <constraints>
+        <rule>
+            <imp>
+                <var>Online</var>
+                <var>Financeiro</var>
+            </imp>
+        </rule>
+    </constraints>
     <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
     <comments/>
     <featureOrder userDefined="false"/>
