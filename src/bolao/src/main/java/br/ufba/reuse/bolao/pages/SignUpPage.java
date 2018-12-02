@@ -47,7 +47,7 @@ public class SignUpPage extends WebPage{
 		Form form = new Form("form") {
 			protected void onSubmit() {
 					
-				Usuario usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
+				Usuario usuarioLogado = usuarioBusiness.encontraUsuarioCadastrado(email);
 				
 				if(usuarioLogado != null) {
 					 error("Usuário já cadastrado. Por favor, faça o login!");
