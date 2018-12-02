@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,11 +16,11 @@ public class Time implements Serializable {
 
     private String nome;
     
-    @OneToMany
+    @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL},  mappedBy="times")
     private List<Campeonato> campeonatos;
-    
 
     public List<Campeonato> getCampeonatos() {
+    	if(campeonatos == null) campeonatos = new ArrayList<Campeonato>();
 		return campeonatos;
 	}
 

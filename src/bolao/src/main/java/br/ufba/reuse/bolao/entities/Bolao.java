@@ -3,6 +3,7 @@ package br.ufba.reuse.bolao.entities;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Bolao implements Serializable {
     @GeneratedValue
     private Long id;
     
-    @OneToMany
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Aposta> apostas;
     
     @ManyToOne
@@ -68,6 +69,7 @@ public class Bolao implements Serializable {
 	
 
 	public List<Aposta> getApostas() {
+		if(apostas == null) apostas = new ArrayList<>();
 		return apostas;
 	}
 

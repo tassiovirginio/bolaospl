@@ -14,24 +14,9 @@ import static org.hibernate.criterion.Restrictions.eq;
 public class UsuarioBusiness extends BusinessGeneric<UsuarioDAO, Usuario> {
 
 	public Usuario realizarLogin(String email, String senha) {
-
-		Usuario usuarioRetorno = dao.findByCriteriaReturnUniqueResult(eq("email", email), eq("senha", senha));
-
-		System.out.println("email: " + email + " - senha: " + senha + " - usuario: " + usuarioRetorno);
-
-		return usuarioRetorno;
-	
+		return dao.findByCriteriaReturnUniqueResult(eq("email", email), eq("senha", senha));
 	}
-	
-	public Usuario encontraUsuarioCadastrado(String email)
-	{
-		Usuario usuarioRetorno = null;
-		
-		usuarioRetorno = dao.findByCriteriaReturnUniqueResult(eq("email", email));		
-		
-		return usuarioRetorno;
-	}
-	
+
 	public Usuario getByEmail(String email) {
 		return dao.findByCriteriaReturnUniqueResult(eq("email", email));
 	}

@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,7 @@ public class Grupo implements Serializable {
     private Usuario dono;
 
     public List<Usuario> getParticipantes() {
+    	if(participantes == null) participantes = new ArrayList<>();
 		return participantes;
 	}
 

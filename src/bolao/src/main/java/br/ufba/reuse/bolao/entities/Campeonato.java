@@ -1,11 +1,15 @@
 package br.ufba.reuse.bolao.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,10 +23,22 @@ public class Campeonato implements Serializable {
     
     private String nome;
 
-    @OneToMany
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Jogo> jogos;
     
-    public String getNome() {
+    @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
+    private List<Time> times;
+    
+    public List<Time> getTimes() {
+    	if(times == null) times = new ArrayList<>();
+		return times;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
+	}
+
+	public String getNome() {
 		return nome;
 	}
 
@@ -31,6 +47,7 @@ public class Campeonato implements Serializable {
 	}
     
     public List<Jogo> getJogos() {
+    	if(jogos == null) jogos = new ArrayList<>();
 		return jogos;
 	}
 

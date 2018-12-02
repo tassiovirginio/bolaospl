@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -16,9 +17,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
+import br.ufba.reuse.bolao.business.ApostaBusiness;
+import br.ufba.reuse.bolao.business.BolaoBusiness;
+import br.ufba.reuse.bolao.business.CampeonatoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
+import br.ufba.reuse.bolao.business.JogoBusiness;
+import br.ufba.reuse.bolao.business.TimeBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Bolao;
+import br.ufba.reuse.bolao.entities.Campeonato;
 import br.ufba.reuse.bolao.entities.Grupo;
+import br.ufba.reuse.bolao.entities.Jogo;
+import br.ufba.reuse.bolao.entities.Time;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
 
@@ -30,6 +40,22 @@ public class WicketApplication extends WebApplication {
 	
 	@Autowired
 	private GrupoBusiness grupoBusiness;
+	
+	@Autowired
+	private BolaoBusiness bolaoBusiness;
+	
+	@Autowired
+	private ApostaBusiness apostaBusiness;
+	
+	@Autowired
+	private CampeonatoBusiness campeonatoBusiness;
+	
+	@Autowired
+	private JogoBusiness jogoBusiness;
+	
+	@Autowired
+	private TimeBusiness timeBusiness;
+	
 
 	@Override
 	public Class<? extends Page> getHomePage() {
@@ -143,6 +169,41 @@ public class WicketApplication extends WebApplication {
 			grupo2.setDescricao("Grupo do Laboratório INES");
 			grupo2.setDono(usuario01);
 			grupoBusiness.save(grupo2);
+			
+			Campeonato campeonato1 = new Campeonato();
+			campeonato1.setNome("Brasileirão");
+			campeonatoBusiness.save(campeonato1);
+			
+			Time time1 = new Time();
+			time1.setNome("Bahia");
+			time1.getCampeonatos().add(campeonato1);
+			timeBusiness.save(time1);
+			
+			Time time2 = new Time();
+			time2.setNome("Vitoria");
+			time2.getCampeonatos().add(campeonato1);
+			timeBusiness.save(time2);
+			
+			campeonato1.getTimes().add(time1);
+			campeonato1.getTimes().add(time2);
+			campeonatoBusiness.save(campeonato1);
+			
+			Jogo jogo1 = new Jogo();
+			jogo1.setCampeonato(campeonato1);
+			jogo1.setTime1(time1);
+			jogo1.setTime2(time2);
+			jogoBusiness.save(jogo1);
+			
+			Bolao bolao1 = new Bolao();
+			bolao1.setCriacao(new Date());
+			bolao1.setFechamento(new Date(new Date().getTime() + 60*60*1000*48));
+			bolao1.setJogo(jogo1);
+			bolao1.setCampeonato(campeonato1);
+			bolao1.setGrupo(grupo1);
+			bolao1.setJogo(jogo1);
+			bolao1.setNome("Os amigos!!!");
+			bolaoBusiness.save(bolao1);
+			
 			
 		}
 		

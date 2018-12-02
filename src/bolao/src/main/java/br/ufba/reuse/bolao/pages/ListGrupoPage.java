@@ -3,6 +3,7 @@ package br.ufba.reuse.bolao.pages;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -14,7 +15,7 @@ import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("pagina01")
+@MountPath("grupos")
 public class ListGrupoPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
@@ -33,6 +34,13 @@ public class ListGrupoPage extends BasePage {
 				item.add(new Label("nome", grupo.getNome()));
 				item.add(new Label("descricao", grupo.getDescricao()));
 				item.add(new Label("size", grupo.getParticipantes().size()));
+				
+				item.add(new Link("linkBolao") {
+					@Override
+					public void onClick() {
+						setResponsePage(new ListBolaoPage());
+					}
+				});
 				
 			}
         });

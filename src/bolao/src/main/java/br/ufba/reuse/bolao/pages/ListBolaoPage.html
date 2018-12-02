@@ -1,8 +1,38 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-<br>
-<br>
-<center>
-    List Bolão Page
-</center>
+	<br>
+	<br>
+	<center>
+		<h1>Lista de Bolões</h1>
+		<br>
+
+		<table style="border: 1px;">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Grupo</th>
+					<th>Campeonato</th>
+					<th>Data Criação</th>
+					<th>Data Fechamento</th>
+					<th>Time 1</th>
+					<th>Time 2</th>
+					<th>Apostas</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr wicket:id="listBolao">
+					<td wicket:id="nome"></td>
+					<td wicket:id="grupo"></td>
+					<td wicket:id="campeonato"></td>
+					<td wicket:id="criacao"></td>
+					<td wicket:id="fechamento"></td>
+					<td wicket:id="time1"></td>
+					<td wicket:id="time2"></td>
+					<td wicket:id="apostas"></td>
+					<td><a href="#">acessar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</center>
 
 </wicket:extend>

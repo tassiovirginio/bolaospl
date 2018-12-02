@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +24,11 @@ public class Usuario implements Serializable {
     @Column(name = "email",unique=true)
     private String email;
     
-    @OneToMany
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Grupo> grupos;
     
     public List<Grupo> getGrupos() {
+    	if(grupos == null) grupos = new ArrayList<>();
 		return grupos;
 	}
 

@@ -53,7 +53,7 @@ public class DAOGeneric<T, ID extends Serializable> {
 
     public List<T> listAll() {
         Criteria crit = session().createCriteria(clazz());
-        crit.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+//        crit.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         return crit.list();
     }
 
