@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -32,6 +33,8 @@ public class SignUpPage extends WebPage{
 	
 	public SignUpPage() {
 		
+		add(new FeedbackPanel("feedback"));
+		
 		add(new Link("LoginPage") {
             @Override
             public void onClick() {
@@ -47,7 +50,11 @@ public class SignUpPage extends WebPage{
 				Usuario usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
 				
 				if(usuarioLogado != null) {
-					 error("Usuário já cadastrado. Por favor, faça o login!");
+					 error("Usuï¿½rio jï¿½ cadastrado. Por favor, faï¿½a o login!");
+					 nome = null;
+					 email = null;
+					 senha = null;
+					 dataNascimento = null;
                 } 
 				else
 				{
@@ -58,9 +65,9 @@ public class SignUpPage extends WebPage{
 					user.setSenha(senha);
 					usuarioBusiness.save(user);
 					
-					usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
-					
-					getSession().setAttribute("usuario", usuarioLogado);
+					Usuario usuario = usuarioBusiness.realizarLogin(email, senha);
+					setResponsePage(Pagina01.class);
+					getSession().setAttribute("usuario", usuario);
                     setResponsePage(new Pagina01());
 				}
 			};
