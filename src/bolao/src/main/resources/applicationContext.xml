@@ -45,39 +45,12 @@
 		</property>
 		<property name="packagesToScan" value="br.ufba.reuse.bolao.entities"/>
 	</bean>
-
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass">
-			<value>${jdbc.driver}</value>
-		</property>
-		<property name="jdbcUrl">
-			<value>${jdbc.url}</value>
-		</property>
-		<property name="user">
-			<value>${jdbc.username}</value>
-		</property>
-		<property name="password">
-			<value>${jdbc.password}</value>
-		</property>
-		<property name="minPoolSize">
-			<value>${c3p0.minPoolSize}</value>
-		</property>
-		<property name="maxPoolSize">
-			<value>${c3p0.maxPoolSize}</value>
-		</property>
-		<property name="checkoutTimeout">
-			<!-- Give up waiting for a connection after this many milliseconds -->
-			<value>${c3p0.checkoutTimeout}</value>
-		</property>
-		<property name="maxIdleTime">
-			<value>${c3p0.maxIdleTime}</value>
-		</property>
-		<property name="idleConnectionTestPeriod">
-			<value>${c3p0.idleConnectionTestPeriod}</value>
-		</property>
-		<property name="automaticTestTable">
-			<value>${c3p0.automaticTestTable}</value>
-		</property>
-	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
 
 </beans>

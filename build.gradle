@@ -10,7 +10,6 @@ repositories {
 	mavenCentral()
 	jcenter()
 	google()
-    //mavenLocal()
 }
 
 dependencies {
@@ -19,15 +18,8 @@ dependencies {
     compile 'org.apache.wicket:wicket-auth-roles:6.20.0'
     compile 'org.apache.wicket:wicket-extensions:6.20.0'
     compile 'org.apache.wicket:wicket-datetime:6.20.0'
-    compile 'org.slf4j:slf4j-log4j12:1.7.1'
-    compile 'log4j:log4j:1.2.17'
-    compile 'commons-codec:commons-codec:1.7'
+    compile 'org.apache.wicket:wicket-spring:6.20.0'
     compile 'org.hibernate:hibernate-core:4.3.11.Final'
-    compile 'javassist:javassist:3.9.0.GA'
-    compile 'c3p0:c3p0:0.9.1.2'
-    compile 'org.jadira.usertype:usertype.core:3.2.0.GA'
-    compile 'joda-time:joda-time:2.6'
-    compile 'org.hsqldb:hsqldb:2.2.8'
     compile 'org.springframework:spring-core:4.2.2.RELEASE'
     compile 'org.springframework:spring-context:4.2.2.RELEASE'
     compile 'org.springframework:spring-context-support:4.2.2.RELEASE'
@@ -37,12 +29,11 @@ dependencies {
     compile 'org.springframework:spring-orm:4.2.2.RELEASE'
     compile 'org.springframework:spring-jdbc:4.2.2.RELEASE'
     compile 'org.springframework:spring-test:4.2.2.RELEASE'
-    compile 'org.apache.wicket:wicket-spring:6.20.0'
     compile 'com.h2database:h2:1.4.197'
-    testCompile 'junit:junit:4.10'
+    compile 'org.hsqldb:hsqldb:2.2.8'
 }
 
-group = 'br.edu.ifto.seletivo'
+group = 'br.ufba.reuse.bolao'
 version = '1.0-SNAPSHOT'
 description = 'Bolão'
 sourceCompatibility = '1.8'
@@ -56,6 +47,14 @@ gretty {
   httpPort = 8081
   contextPath = '/'
   servletContainer = 'jetty9'
+}
+
+eclipse {
+  project {
+  	name = 'BolaoSPL'
+  	comment = 'Sistema de bolão para futebol, utilizando os conceitos de SPL.'
+  	natures = ['org.eclipse.jdt.core.javanature', 'de.ovgu.featureide.core.featureProjectNature', 'org.eclipse.wst.common.project.facet.core.nature', 'org.eclipse.wst.common.modulecore.ModuleCoreNature','org.eclipse.jem.workbench.JavaEMFNature']
+  }
 }
 
 sourceSets {
