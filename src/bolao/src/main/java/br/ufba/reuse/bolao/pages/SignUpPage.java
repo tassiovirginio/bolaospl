@@ -50,7 +50,7 @@ public class SignUpPage extends WebPage{
 				Usuario usuarioLogado = usuarioBusiness.realizarLogin(email, senha);
 				
 				if(usuarioLogado != null) {
-					 error("Usu�rio j� cadastrado. Por favor, fa�a o login!");
+					 error("Usuário já cadastrado. Por favor, faça o login!");
 					 nome = null;
 					 email = null;
 					 senha = null;
