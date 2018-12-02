@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.pages;
 
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
@@ -14,6 +15,9 @@ public class RecuperarPage extends WebPage {
     private UsuarioBusiness usuarioBusiness;
 
     public RecuperarPage() {
+    	
+    	add(new FeedbackPanel("feedback"));
+    	
     }
 
 }
