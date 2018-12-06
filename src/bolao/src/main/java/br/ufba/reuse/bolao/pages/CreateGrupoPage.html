@@ -1,0 +1,20 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<br>
+	<br>
+	<center>
+		<h1>Criar novo grupo</h1>
+		<form action="" wicket:id="form">
+			<h2 class="">Preencha os campos abaixo:</h2>
+			<label class="solid-label">
+				Nome do Grupo
+				<input class="solid-input" type="text" wicket:id="nome" placeholder="Ex.: Grupo tal"/>
+			</label>
+			<label class="solid-label">
+				Descrição
+					<input class="solid-input" type="text" wicket:id="descricao" placeholder="Ex.: Clube do Trabalho" maxlength="50"/>
+			</label>
+			<input type="submit" value="Criar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
+		</form>			
+	</center>
+
+</wicket:extend>
