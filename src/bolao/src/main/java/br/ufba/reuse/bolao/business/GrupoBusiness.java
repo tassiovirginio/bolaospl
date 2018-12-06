@@ -43,6 +43,9 @@ public class GrupoBusiness extends BusinessGeneric<GrupoDAO, Grupo> {
 	
 		for(Grupo l:list)
 		{
+			if(l.getDono().equals(user))
+				userGroups.add(l);
+			
 			for(Usuario usr:l.getParticipantes())
 			{
 				if(usr.equals(user))				

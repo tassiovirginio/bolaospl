@@ -13,6 +13,7 @@ import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.entities.Grupo;
+import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
 @MountPath("grupos")
@@ -23,8 +24,16 @@ public class ListGrupoPage extends BasePage {
     private GrupoBusiness grupoBusiness;
 
     public ListGrupoPage() {
+    	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
     	
-    	List<Grupo> grupos = grupoBusiness.listAll();
+    	List<Grupo> grupos = grupoBusiness.findAllParticipantGroups(usuarioLogado); //grupoBusiness.listAll();
+    	
+    	add(new Link("criaGrupo") {
+            @Override
+            public void onClick() {
+                setResponsePage(new CreateGrupoPage());
+            }
+    	});
     	
     	add(new ListView<Grupo>("listGrupo", grupos) {
 			@Override
