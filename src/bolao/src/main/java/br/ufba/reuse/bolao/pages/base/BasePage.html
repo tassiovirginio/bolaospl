@@ -26,7 +26,8 @@
 	<header class="bol--nav">
 	<div class="row align-justify align-middle">
 		<div class="small-5 medium-3 columns">
-			<a href="#"> <img class="main-logo" src="img/logo.png" />
+			<a href="#"> 
+				<img class="main-logo" src="img/logo.png" />
 			</a>
 		</div>
 
@@ -38,8 +39,9 @@
 						Olá <span wicket:id="usuarioLogado"></span></a>
 				</li>
 				<li data-toggle="bol--dropdown" class="bol--nav-medium--list--item">
-					<a href="#" wicket:id="linkLogout">Logout <i
-						class="fas fa-sign-out" aria-hidden="true"></i></a>
+					<a href="#" wicket:id="linkLogout">Logout
+						<i class="fas fa-sign-out" aria-hidden="true"></i>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -81,19 +83,30 @@
 				<i class="fas fa-user-circle" aria-hidden="true"></i>
 			</div>
 			<ul class="bol--body--menu--list">
-				<li class="bol--body--menu--list--item"><a href="" wicket:id="linkDetalhes"><i
-						class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-id-card"
-						aria-hidden="true"></i> Detalhes de Conta</a></li>
-				<li class="bol--body--menu--list--item"><a href="#"><i
-						class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-pen"
-						aria-hidden="true"></i> Novo Bolao</a></li>
-				<li class="bol--body--menu--list--item"><a href="#" wicket:id="linkRanking"><i
-						class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-credit-card"
-						aria-hidden="true"></i> Ranking</a></li>
-				<li class="bol--body--menu--list--item"><a href="#" wicket:id="linkGrupos"><i
-						class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-comments"
-						aria-hidden="true"></i> Grupos</a></li>
-
+				<li class="bol--body--menu--list--item">
+					<a href="" wicket:id="linkDetalhes">
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-id-card" aria-hidden="true"></i> 
+						Detalhes de Conta
+					</a>
+				</li>
+				<li class="bol--body--menu--list--item">
+					<a href="#">
+						<!-- <i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-pen" aria-hidden="true"></i> -->
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-futbol" aria-hidden="true"></i>
+						Bolao
+					</a>
+				</li>
+				<li class="bol--body--menu--list--item">
+					<a href="#" wicket:id="linkRanking">
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-credit-card" aria-hidden="true"></i>
+						Ranking
+					</a></li>
+				<li class="bol--body--menu--list--item">
+					<a href="#" wicket:id="linkGrupos">
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-comments" aria-hidden="true"></i> 
+						Grupos
+					</a>
+				</li>
 			</ul>
 			<!-- MENU -->
 		</div>
@@ -108,8 +121,8 @@
 	</section>
 
 
-	<footer>
-	<p>Sisbolao - All rights Reserved</p>
+	<footer height= "5px">
+		<p  size = "14px" align = "center" >SISBOLÃO 2018 © All rights Reserved</p>
 	</footer>
 
 </body>
