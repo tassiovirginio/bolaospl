@@ -26,8 +26,7 @@
 	<header class="bol--nav">
 	<div class="row align-justify align-middle">
 		<div class="small-5 medium-3 columns">
-			<a href="#"> 
-				<img class="main-logo" src="img/logo.png" />
+			<a href="#"> <img class="main-logo" src="img/logo.png" />
 			</a>
 		</div>
 
@@ -35,11 +34,15 @@
 			<ul class="bol--nav-medium--list">
 				<li data-toggle="bol--dropdown"
 					class="bol--nav-medium--list--item bol--nav-medium--list--item__divisor">
-					<a href="#"><i class="fas fa-user-circle-o" aria-hidden="true"></i>
-						Olá <span wicket:id="usuarioLogado"></span></a>
+					<a href="#">
+						<i class="fas fa-user-circle-o" aria-hidden="true"></i>
+						Olá 
+						<span wicket:id="usuarioLogado"></span>
+					</a>
 				</li>
 				<li data-toggle="bol--dropdown" class="bol--nav-medium--list--item">
-					<a href="#" wicket:id="linkLogout">Logout
+					<a href="#" wicket:id="linkLogout">
+						Logout 
 						<i class="fas fa-sign-out" aria-hidden="true"></i>
 					</a>
 				</li>
@@ -48,21 +51,25 @@
 
 		<div class="small-4 show-for-small-only columns">
 			<ul class="bol--nav--list">
-				<li class="bol--nav--list--item"><a href="#"> <i
-						class="fas fa-user-circle-o" aria-hidden="true"></i>
-				</a></li>
-				<li data-toggle="bol--dropdown"
-					class="bol--nav-management--list--item"><a href="#"
-					click="sm.isDropdownVisible = !sm.isDropdownVisible"> <i
-						class="fas fa-bars" aria-hidden="true"></i>
-				</a></li>
+				<li class="bol--nav--list--item">
+					<a href="#"> 
+						<i class="fas fa-user-circle-o" aria-hidden="true"></i>
+					</a>
+				</li>
+				<li data-toggle="bol--dropdown" class="bol--nav-management--list--item">
+					<a href="#" click="sm.isDropdownVisible = !sm.isDropdownVisible"> 
+						<i class="fas fa-bars" aria-hidden="true"></i>
+					</a>
+				</li>
 			</ul>
 		</div>
 
 		<div class="small-12 show-for-small-only columns">
 			<ul class="bol--dropdown">
-				<li class="bol--dropdown--item"><a
-					href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+				<li class="bol--dropdown--item">
+					<a href="javascript:document.getElementById('logoutForm').submit()">
+					Logout
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -84,6 +91,12 @@
 			</div>
 			<ul class="bol--body--menu--list">
 				<li class="bol--body--menu--list--item">
+					<a href="#" wicket:id="linkGrupos">
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-comments" aria-hidden="true"></i> 
+						Dashboard
+					</a>
+				</li>
+				<li class="bol--body--menu--list--item">
 					<a href="" wicket:id="linkDetalhes">
 						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-id-card" aria-hidden="true"></i> 
 						Detalhes de Conta
@@ -91,20 +104,14 @@
 				</li>
 				<li class="bol--body--menu--list--item">
 					<a href="#">
-						<!-- <i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-pen" aria-hidden="true"></i> -->
-						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-futbol" aria-hidden="true"></i>
-						Bolao
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-pen" aria-hidden="true"></i> 
+						Novo Bolao
 					</a>
 				</li>
 				<li class="bol--body--menu--list--item">
 					<a href="#" wicket:id="linkRanking">
-						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-credit-card" aria-hidden="true"></i>
+						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-credit-card" aria-hidden="true"></i> 
 						Ranking
-					</a></li>
-				<li class="bol--body--menu--list--item">
-					<a href="#" wicket:id="linkGrupos">
-						<i class="bol--body--menu--list--item--icon hide-for-medium-only fas fa-comments" aria-hidden="true"></i> 
-						Grupos
 					</a>
 				</li>
 			</ul>
@@ -127,14 +134,10 @@
 
 </body>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 <script src="bootstrap-3.3.5-dist/js/npm.js"></script>
-<script type="text/javascript"
-	src="bootstrap-daterangepicker-master/moment.min.js"></script>
-<script type="text/javascript"
-	src="bootstrap-daterangepicker-master/daterangepicker.js"></script>
-
+<script type="text/javascript" src="bootstrap-daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="bootstrap-daterangepicker-master/daterangepicker.js"></script>
 
 </html>

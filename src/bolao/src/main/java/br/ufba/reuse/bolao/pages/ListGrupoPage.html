@@ -1,33 +1,48 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<br>
-	<br>
-	<center>
-		<h1>Lista de Grupos</h1>
-		<br>
 
-		<table>
-			<thead>
+	<div style="background-color: #999999; color: black; width: 100%; text-align: center">
+		<h1>Dashboard <a wicket:id="criaGrupo">+ grupo</a></h1>
+	</div>
+
+	<br>
+	<hr />
+	<br>
+
+	<div style="text-align: center; align-content: center; width: 100%;">
+		<div wicket:id="listGrupo" style="width: 100%;">
+			<br>
+			<table style="background-color: gray; width: 100%;">
 				<tr>
-					<th>Nome</th>
-					<th>Descrição</th>
-					<th>Qtd. Integrantes</th>
-					<th></th>
+					<th>
+						Grupo: <span wicket:id="nome"></span>
+						(Dono: <span wicket:id="dono"></span>)
+						- Integrantes:
+						<span wicket:id="size"></span>
+						<a wicket:id="linkGrupo" href="#">editar</a>
+					</th>
 				</tr>
-			</thead>
-			<tbody>
-			
-				<a class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" wicket:id="criaGrupo" >Criar Grupo</a>
-			
-				<br /> 
-					
-				<tr wicket:id="listGrupo">
-					<td wicket:id="nome"></td>
-					<td wicket:id="descricao"></td>
-					<td wicket:id="size"></td>
-					<td><a href="#" wicket:id="linkBolao">acessar</a></td>
+
+				<tr>
+					<td>
+						<table style="width: 100%;">
+							<tr style="background-color: dimgray;">
+								<th>
+									Bolões
+								</th>
+							</tr>
+							<tr wicket:id="listaBolao">
+								<td>
+									<span wicket:id="nome">[nome]</span> 
+									(<span wicket:id="time1">[time1]</span> x <span wicket:id="time2">[time2]</span>) 
+									- apostas: <span wicket:id="apostasSize"></span>
+									 - <a href="#">Acessar</a><br />
+								</td>
+							</tr>
+						</table>
+					</td>
 				</tr>
-			</tbody>
-		</table>
-	</center>
+			</table>
+		</div>
+	</div>
 
 </wicket:extend>
