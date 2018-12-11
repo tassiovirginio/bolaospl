@@ -2,19 +2,55 @@
 	<br>
 	<br>
 	<center>
-		<h1>Criar novo grupo</h1>
+		<h1>Criar/Editar Grupo</h1>
 		<form action="" wicket:id="form">
-			<h2 class="">Preencha os campos abaixo:</h2>
 			<label class="solid-label">
-				Nome do Grupo
-				<input class="solid-input" type="text" wicket:id="nome" placeholder="Ex.: Grupo tal"/>
+				<input class="solid-input" type="text" wicket:id="nome" placeholder="Nome do Grupo" />
 			</label>
 			<label class="solid-label">
-				Descrição
-					<input class="solid-input" type="text" wicket:id="descricao" placeholder="Ex.: Clube do Trabalho" maxlength="50"/>
+				<input class="solid-input" type="text" wicket:id="descricao" placeholder="Descrição" maxlength="50" />
 			</label>
-			<input type="submit" value="Criar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
-		</form>			
+			<input type="submit" value="Salvar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
+		</form>
 	</center>
+
+	<table style="width: 100%; background-color: lightslategrey;">
+		<tr>
+			<th>
+				Bolões
+			</th>
+		</tr>
+		<tr>
+			<td>
+				Time01 x Time02 - Data do Jogo: 01/01/2019
+			</td>
+		</tr>
+	</table>
+
+	<table style="width: 100%; background-color: lightslategrey;">
+			<tr>
+				<th>
+					Participantes
+				</th>
+			</tr>
+			<tr>
+				<td>
+					<ul>
+						<li>
+							Usuario 01
+						</li>
+						<li>
+							Usuario 01
+						</li>
+						<li>
+							Usuario 01
+						</li>
+						<li>
+							Usuario 01
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
 
 </wicket:extend>

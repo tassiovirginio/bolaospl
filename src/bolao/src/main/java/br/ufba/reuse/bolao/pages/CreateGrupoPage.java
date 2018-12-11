@@ -19,7 +19,7 @@ import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("criagrupos")
+@MountPath("grupo")
 public class CreateGrupoPage extends BasePage {
     private static final long serialVersionUID = 1L;
     
@@ -28,32 +28,32 @@ public class CreateGrupoPage extends BasePage {
     @SpringBean
     private GrupoBusiness grupoBusiness;
     
-    private String nome;
+	private Grupo grupoSelecionado;
 
-	private String descricao;
+	public CreateGrupoPage() {
+		this(null);
+	}
 
-    public CreateGrupoPage() {
-    	
+
+    public CreateGrupoPage(Grupo grupo) {
+		grupoSelecionado = grupo;
+
+		if(grupoSelecionado == null){
+			grupoSelecionado = new Grupo();
+		}
+
     	Form form = new Form("form") {
 			protected void onSubmit() {
-				Grupo gr = new Grupo();
-				
-				gr.setNome(nome);
-				gr.setDescricao(descricao);
-				gr.setDono(usuarioLogado);
-				
-				grupoBusiness.save(gr);
-				
-				setResponsePage(DetalhesUsuarioPage.class);
+				grupoSelecionado.setDono(usuarioLogado);
+				grupoBusiness.save(grupoSelecionado);
 				setResponsePage(new ListGrupoPage());
-				
 			};
-    	};
-        	
+		};
+		
     	
-    	form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
+    	form.add(new TextField<String>("nome", new PropertyModel<String>(grupoSelecionado, "nome")));
 
-		form.add(new TextField<String>("descricao", new PropertyModel<String>(this, "descricao")));
+		form.add(new TextField<String>("descricao", new PropertyModel<String>(grupoSelecionado, "descricao")));
     	
 		add(form);
     	
