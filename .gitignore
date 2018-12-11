@@ -15,3 +15,5 @@ db.*
 h2.*
 h2/
 .settings/
+.idea/
+*.tmp
