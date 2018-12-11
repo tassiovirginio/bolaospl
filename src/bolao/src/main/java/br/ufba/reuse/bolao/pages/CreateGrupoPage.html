@@ -17,40 +17,75 @@
 	<table style="width: 100%; background-color: lightslategrey;">
 		<tr>
 			<th>
+				Criar Bolão
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<form>
+					Nome: <input type="text" />
+					Campeonato: <select>
+						<option>Brasileirão</option>
+						<option>Copa do Brasil</option>
+					</select>
+					Jogo: <select>
+						<option>Vitoria x Bahia (01/01/2019)</option>
+						<option>Bahia x Vitoria (05/01/2019)</option>
+					</select>
+
+				</form>
+			</td>
+		</tr>
+	</table>
+	<table style="width: 100%; background-color: lightslategrey;">
+		<tr>
+			<th>
 				Bolões
 			</th>
 		</tr>
 		<tr>
 			<td>
-				Time01 x Time02 - Data do Jogo: 01/01/2019
+				Time01 x Time02 - Data do Jogo: 01/01/2019 - Apostas: 99 - <a href="#">deletar</a>
 			</td>
 		</tr>
 	</table>
 
-	<table style="width: 100%; background-color: lightslategrey;">
-			<tr>
-				<th>
-					Participantes
-				</th>
-			</tr>
-			<tr>
-				<td>
+	<br><br><br><br><br>
+
+	<table style="width: 100%; background-color: lightskyblue;">
+		<tr>
+			<th colspan="2">
+				Participantes
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<form>
+					Usuário: <select>
+						<option>Usuario 12</option>
+						<option>Usuario 13</option>
+						<option>Usuario 14</option>
+					</select>
+					<input type="submit" value="Adicionar" />
+				</form>
+			</td>
+			<td>
 					<ul>
 						<li>
-							Usuario 01
+							Usuario 01 - <a href="#">remover</a>
 						</li>
 						<li>
-							Usuario 01
+							Usuario 02 - <a href="#">remover</a>
 						</li>
 						<li>
-							Usuario 01
+							Usuario 03 - <a href="#">remover</a>
 						</li>
 						<li>
-							Usuario 01
+							Usuario 04 - <a href="#">remover</a>
 						</li>
 					</ul>
 				</td>
-			</tr>
-		</table>
+		</tr>
+	</table>
 
 </wicket:extend>
