@@ -21,12 +21,14 @@ public class BasePage extends WebPage {
     	
     	add(new Label("usuarioLogado",usuarioLogado.getNome()));
     	
+    	//#if Ranking
     	add(new Link("linkRanking") {
             @Override
             public void onClick() {
                 setResponsePage(new RankingPage());
             }
     	});
+    	//#endif
     	
     	add(new Link("linkGrupos") {
             @Override
