@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <layout chosenLayoutAlgorithm="1" horizontalLayout="true">
-    <struct/>
+    <struct>
+        <feature collapsed="true" name="Awards"/>
+    </struct>
     <constraints/>
 </layout>
