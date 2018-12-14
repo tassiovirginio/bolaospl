@@ -2,27 +2,36 @@
 <featureModel>
     <properties/>
     <struct>
-        <and abstract="true" mandatory="true" name="BolaoSPL">
-            <feature mandatory="true" name="Base"/>
-            <or mandatory="true" name="Campeonatos">
-                <and name="Copa">
-                    <feature name="FaseGrupos"/>
-                    <feature name="FaseMataMata"/>
+        <and abstract="true" mandatory="true" name="SISBOLAO">
+            <and mandatory="true" name="Base">
+                <feature mandatory="true" name="Login"/>
+                <feature mandatory="true" name="UserRegistration"/>
+                <feature mandatory="true" name="RecoverPassword"/>
+                <alt mandatory="true" name="DataBase">
+                    <feature name="H2"/>
+                    <feature name="MySql"/>
+                    <feature name="HSBD"/>
+                </alt>
+            </and>
+            <or mandatory="true" name="Championships">
+                <and name="Cup">
+                    <feature name="GroupStage"/>
+                    <feature name="PhaseKills"/>
                 </and>
-                <feature name="PontosCorridos"/>
+                <feature name="RunningPoints"/>
             </or>
-            <and mandatory="true" name="Bolao">
-                <and mandatory="true" name="Apostas">
-                    <alt mandatory="true" name="Ganhador">
-                        <feature name="GanhadorPorPlacar"/>
-                        <feature name="GanhadorPorTime"/>
-                    </alt>
-                    <feature mandatory="true" name="Placar"/>
+            <and mandatory="true" name="Sweepstakes">
+                <and mandatory="true" name="Betting">
+                    <and mandatory="true" name="Winner">
+                        <feature name="WinnerScore"/>
+                        <feature name="TimeWinner"/>
+                    </and>
+                    <feature mandatory="true" name="Scoreboard"/>
                 </and>
-                <feature mandatory="true" name="Resultados"/>
+                <feature mandatory="true" name="Results"/>
                 <feature name="RankingEspecifico"/>
                 <feature mandatory="true" name="Integrantes"/>
-                <alt name="Premiacao">
+                <alt name="Awards">
                     <feature name="Online"/>
                     <feature name="Offline"/>
                 </alt>
