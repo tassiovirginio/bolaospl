@@ -25,7 +25,19 @@ public class Aposta implements Serializable {
     @ManyToOne
     private Bolao bolao;
     
-    public Long getId() {
+    @ManyToOne
+    private Usuario donoAposta;  
+    
+    
+    public Usuario getDonoAposta() {
+		return donoAposta;
+	}
+
+	public void setDonoAposta(Usuario donoAposta) {
+		this.donoAposta = donoAposta;
+	}
+
+	public Long getId() {
         return id;
     }
 
