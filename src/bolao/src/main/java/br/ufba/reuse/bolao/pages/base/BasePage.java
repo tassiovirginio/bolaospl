@@ -18,8 +18,17 @@ public class BasePage extends WebPage {
     public BasePage(){
     	
     	Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
-    	
-    	add(new Label("usuarioLogado",usuarioLogado.getNome()));
+        
+        Link linkDetalhes = new Link("linkDetalhes") {
+            @Override
+            public void onClick() {
+                setResponsePage(new DetalhesUsuarioPage(usuarioLogado));
+            }
+        };
+        
+        linkDetalhes.add(new Label("usuarioLogado",usuarioLogado.getNome()));
+
+        add(linkDetalhes);
     	
     	//#if Ranking
     	add(new Link("linkRanking") {
@@ -37,12 +46,7 @@ public class BasePage extends WebPage {
             }
     	});
     	
-    	add(new Link("linkDetalhes") {
-            @Override
-            public void onClick() {
-                setResponsePage(new DetalhesUsuarioPage(usuarioLogado));
-            }
-    	});
+    	
     	
     	add(new Link("linkLogout") {
             @Override

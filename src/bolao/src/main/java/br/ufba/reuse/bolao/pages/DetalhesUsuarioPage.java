@@ -1,6 +1,9 @@
 package br.ufba.reuse.bolao.pages;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -16,9 +19,16 @@ public class DetalhesUsuarioPage extends BasePage {
     private UsuarioBusiness usuarioBusiness;
 
     public DetalhesUsuarioPage(Usuario usuario) {
-    	add(new Label("nome",usuario.getNome()));
-    	add(new Label("email",usuario.getEmail()));
-    	add(new Label("celular",usuario.getCelular()));
+        Form form = new Form("form"){
+            protected void onSubmit() {
+                setResponsePage(new DetalhesUsuarioPage(usuario));
+            }
+        };
+
+        form.add(new TextField<String>("nome", new PropertyModel<String>(usuario, "nome")));
+        form.add(new TextField<String>("email", new PropertyModel<String>(usuario, "email")));
+        form.add(new TextField<String>("celular", new PropertyModel<String>(usuario, "celular")));
+        add(form);
     }
 
 }

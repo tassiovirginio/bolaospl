@@ -139,35 +139,23 @@ public class WicketApplication extends WebApplication {
 		Usuario uAdmin = usuarioBusiness.getByEmail("admin@admin.com");
 
 		if (uAdmin == null) {
-			Usuario usuarioAdmin = new Usuario();
-			usuarioAdmin.setEmail("admin@admin.com");
-			usuarioAdmin.setSenha("admin");
-			usuarioAdmin.setCelular("99 9999-9999");
-			usuarioAdmin.setNome("Administrador");
-			usuarioBusiness.save(usuarioAdmin);
-		}
-		
-		Usuario usuario01 = usuarioBusiness.getByEmail("usuario01@ufba.br");
-
-		if (usuario01 == null) {
-			usuario01 = new Usuario();
-			usuario01.setEmail("usuario01@ufba.br");
-			usuario01.setSenha("123");
-			usuario01.setCelular("99 9999-9999");
-			usuario01.setNome("Usuario01");
-			usuarioBusiness.save(usuario01);
-			
+			uAdmin = new Usuario();
+			uAdmin.setEmail("admin@admin.com");
+			uAdmin.setSenha("admin");
+			uAdmin.setCelular("99 9999-9999");
+			uAdmin.setNome("Administrador");
+			usuarioBusiness.save(uAdmin);
 			
 			Grupo grupo1 = new Grupo();
 			grupo1.setNome("LES");
 			grupo1.setDescricao("Grupo do Laboratório LES");
-			grupo1.setDono(usuario01);
+			grupo1.setDono(uAdmin);
 			grupoBusiness.save(grupo1);
 			
 			Grupo grupo2 = new Grupo();
 			grupo2.setNome("INES");
 			grupo2.setDescricao("Grupo do Laboratório INES");
-			grupo2.setDono(usuario01);
+			grupo2.setDono(uAdmin);
 			grupoBusiness.save(grupo2);
 			
 			Campeonato campeonato1 = new Campeonato();
@@ -176,16 +164,32 @@ public class WicketApplication extends WebApplication {
 			
 			Time time1 = new Time();
 			time1.setNome("Bahia");
+			time1.setImgUrl("https://www.escudosfc.com.br/images/bahia.png");
 			time1.getCampeonatos().add(campeonato1);
 			timeBusiness.save(time1);
 			
 			Time time2 = new Time();
 			time2.setNome("Vitoria");
+			time2.setImgUrl("https://www.escudosfc.com.br/images/vitoria.png");
 			time2.getCampeonatos().add(campeonato1);
 			timeBusiness.save(time2);
+
+			Time time3 = new Time();
+			time3.setNome("Vasco");
+			time3.setImgUrl("https://www.escudosfc.com.br/images/vasco.png");
+			time3.getCampeonatos().add(campeonato1);
+			timeBusiness.save(time3);
+
+			Time time4 = new Time();
+			time4.setNome("Grêmio");
+			time4.setImgUrl("https://www.escudosfc.com.br/images/gremio.png");
+			time4.getCampeonatos().add(campeonato1);
+			timeBusiness.save(time4);
 			
 			campeonato1.getTimes().add(time1);
 			campeonato1.getTimes().add(time2);
+			campeonato1.getTimes().add(time3);
+			campeonato1.getTimes().add(time4);
 			campeonatoBusiness.save(campeonato1);
 			
 			Jogo jogo1 = new Jogo();
@@ -193,6 +197,24 @@ public class WicketApplication extends WebApplication {
 			jogo1.setTime1(time1);
 			jogo1.setTime2(time2);
 			jogoBusiness.save(jogo1);
+
+			Jogo jogo2 = new Jogo();
+			jogo2.setCampeonato(campeonato1);
+			jogo2.setTime1(time3);
+			jogo2.setTime2(time4);
+			jogoBusiness.save(jogo2);
+
+			Jogo jogo3 = new Jogo();
+			jogo3.setCampeonato(campeonato1);
+			jogo3.setTime1(time1);
+			jogo3.setTime2(time4);
+			jogoBusiness.save(jogo3);
+
+			Jogo jogo4 = new Jogo();
+			jogo4.setCampeonato(campeonato1);
+			jogo4.setTime1(time2);
+			jogo4.setTime2(time4);
+			jogoBusiness.save(jogo4);
 			
 			Bolao bolao1 = new Bolao();
 			bolao1.setCriacao(new Date());
@@ -200,9 +222,17 @@ public class WicketApplication extends WebApplication {
 			bolao1.setJogo(jogo1);
 			bolao1.setCampeonato(campeonato1);
 			bolao1.setGrupo(grupo1);
-			bolao1.setJogo(jogo1);
-			bolao1.setNome("Os amigos!!!");
+			bolao1.setNome("Os amigos!!! 100 Reais");
 			bolaoBusiness.save(bolao1);
+
+			Bolao bolao2 = new Bolao();
+			bolao2.setCriacao(new Date());
+			bolao2.setFechamento(new Date(new Date().getTime() + 60*60*1000*48));
+			bolao2.setJogo(jogo2);
+			bolao2.setCampeonato(campeonato1);
+			bolao2.setGrupo(grupo1);
+			bolao2.setNome("Os amigos!!! 10 Reais");
+			bolaoBusiness.save(bolao2);
 			
 			
 		}

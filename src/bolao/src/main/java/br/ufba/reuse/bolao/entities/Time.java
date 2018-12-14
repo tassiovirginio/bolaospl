@@ -15,7 +15,9 @@ public class Time implements Serializable {
     private Long id;
 
     private String nome;
-    
+
+    private String imgUrl;
+
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL},  mappedBy="times")
     private List<Campeonato> campeonatos;
 
@@ -43,6 +45,16 @@ public class Time implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
