@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link href="https://unpkg.com/ionicons@4.5.0/dist/css/ionicons.min.css" rel="stylesheet">
 	<style>
 		.fakeimg {
 				height: 200px;
@@ -39,10 +40,14 @@
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="nav navbar-nav mr-auto">
 				<li class="nav-item">
-					<a wicket:id="linkGrupos" class="nav-link" href="#">Dashboard</a>
+					<a wicket:id="linkGrupos" class="nav-link" href="#">
+						<i class="icon ion-md-speedometer"></i>
+						Dashboard</a>
 				</li>
 				<li class="nav-item">
-					<a wicket:id="linkRanking" class="nav-link" href="#">Ranking</a>
+					<a wicket:id="linkRanking" class="nav-link" href="#">
+							<i class="icon ion-md-arrow-round-up"></i>
+						Ranking</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav ml-auto">
@@ -52,7 +57,9 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" wicket:id="linkLogout" class="nav-link">Logout</a>
+					<a href="#" wicket:id="linkLogout" class="nav-link">
+						<i class="icon ion-md-log-out"></i>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -66,7 +73,7 @@
 		</div>
 	</div>
 
-	<br/><br/><br/>
+	<br /><br /><br />
 
 </body>
 

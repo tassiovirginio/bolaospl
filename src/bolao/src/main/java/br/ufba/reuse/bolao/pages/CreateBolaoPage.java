@@ -1,5 +1,6 @@
 package br.ufba.reuse.bolao.pages;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
@@ -15,56 +16,48 @@ import org.wicketstuff.annotation.mount.MountPath;
 import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Bolao;
 import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("grupo")
-public class CreateGrupoPage extends BasePage {
+@MountPath("bolao")
+public class CreateBolaoPage extends BasePage {
     private static final long serialVersionUID = 1L;
     
     final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
 
     @SpringBean
-    private GrupoBusiness grupoBusiness;
+    private BolaoBusiness bolaoBusiness;
     
-	private Grupo grupoSelecionado;
+	private Bolao bolaoSelecionado;
 
-	public CreateGrupoPage() {
-		this(null);
+	private Grupo grupoDoBolao;
+
+	public CreateBolaoPage(Grupo grupoDoBolao) {
+		this(null,grupoDoBolao);
 	}
 
+    public CreateBolaoPage(Bolao bolao,Grupo grupoDoBolao) {
+		this.bolaoSelecionado = bolao;
+		this.grupoDoBolao = grupoDoBolao;
 
-    public CreateGrupoPage(Grupo grupo) {
-		grupoSelecionado = grupo;
-
-		if(grupoSelecionado == null){
-			grupoSelecionado = new Grupo();
+		if(bolao == null){
+			bolao = new Bolao();
 		}
 
     	Form form = new Form("form") {
 			protected void onSubmit() {
-				grupoSelecionado.setDono(usuarioLogado);
-				grupoBusiness.save(grupoSelecionado);
-				setResponsePage(new ListGrupoPage());
+				bolaoSelecionado.setGrupo(grupoDoBolao);
+				bolaoSelecionado.setCriacao(new Date());
+				bolaoBusiness.save(bolaoSelecionado);
+				setResponsePage(new CreateBolaoPage(bolaoSelecionado,grupoDoBolao));
 			};
 		};
-		
     	
-    	form.add(new TextField<String>("nome", new PropertyModel<String>(grupoSelecionado, "nome")));
-
-		form.add(new TextField<String>("descricao", new PropertyModel<String>(grupoSelecionado, "descricao")));
+    	form.add(new TextField<String>("nome", new PropertyModel<String>(bolaoSelecionado, "nome")));
     	
 		add(form);
-
-
-		Link linkCreateBolao = new Link("linkCreateBolao") {
-			@Override
-			public void onClick() {
-				setResponsePage(new CreateBolaoPage(grupoSelecionado));
-			}
-		};
-		add(linkCreateBolao);
     	
     }
 
