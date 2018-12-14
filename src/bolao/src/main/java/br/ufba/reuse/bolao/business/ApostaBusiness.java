@@ -1,7 +1,5 @@
 package br.ufba.reuse.bolao.business;
 
-import static org.hibernate.criterion.Restrictions.eq;
-
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -11,7 +9,6 @@ import br.ufba.reuse.bolao.business.daos.ApostaDAO;
 import br.ufba.reuse.bolao.business.daos.util.BusinessGeneric;
 import br.ufba.reuse.bolao.entities.Aposta;
 import br.ufba.reuse.bolao.entities.Bolao;
-import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Jogo;
 import br.ufba.reuse.bolao.entities.Time;
 import br.ufba.reuse.bolao.entities.Usuario;
