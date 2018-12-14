@@ -27,7 +27,14 @@ public class Aposta implements Serializable {
     
     @ManyToOne
     private Usuario donoAposta;  
-    
+
+    public Bolao getBolao() {
+		return bolao;
+	}
+
+	public void setBolao(Bolao bolao) {
+		this.bolao = bolao;
+	}
     
     public Usuario getDonoAposta() {
 		return donoAposta;
