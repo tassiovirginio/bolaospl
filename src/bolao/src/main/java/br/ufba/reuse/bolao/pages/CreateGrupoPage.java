@@ -1,5 +1,6 @@
 package br.ufba.reuse.bolao.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
@@ -81,18 +82,34 @@ public class CreateGrupoPage extends BasePage {
 		choiceIntegrante.setOutputMarkupId(true);
 		choiceIntegrante.setRequired(true);
 
-		Form formUsuario = new Form("formUsuario");
+		Form formUsuario = new Form("formUsuario"){
+			@Override
+			protected void onSubmit() {
+				grupo.getParticipantes().add(usuarioSelecionado);
+				grupoBusiness.save(grupo);
+			}
+		};
 		formUsuario.add(choiceIntegrante);
 
 		add(formUsuario);
 
 		List<Usuario> integrantes = grupo.getParticipantes();
 
+		if(integrantes == null) integrantes = new ArrayList<Usuario>();
+
 		add(new ListView<Usuario>("listIntegrantes", integrantes) {
 			@Override
 			protected void populateItem(ListItem<Usuario> item) {
 				Usuario usuario = item.getModelObject();
 				item.add(new Label("nome", usuario.getNome()));
+				Link linkRemover = new Link("remover"){
+					@Override
+					public void onClick() {
+						grupo.getParticipantes().remove(usuario);
+						grupoBusiness.save(grupo);
+					}
+				};
+				item.add(linkRemover);
 			}
         });
 
