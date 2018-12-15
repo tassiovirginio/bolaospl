@@ -17,7 +17,17 @@ padding : 50px 0;
 .login-sec .copy-text i{color:rgb(91, 247, 91);}
 .login-sec .copy-text a{color: rgb(4, 124, 10);}
 .login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: rgb(109, 236, 109);}
-.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+
+/*.login-sec h2:after{
+    content:" ";
+    width:100px;
+    height:5px;
+    background: #ffffff;
+    display:block;
+    margin-top:20px;
+    border-radius:3px;
+    margin-left:auto;
+    margin-right:auto}*/
 .btn-login{background: rgb(94, 245, 126); color:#fff; font-weight:600;}
 .banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
 .banner-text h2{color:#fff; font-weight:600;}
