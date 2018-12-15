@@ -26,7 +26,7 @@ public class Aposta implements Serializable {
     private Bolao bolao;
     
     @ManyToOne
-    private Usuario donoAposta;  
+    private Usuario apostador;  
 
     public Bolao getBolao() {
 		return bolao;
@@ -36,12 +36,12 @@ public class Aposta implements Serializable {
 		this.bolao = bolao;
 	}
     
-    public Usuario getDonoAposta() {
-		return donoAposta;
+    public Usuario getApostador() {
+		return apostador;
 	}
 
-	public void setDonoAposta(Usuario donoAposta) {
-		this.donoAposta = donoAposta;
+	public void setApostador(Usuario apostador) {
+		this.apostador = apostador;
 	}
 
 	public Long getId() {

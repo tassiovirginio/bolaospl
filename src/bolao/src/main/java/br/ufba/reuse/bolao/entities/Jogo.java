@@ -24,9 +24,39 @@ public class Jogo implements Serializable {
     private Time time2;
 
     private Date data;
+
+    private Integer placar1;
+
+    private Integer placar2;
+
+    private Time vencedor;
     
     @ManyToOne
     private Campeonato campeonato;
+
+    public Integer getPlacar2(){
+        return placar2;
+    }
+
+    public void setPlacar2(Integer placar2){
+        this.placar2 = placar2;
+    }
+
+    public Integer getPlacar1(){
+        return placar1;
+    }
+
+    public void setPlacar1(Integer placar1){
+        this.placar1 = placar1;
+    }
+
+    public Time getVencedor(){
+        return vencedor;
+    }
+
+    public void setVencedor(Time vencedor){
+        this.vencedor = vencedor;
+    }
 
     public Date getData(){
         return data;

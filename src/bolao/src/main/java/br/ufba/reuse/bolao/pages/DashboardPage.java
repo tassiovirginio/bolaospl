@@ -74,18 +74,32 @@ public class DashboardPage extends BasePage {
 					protected void populateItem(ListItem<Bolao> item) {
 						Bolao bolao = item.getModelObject();
 						item.add(new Label("nome", bolao.getNome()));
-						item.add(new Label("time1", bolao.getJogo().getTime1().getNome()));
-						item.add(new Label("time2", bolao.getJogo().getTime2().getNome()));
+						// item.add(new Label("time1", bolao.getJogo().getTime1().getNome()));
+						// item.add(new Label("time2", bolao.getJogo().getTime2().getNome()));
 
 						WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
 						image1.add(new AttributeModifier("src",bolao.getJogo().getTime1().getImgUrl()));
+						image1.add(new AttributeModifier("alt",bolao.getJogo().getTime1().getNome()));
 						item.add(image1);
 
 						WebMarkupContainer image2 = new WebMarkupContainer("imgTime2");
 						image2.add(new AttributeModifier("src",bolao.getJogo().getTime2().getImgUrl()));
+						image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
 						item.add(image2);
 
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
+
+						item.add(new Label("data", bolao.getJogo().getData()));
+
+						item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+
+						Link linkApostar = new Link("linkApostar") {
+							@Override
+							public void onClick() {
+								setResponsePage(new ApostaPage(bolao));
+							}
+						};
+						item.add(linkApostar);
 					}
 				});
 				

@@ -33,7 +33,7 @@ public class ApostaBusiness extends BusinessGeneric<ApostaDAO, Aposta> {
 		
 		for(Aposta aposta: lista)
 		{
-			if(aposta.getDonoAposta().equals(user))
+			if(aposta.getApostador().equals(user))
 				lista.add(aposta);
 		}
 		
@@ -60,7 +60,7 @@ public class ApostaBusiness extends BusinessGeneric<ApostaDAO, Aposta> {
 		
 		for(Aposta aposta: lista)
 		{
-			if(aposta.getDonoAposta().equals(user) && aposta.getBolao().equals(bolao))
+			if(aposta.getApostador().equals(user) && aposta.getBolao().equals(bolao))
 				return aposta;	
 		}
 		
