@@ -1,0 +1,33 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+    <div class="container-fluid">
+        <h1>Aposta</h1>
+    </div>
+    <hr />
+    <div class="container">
+            <div class="row">
+                <ul>
+                    <li>Acerta a quantidades de gols do time1 = 5 pontos.</li>
+                    <li>Acerta a quantidades de gols do time2 = 5 pontos.</li>
+                    <li>Acerta o time ganhador = 5 pontos.</li>
+                </ul>
+            </div>
+        </div>
+    <div class="container">
+        <div class="row">
+            <form class="form" wicket:id="form">
+                <div class="form-group">
+                    <img wicket:id="imgTime1" style="width: 30px; height: auto;" /> <input wicket:id="placar1" type="text" max="2" maxlength="2" size="3" /> x <input wicket:id="placar2" type="text" max="2" maxlength="2" size="3" /> <img wicket:id="imgTime2" style="width: 30px; height: auto;" /> <br>
+                </div>
+                <div class="form-group">
+                    Ganhador: <select wicket:id="vencedor">
+                        <option>Time1</option>
+                        <option>Time2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="apostar" />
+                </div>
+            </form>
+        </div>
+    </div>
+</wicket:extend>

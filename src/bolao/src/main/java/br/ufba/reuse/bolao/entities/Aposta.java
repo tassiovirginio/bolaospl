@@ -25,7 +25,26 @@ public class Aposta implements Serializable {
     @ManyToOne
     private Bolao bolao;
     
-    public Long getId() {
+    @ManyToOne
+    private Usuario apostador;  
+
+    public Bolao getBolao() {
+		return bolao;
+	}
+
+	public void setBolao(Bolao bolao) {
+		this.bolao = bolao;
+	}
+    
+    public Usuario getApostador() {
+		return apostador;
+	}
+
+	public void setApostador(Usuario apostador) {
+		this.apostador = apostador;
+	}
+
+	public Long getId() {
         return id;
     }
 

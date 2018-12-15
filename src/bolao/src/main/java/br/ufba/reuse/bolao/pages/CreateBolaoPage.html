@@ -1,0 +1,55 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+
+	<div class="container-fluid">
+		<h1>Bolão</h1>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<nav class="navbar bg-light">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Lista Participantes</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Adicionar Placar Final</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-10" style="background-color: #f2f2f2;">
+				<span wicket:id="feedbackPanel" style="color: red;"></span>
+				<form wicket:id="form">
+					<div class="form-group">
+						<label for="email">Nome:</label>
+						<input wicket:id="nome" type="text" class="form-control" placeholder="Apelido para seu bolão" />
+					</div>
+					<div class="form-group">
+						<label for="email">Data Fechamento:</label>
+						<input wicket:id="dataFechamento" type="text" class="form-control" placeholder="dd/MM/yyyy" />
+					</div>
+					<div class="form-group">
+						<label for="email">Campeonato:</label>
+						<select wicket:id="choiceCampeonato" class="form-control">
+							<option>Brasileirão</option>
+							<option>Copa do Brasil</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="email">Jogo:</label>
+						<select wicket:id="choiceJogo" class="form-control">
+							<option>Vitoria x Bahia (01/01/2019)</option>
+							<option>Bahia x Vitoria (05/01/2019)</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary">Salvar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</wicket:extend>

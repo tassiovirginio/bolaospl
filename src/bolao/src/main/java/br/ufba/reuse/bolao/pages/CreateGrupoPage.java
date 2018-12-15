@@ -1,8 +1,13 @@
 package br.ufba.reuse.bolao.pages;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -15,6 +20,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Bolao;
 import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
@@ -26,9 +32,17 @@ public class CreateGrupoPage extends BasePage {
     final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
 
     @SpringBean
-    private GrupoBusiness grupoBusiness;
+	private GrupoBusiness grupoBusiness;
+	
+	@SpringBean
+	private UsuarioBusiness usuarioBusiness;
+
+	@SpringBean
+	private BolaoBusiness bolaoBusiness;
     
 	private Grupo grupoSelecionado;
+
+	private Usuario usuarioSelecionado;
 
 	public CreateGrupoPage() {
 		this(null);
@@ -46,7 +60,7 @@ public class CreateGrupoPage extends BasePage {
 			protected void onSubmit() {
 				grupoSelecionado.setDono(usuarioLogado);
 				grupoBusiness.save(grupoSelecionado);
-				setResponsePage(new ListGrupoPage());
+				setResponsePage(new DashboardPage());
 			};
 		};
 		
@@ -56,6 +70,91 @@ public class CreateGrupoPage extends BasePage {
 		form.add(new TextField<String>("descricao", new PropertyModel<String>(grupoSelecionado, "descricao")));
     	
 		add(form);
+
+
+		Link linkCreateBolao = new Link("linkCreateBolao") {
+			@Override
+			public void onClick() {
+				setResponsePage(new CreateBolaoPage(grupoSelecionado));
+			}
+		};
+		add(linkCreateBolao);
+
+
+		List<Usuario> listUsuario = usuarioBusiness.listAll();
+
+		ChoiceRenderer<Usuario> choiceRendererJogo = new ChoiceRenderer<Usuario>("nome", "id");
+		DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante", new PropertyModel<Usuario>(this,"usuarioSelecionado"), listUsuario, choiceRendererJogo);
+		choiceIntegrante.setOutputMarkupId(true);
+		choiceIntegrante.setRequired(true);
+
+		Form formUsuario = new Form("formUsuario"){
+			@Override
+			protected void onSubmit() {
+				grupo.getParticipantes().add(usuarioSelecionado);
+				grupoBusiness.save(grupo);
+			}
+		};
+		formUsuario.add(choiceIntegrante);
+
+		add(formUsuario);
+
+		List<Usuario> integrantes = grupo.getParticipantes();
+
+		if(integrantes == null) integrantes = new ArrayList<Usuario>();
+
+		add(new ListView<Usuario>("listIntegrantes", integrantes) {
+			@Override
+			protected void populateItem(ListItem<Usuario> item) {
+				Usuario usuario = item.getModelObject();
+				item.add(new Label("nome", usuario.getNome()));
+				Link linkRemover = new Link("remover"){
+					@Override
+					public void onClick() {
+						grupo.getParticipantes().remove(usuario);
+						grupoBusiness.save(grupo);
+					}
+				};
+				item.add(linkRemover);
+			}
+		});
+
+
+		List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
+
+		add(new ListView<Bolao>("listaBolao", listaBolao) {
+			@Override
+			protected void populateItem(ListItem<Bolao> item) {
+				Bolao bolao = item.getModelObject();
+				item.add(new Label("nome", bolao.getNome()));
+
+				WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
+				image1.add(new AttributeModifier("src",bolao.getJogo().getTime1().getImgUrl()));
+				image1.add(new AttributeModifier("alt",bolao.getJogo().getTime1().getNome()));
+				item.add(image1);
+
+				WebMarkupContainer image2 = new WebMarkupContainer("imgTime2");
+				image2.add(new AttributeModifier("src",bolao.getJogo().getTime2().getImgUrl()));
+				image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
+				item.add(image2);
+
+				item.add(new Label("apostasSize", bolao.getApostas().size()));
+
+				item.add(new Label("data", bolao.getJogo().getData()));
+
+				item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+
+				Link linkEditar = new Link("linkEditar") {
+					@Override
+					public void onClick() {
+						setResponsePage(new CreateBolaoPage(bolao,grupo));
+					}
+				};
+				item.add(linkEditar);
+			}
+		});
+
+
     	
     }
 

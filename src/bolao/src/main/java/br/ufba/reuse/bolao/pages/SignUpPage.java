@@ -71,7 +71,7 @@ public class SignUpPage extends WebPage {
 					
 					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuario);
-					setResponsePage(new ListGrupoPage());
+					setResponsePage(new DashboardPage());
 				}
 			};
 		};

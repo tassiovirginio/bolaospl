@@ -20,9 +20,9 @@ public class LoginPage extends WebPage {
 	@SpringBean
 	private UsuarioBusiness usuarioBusiness;
 
-	private String email;
+	private String email = "admin@admin.com";
 
-	private String senha;
+	private String senha = "admin";
 
 	public LoginPage() {
 		
@@ -51,7 +51,7 @@ public class LoginPage extends WebPage {
 				if(usuarioLogado != null) {
 					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuarioLogado);
-                    setResponsePage(new ListGrupoPage());
+                    setResponsePage(new DashboardPage());
                 } else {
                     error("Login Inválido");
 				}

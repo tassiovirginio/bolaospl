@@ -2,10 +2,16 @@ package br.ufba.reuse.bolao.pages;
 
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.markup.html.WebComponent;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.resource.ContextRelativeResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
@@ -18,7 +24,7 @@ import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
 @MountPath("dashboard")
-public class ListGrupoPage extends BasePage {
+public class DashboardPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
     @SpringBean
@@ -27,7 +33,7 @@ public class ListGrupoPage extends BasePage {
 	@SpringBean
 	private BolaoBusiness bolaoBusiness;
 
-    public ListGrupoPage() {
+    public DashboardPage() {
     	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
     	
     	List<Grupo> grupos = grupoBusiness.findAllParticipantGroups(usuarioLogado); //grupoBusiness.listAll();
@@ -49,13 +55,17 @@ public class ListGrupoPage extends BasePage {
 				item.add(new Label("dono", grupo.getDono().getNome()));
 				item.add(new Label("size", grupo.getParticipantes().size()));
 
-				item.add(new Link("linkGrupo") {
+				Link linkGrupo = new Link("linkGrupo") {
 					private static final long serialVersionUID = 1L;
 					@Override
 					public void onClick() {
 						setResponsePage(new CreateGrupoPage(grupo));
 					}
-				});
+				};
+
+				linkGrupo.setVisible(usuarioLogado.equals(grupo.getDono()));
+
+				item.add(linkGrupo);
 
 				List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
 
@@ -64,9 +74,32 @@ public class ListGrupoPage extends BasePage {
 					protected void populateItem(ListItem<Bolao> item) {
 						Bolao bolao = item.getModelObject();
 						item.add(new Label("nome", bolao.getNome()));
-						item.add(new Label("time1", bolao.getJogo().getTime1().getNome()));
-						item.add(new Label("time2", bolao.getJogo().getTime2().getNome()));
+						// item.add(new Label("time1", bolao.getJogo().getTime1().getNome()));
+						// item.add(new Label("time2", bolao.getJogo().getTime2().getNome()));
+
+						WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
+						image1.add(new AttributeModifier("src",bolao.getJogo().getTime1().getImgUrl()));
+						image1.add(new AttributeModifier("alt",bolao.getJogo().getTime1().getNome()));
+						item.add(image1);
+
+						WebMarkupContainer image2 = new WebMarkupContainer("imgTime2");
+						image2.add(new AttributeModifier("src",bolao.getJogo().getTime2().getImgUrl()));
+						image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
+						item.add(image2);
+
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
+
+						item.add(new Label("data", bolao.getJogo().getData()));
+
+						item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+
+						Link linkApostar = new Link("linkApostar") {
+							@Override
+							public void onClick() {
+								setResponsePage(new ApostaPage(bolao));
+							}
+						};
+						item.add(linkApostar);
 					}
 				});
 				

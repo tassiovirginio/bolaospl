@@ -1,0 +1,60 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+	<div class="container-fluid">
+		<h1>Dashboard</h1>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<nav class="navbar bg-light">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a wicket:id="criaGrupo" class="nav-link" href="#"><i class="icon ion-md-add-circle"></i> Criar Grupo</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-10">
+				<div wicket:id="listGrupo" class="col-10">
+					<br>
+					<table class="table" style="background-color: #f2f2f2;">
+						<tr>
+							<th>
+								Grupo: <span wicket:id="nome"></span>
+								(Dono: <span wicket:id="dono"></span>)
+								- Integrantes:
+								<span wicket:id="size"></span>
+								<a wicket:id="linkGrupo" href="#">
+									<i class="icon ion-md-create"></i>
+								</a>
+							</th>
+						</tr>
+
+						<tr>
+							<td>
+								<table wicket:id="listaBolao" class="table" style="background-color: #d9d9d9;">
+									<tr>
+										<td><b>Bolão</b>: <span wicket:id="nome">[nome]</span> </td>
+										<td><b>Apostas</b>: <span wicket:id="apostasSize"></span> </td>
+										<td><a href="#">Editar</a> - <a href="#">Fechar</a> - <a href="#">Ranking</a></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [?] x [?] <img
+											 style="height: 30px; width: auto;" wicket:id="imgTime2" /> - <b>Data</b>: <span wicket:id="data">[data]</span> - <b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
+										</td>
+										<td><a wicket:id="linkApostar" href="#">Apostar</a></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</wicket:extend>
