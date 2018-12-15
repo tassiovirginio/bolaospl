@@ -108,7 +108,7 @@ public class CreateBolaoPage extends BasePage {
 				bolaoSelecionado.setJogo(jogoSelecionado);
 				bolaoSelecionado.setCampeonato(campeonatoSelecionado);
 				bolaoBusiness.save(bolaoSelecionado);
-				setResponsePage(new CreateBolaoPage(bolaoSelecionado,grupoDoBolao));
+				setResponsePage(new CreateGrupoPage(grupoDoBolao));
 			};
 		};
     	

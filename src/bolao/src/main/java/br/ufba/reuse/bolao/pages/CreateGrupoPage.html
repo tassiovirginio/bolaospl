@@ -13,15 +13,9 @@
 				<nav class="navbar bg-light">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a wicket:id="linkCreateBolao" class="nav-link" href="#" >
-								<i class="icon ion-md-add-circle"></i> Bolão
+							<a wicket:id="linkCreateBolao" class="nav-link" href="#">
+								<i class="icon ion-md-add-circle"></i> Criar Bolão
 							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link 2</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Link 3</a>
 						</li>
 					</ul>
 				</nav>
@@ -47,9 +41,13 @@
 							Bolões
 						</th>
 					</tr>
-					<tr>
+					<tr wicket:id="listaBolao">
 						<td>
-							Time01 x Time02 - Data do Jogo: 01/01/2019 - Apostas: 99 - <a href="#">cancelar</a> - <a href="#">participar</a>
+							<span wicket:id="nome"></span> - 
+							<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [?] x [?] <img style="height: 30px; width: auto;"
+							 wicket:id="imgTime2" /> - <b>Data</b>: <span wicket:id="data">[data]</span> - <b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
+							- Apostas: <span wicket:id="apostasSize"></span> - <a wicket:id="linkEditar" href="#">editar</a>
+
 						</td>
 					</tr>
 				</table>

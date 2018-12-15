@@ -3,6 +3,8 @@ package br.ufba.reuse.bolao.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -18,6 +20,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Bolao;
 import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
@@ -33,6 +36,9 @@ public class CreateGrupoPage extends BasePage {
 	
 	@SpringBean
 	private UsuarioBusiness usuarioBusiness;
+
+	@SpringBean
+	private BolaoBusiness bolaoBusiness;
     
 	private Grupo grupoSelecionado;
 
@@ -111,7 +117,42 @@ public class CreateGrupoPage extends BasePage {
 				};
 				item.add(linkRemover);
 			}
-        });
+		});
+
+
+		List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
+
+		add(new ListView<Bolao>("listaBolao", listaBolao) {
+			@Override
+			protected void populateItem(ListItem<Bolao> item) {
+				Bolao bolao = item.getModelObject();
+				item.add(new Label("nome", bolao.getNome()));
+
+				WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
+				image1.add(new AttributeModifier("src",bolao.getJogo().getTime1().getImgUrl()));
+				image1.add(new AttributeModifier("alt",bolao.getJogo().getTime1().getNome()));
+				item.add(image1);
+
+				WebMarkupContainer image2 = new WebMarkupContainer("imgTime2");
+				image2.add(new AttributeModifier("src",bolao.getJogo().getTime2().getImgUrl()));
+				image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
+				item.add(image2);
+
+				item.add(new Label("apostasSize", bolao.getApostas().size()));
+
+				item.add(new Label("data", bolao.getJogo().getData()));
+
+				item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+
+				Link linkEditar = new Link("linkEditar") {
+					@Override
+					public void onClick() {
+						setResponsePage(new CreateBolaoPage(bolao,grupo));
+					}
+				};
+				item.add(linkEditar);
+			}
+		});
 
 
     	
