@@ -3,6 +3,8 @@ package br.ufba.reuse.bolao.pages;
 import java.util.List;
 
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -26,9 +28,14 @@ public class CreateGrupoPage extends BasePage {
     final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
 
     @SpringBean
-    private GrupoBusiness grupoBusiness;
+	private GrupoBusiness grupoBusiness;
+	
+	@SpringBean
+	private UsuarioBusiness usuarioBusiness;
     
 	private Grupo grupoSelecionado;
+
+	private Usuario usuarioSelecionado;
 
 	public CreateGrupoPage() {
 		this(null);
@@ -46,7 +53,7 @@ public class CreateGrupoPage extends BasePage {
 			protected void onSubmit() {
 				grupoSelecionado.setDono(usuarioLogado);
 				grupoBusiness.save(grupoSelecionado);
-				setResponsePage(new ListGrupoPage());
+				setResponsePage(new DashboardPage());
 			};
 		};
 		
@@ -65,6 +72,31 @@ public class CreateGrupoPage extends BasePage {
 			}
 		};
 		add(linkCreateBolao);
+
+
+		List<Usuario> listUsuario = usuarioBusiness.listAll();
+
+		ChoiceRenderer<Usuario> choiceRendererJogo = new ChoiceRenderer<Usuario>("nome", "id");
+		DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante", new PropertyModel<Usuario>(this,"usuarioSelecionado"), listUsuario, choiceRendererJogo);
+		choiceIntegrante.setOutputMarkupId(true);
+		choiceIntegrante.setRequired(true);
+
+		Form formUsuario = new Form("formUsuario");
+		formUsuario.add(choiceIntegrante);
+
+		add(formUsuario);
+
+		List<Usuario> integrantes = grupo.getParticipantes();
+
+		add(new ListView<Usuario>("listIntegrantes", integrantes) {
+			@Override
+			protected void populateItem(ListItem<Usuario> item) {
+				Usuario usuario = item.getModelObject();
+				item.add(new Label("nome", usuario.getNome()));
+			}
+        });
+
+
     	
     }
 

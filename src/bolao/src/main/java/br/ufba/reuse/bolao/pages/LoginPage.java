@@ -51,7 +51,7 @@ public class LoginPage extends WebPage {
 				if(usuarioLogado != null) {
 					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuarioLogado);
-                    setResponsePage(new ListGrupoPage());
+                    setResponsePage(new DashboardPage());
                 } else {
                     error("Login Inválido");
 				}

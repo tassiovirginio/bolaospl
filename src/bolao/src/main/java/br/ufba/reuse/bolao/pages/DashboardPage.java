@@ -24,7 +24,7 @@ import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
 @MountPath("dashboard")
-public class ListGrupoPage extends BasePage {
+public class DashboardPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
     @SpringBean
@@ -33,7 +33,7 @@ public class ListGrupoPage extends BasePage {
 	@SpringBean
 	private BolaoBusiness bolaoBusiness;
 
-    public ListGrupoPage() {
+    public DashboardPage() {
     	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
     	
     	List<Grupo> grupos = grupoBusiness.findAllParticipantGroups(usuarioLogado); //grupoBusiness.listAll();
@@ -55,13 +55,17 @@ public class ListGrupoPage extends BasePage {
 				item.add(new Label("dono", grupo.getDono().getNome()));
 				item.add(new Label("size", grupo.getParticipantes().size()));
 
-				item.add(new Link("linkGrupo") {
+				Link linkGrupo = new Link("linkGrupo") {
 					private static final long serialVersionUID = 1L;
 					@Override
 					public void onClick() {
 						setResponsePage(new CreateGrupoPage(grupo));
 					}
-				});
+				};
+
+				linkGrupo.setVisible(usuarioLogado.equals(grupo.getDono()));
+
+				item.add(linkGrupo);
 
 				List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
 

@@ -145,6 +145,20 @@ public class WicketApplication extends WebApplication {
 			uAdmin.setCelular("99 9999-9999");
 			uAdmin.setNome("Administrador");
 			usuarioBusiness.save(uAdmin);
+
+			Usuario u1 = new Usuario();
+			u1.setEmail("usuario1@sisbolao.com");
+			u1.setSenha("usuario1");
+			u1.setCelular("99 9999-9999");
+			u1.setNome("Usuario1");
+			usuarioBusiness.save(u1);
+
+			Usuario u2 = new Usuario();
+			u2.setEmail("usuario2@sisbolao.com");
+			u2.setSenha("usuario2");
+			u2.setCelular("99 9999-9999");
+			u2.setNome("Usuario2");
+			usuarioBusiness.save(u2);
 			
 			Grupo grupo1 = new Grupo();
 			grupo1.setNome("LES");
