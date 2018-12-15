@@ -25,6 +25,7 @@
 				</nav>
 			</div>
 			<div class="col-10" style="background-color: #f2f2f2;">
+				<span wicket:id="feedbackPanel" style="color: red;"></span>
 				<form wicket:id="form">
 					<div class="form-group">
 						<label for="email">Nome:</label>
@@ -32,24 +33,26 @@
 					</div>
 					<div class="form-group">
 						<label for="email">Data Fechamento::</label>
-						<input type="text" class="form-control" />
+						<input wicket:id="dataFechamento" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
 						<label for="email">Campeonato:</label>
-						<select class="form-control">
+						<select wicket:id="choiceCampeonato" class="form-control">
 							<option>Brasileirão</option>
 							<option>Copa do Brasil</option>
 						</select>
 					</div>
 					<div class="form-group">
 						<label for="email">Jogo:</label>
-						<select class="form-control">
+						<select wicket:id="choiceJogo" class="form-control">
 							<option>Vitoria x Bahia (01/01/2019)</option>
 							<option>Bahia x Vitoria (05/01/2019)</option>
 						</select>
 					</div>
 					<button type="submit" class="btn btn-primary">Salvar</button>
 				</form>
+
+				<br>
 
 				<table class="table" style="background-color: #d9d9d9;">
 					<tr>

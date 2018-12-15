@@ -161,6 +161,10 @@ public class WicketApplication extends WebApplication {
 			Campeonato campeonato1 = new Campeonato();
 			campeonato1.setNome("Brasileirão");
 			campeonatoBusiness.save(campeonato1);
+
+			campeonatoBusiness.save(new Campeonato("Copa do Brasil"));
+			campeonatoBusiness.save(new Campeonato("Copa do América"));
+			campeonatoBusiness.save(new Campeonato("Euro Copa"));
 			
 			Time time1 = new Time();
 			time1.setNome("Bahia");
@@ -194,26 +198,34 @@ public class WicketApplication extends WebApplication {
 			
 			Jogo jogo1 = new Jogo();
 			jogo1.setCampeonato(campeonato1);
+			campeonato1.getJogos().add(jogo1);
 			jogo1.setTime1(time1);
 			jogo1.setTime2(time2);
+			jogo1.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo1);
 
 			Jogo jogo2 = new Jogo();
 			jogo2.setCampeonato(campeonato1);
+			campeonato1.getJogos().add(jogo2);
 			jogo2.setTime1(time3);
 			jogo2.setTime2(time4);
+			jogo2.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo2);
 
 			Jogo jogo3 = new Jogo();
 			jogo3.setCampeonato(campeonato1);
+			campeonato1.getJogos().add(jogo3);
 			jogo3.setTime1(time1);
 			jogo3.setTime2(time4);
+			jogo3.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo3);
 
 			Jogo jogo4 = new Jogo();
 			jogo4.setCampeonato(campeonato1);
+			campeonato1.getJogos().add(jogo4);
 			jogo4.setTime1(time2);
 			jogo4.setTime2(time4);
+			jogo4.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo4);
 			
 			Bolao bolao1 = new Bolao();
@@ -233,6 +245,8 @@ public class WicketApplication extends WebApplication {
 			bolao2.setGrupo(grupo1);
 			bolao2.setNome("Os amigos!!! 10 Reais");
 			bolaoBusiness.save(bolao2);
+
+			campeonatoBusiness.save(campeonato1);
 			
 			
 		}

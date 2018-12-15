@@ -1,6 +1,7 @@
 package br.ufba.reuse.bolao.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,9 +22,23 @@ public class Jogo implements Serializable {
     
     @ManyToOne
     private Time time2;
+
+    private Date data;
     
     @ManyToOne
     private Campeonato campeonato;
+
+    public Date getData(){
+        return data;
+    }
+
+    public void setData(Date data){
+        this.data = data;
+    }
+
+    public String getNome(){
+        return time1.getNome() + " x " + time2.getNome() + " - " + data;
+    }
     
 	public Time getTime1() {
 		return time1;

@@ -28,6 +28,12 @@ public class Campeonato implements Serializable {
     
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Time> times;
+
+    public Campeonato(){}
+
+    public Campeonato(String nome){
+        this.nome = nome;
+    }
     
     public List<Time> getTimes() {
     	if(times == null) times = new ArrayList<>();

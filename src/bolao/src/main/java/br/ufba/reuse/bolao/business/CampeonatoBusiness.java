@@ -21,6 +21,6 @@ public class CampeonatoBusiness extends BusinessGeneric<CampeonatoDAO, Campeonat
 			campeonato.getTimes().size();
 		}
         return lista;
-    }
+	}
 	
 }
