@@ -1,42 +1,82 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js" xmlns:wicket="http://wicket.apache.org">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SISBOLÃO</title>
-<link rel="showtcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<link rel="stylesheet" type="text/css" href="css/foundation.min.css" />
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="css/owl.theme.default.css">
-<script src="js/script.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SISBOLÃO</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<div class="bol--full-login no-max-width row">
-		<div class="small-12 medium-6 bol--full-login--img"></div>
-		<div class="small-12 medium-6">
-			<div class="bol--sign-in--container">
-				<a href="#" wicket:id="linkLoginPage"
-					class="bol--sign-up--container--navegation-helper pointer-object">
-					<i class="fas fa-arrow-alt-circle-left"></i> Voltar a página de
-					login
-				</a> <img src="img/logo.png" class="bol--sign-in--container--logo" width="120px"/>
-				<div style="color: red;" wicket:id="feedback">[Feedback Panel]</div>
-				
-				<form action="" wicket:id="form">
-					<h2 class="">Recuperar Senha:</h2>
-					<label class="solid-label"> Email 
-					<input wicket:id="email" class="solid-input" type="text" />
-					</label> <input type="submit" value="Recuperar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />
-					<br />
-				</form>
-			</div>
-		</div>
-	</div>
+    <section class="login-block">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 login-sec">
+                    <a href="#" wicket:id="linkLoginPage"
+                       class="bol--sign-up--container--navegation-helper pointer-object">
+                        <i class="material-icons">arrow_back</i>
+                        <!--<i class="fas fa-arrow-alt-circle-left"></i>
+                        Voltar a página de login-->
+                    </a>
+
+                    <center>
+                        <img src="img/logo.png" class="bol--sign-in--container--logo" width="120px" />
+                        <h2 class="">Recover Password</h2>
+                    </center>
+
+
+                    <div style="color: #fffbf9;" wicket:id="feedback">
+                       <!-- [Feedback Panel]-->
+                    </div>
+
+                    <form class="login-form" wicket:id="form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" >E-mail</label>
+                            <input wicket:id="email" type="text" class="form-control" placeholder="">
+                        </div>
+                        <!--<label class="solid-label"> Email
+                            <input wicket:id="email" class="solid-input" type="text" />
+                        </label>-->
+
+                        <!--<input type="submit" value="Recuperar" class="bol-btn bol-btn__upper bol-btn__secondary bol-btn__centered" />-->
+
+                        <div align = "right">
+                            <button type="submit" class="btn btn-success">Recover</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-8 banner-sec">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid" src="img/background.jpg" alt="First slide" style="height: 100%;">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <!--
+                                        <h2>SISBOLÃO</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                                         -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </html>

@@ -31,14 +31,14 @@
                 <feature mandatory="true" name="Results"/>
                 <feature name="RankingEspecifico"/>
                 <feature mandatory="true" name="Integrantes"/>
-                <alt name="Awards">
+                <and name="Awards">
                     <feature name="Online"/>
                     <feature name="Offline"/>
-                </alt>
+                </and>
             </and>
             <feature mandatory="true" name="Ranking"/>
             <and name="Financeiro">
-                <feature name="Aporte"/>
+                <feature name="Contribuition"/>
             </and>
         </and>
     </struct>
