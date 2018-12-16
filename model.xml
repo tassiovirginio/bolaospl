@@ -29,15 +29,15 @@
                     <feature mandatory="true" name="Scoreboard"/>
                 </and>
                 <feature mandatory="true" name="Results"/>
-                <feature name="RankingEspecifico"/>
-                <feature mandatory="true" name="Integrantes"/>
+                <feature name="SpecificRanking"/>
+                <feature mandatory="true" name="Members"/>
                 <and name="Awards">
                     <feature name="Online"/>
                     <feature name="Offline"/>
                 </and>
             </and>
             <feature mandatory="true" name="Ranking"/>
-            <and name="Financeiro">
+            <and name="Financial">
                 <feature name="Contribuition"/>
             </and>
         </and>
@@ -46,7 +46,7 @@
         <rule>
             <imp>
                 <var>Online</var>
-                <var>Financeiro</var>
+                <var>Financial</var>
             </imp>
         </rule>
     </constraints>
