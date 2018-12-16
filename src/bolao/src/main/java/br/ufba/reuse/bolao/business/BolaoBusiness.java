@@ -1,6 +1,7 @@
 package br.ufba.reuse.bolao.business;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class BolaoBusiness extends BusinessGeneric<BolaoDAO, Bolao> {
 
 	@Autowired
 	private ApostaBusiness apostaBusiness;
-	
+
 	public List<Bolao> listAll() {
 		List<Bolao> lista = dao.listAll();
 		for (Bolao bolao : lista) {
@@ -57,6 +58,8 @@ public class BolaoBusiness extends BusinessGeneric<BolaoDAO, Bolao> {
 			}
 			apostaBusiness.save(aposta);
 		}
+		bolao.setProcessado(new Date());
+		save(bolao);
 	}
 
 	public void apagarPontos(Bolao bolao){
@@ -65,6 +68,8 @@ public class BolaoBusiness extends BusinessGeneric<BolaoDAO, Bolao> {
 			aposta.setPontos(0);
 			apostaBusiness.save(aposta);
 		}
+		bolao.setProcessado(null);
+		save(bolao);
 	}
 	
 }

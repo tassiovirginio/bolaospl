@@ -93,19 +93,22 @@ public class DashboardPage extends BasePage {
 
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
 
-						item.add( new Link("linkApostas") {
+						Link linkApostas = new Link("linkApostas") {
 							@Override
 							public void onClick() {
 								setResponsePage(new ListApostaPage(bolao));
 							}
-						});
+						};
+						item.add(linkApostas);
 
-						item.add( new Link("linkRanking") {
+						Link linkRanking = new Link("linkRanking") {
 							@Override
 							public void onClick() {
 								setResponsePage(new RankinBolaoPage(bolao));
 							}
-						});
+						};
+						linkRanking.setVisible(bolao.getProcessado() != null);
+						item.add(linkRanking);
 
 						item.add(new Label("data", bolao.getJogo().getData()));
 
@@ -125,7 +128,9 @@ public class DashboardPage extends BasePage {
 								setResponsePage(new ApostaPage(bolao));
 							}
 						};
+						linkApostar.setVisible(bolao.getProcessado() == null);
 						item.add(linkApostar);
+
 					}
 				});
 				
