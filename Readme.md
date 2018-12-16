@@ -18,7 +18,7 @@
 ---
 
 
-Prerequisite: 
+### Prerequisite: 
  - ter o JDK 8 instalado [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
  - Gradle 5 [download](https://gradle.org/install/) *
  - ou o Maven 3 [download](https://maven.apache.org/download.cgi)
