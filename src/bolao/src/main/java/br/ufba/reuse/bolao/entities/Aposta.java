@@ -30,6 +30,10 @@ public class Aposta implements Serializable {
 	
 	private Integer pontos;
 
+	public Aposta(){
+		pontos = 0;
+	}
+
 	public Integer getPontos() {
 		return pontos;
 	}

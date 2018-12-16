@@ -144,6 +144,32 @@ public class CreateBolaoPage extends BasePage {
 			form.add(new Label("resultado", "Jogo sem PLACAR FINAL !!!!"));
 		}
 
+		Link linkProcessarPontos = new Link("linkProcessarPontos") {
+			@Override
+			public void onClick() {
+				bolaoBusiness.processarPontos(bolao);
+				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+			}
+		};
+		form.add(linkProcessarPontos);
+
+		Link linkApagarPontos = new Link("linkApagarPontos") {
+			@Override
+			public void onClick() {
+				bolaoBusiness.apagarPontos(bolao);
+				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+			}
+		};
+		form.add(linkApagarPontos);
+
+		Link linkCancelar = new Link("linkCancelar") {
+			@Override
+			public void onClick() {
+				setResponsePage(paginaAnterior);
+			}
+		};
+		form.add(linkCancelar);
+
 		add(form);
 
 		if (this.bolaoSelecionado != null) {
