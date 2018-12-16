@@ -93,13 +93,12 @@ public class DashboardPage extends BasePage {
 
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
 
-						Link linkApostas = new Link("linkApostas") {
+						item.add(new Link("linkApostas"){
 							@Override
 							public void onClick() {
 								setResponsePage(new ListApostaPage(bolao));
 							}
-						};
-						item.add(linkApostas);
+						});
 
 						Link linkRanking = new Link("linkRanking") {
 							@Override
