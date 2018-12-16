@@ -111,6 +111,14 @@ public class DashboardPage extends BasePage {
 
 						item.add(new Label("vencedor", bolao.getJogo().getVencedor().getNome()));
 
+						Label lbAguardando = new Label("lbAguardando", "aguardando");
+						lbAguardando.setVisible(bolao.getProcessado() == null);
+						item.add(lbAguardando);
+
+						Label lbProcessado = new Label("lbProcessado", "processado");
+						lbProcessado.setVisible(bolao.getProcessado() != null);
+						item.add(lbProcessado);
+
 						Link linkApostar = new Link("linkApostar") {
 							@Override
 							public void onClick() {

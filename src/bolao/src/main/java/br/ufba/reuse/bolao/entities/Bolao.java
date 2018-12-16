@@ -32,7 +32,9 @@ public class Bolao implements Serializable {
     
     private Date criacao;
     
-    private Date fechamento;
+	private Date fechamento;
+	
+	private Date processado;
 
 	public void setId(Long id) {
         this.id = id;
@@ -98,6 +100,14 @@ public class Bolao implements Serializable {
 
 	public void setFechamento(Date fechamento) {
 		this.fechamento = fechamento;
+	}
+
+	public Date getProcessado() {
+		return processado;
+	}
+
+	public void setProcessado(Date processado) {
+		this.processado = processado;
 	}
 
 	@Override
