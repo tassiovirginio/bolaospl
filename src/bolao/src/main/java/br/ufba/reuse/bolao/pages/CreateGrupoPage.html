@@ -2,7 +2,7 @@
 
 
 	<div class="container-fluid">
-		<h1>Grupo</h1>
+		<h1><a wicket:id="linkVoltar"><i class="icon ion-md-backspace"></i></a>Grupo</h1>
 	</div>
 
 	<hr />
@@ -13,9 +13,7 @@
 				<nav class="navbar bg-light">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a wicket:id="linkCreateBolao" class="nav-link" href="#">
-								<i class="icon ion-md-add-circle"></i> Criar Bolão
-							</a>
+							<a wicket:id="linkCreateBolao" class="btn btn-success" href="#">Criar Bolão</a>
 						</li>
 					</ul>
 				</nav>
@@ -23,7 +21,7 @@
 			<div class="col-10" style="background-color: #f2f2f2;">
 				<form wicket:id="form">
 					<div class="form-group">
-						<label for="email">Nome:</label>
+						<label for="email">Nome do Grupo:</label>
 						<input wicket:id="nome" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
@@ -38,16 +36,22 @@
 				<table class="table" style="background-color: #d9d9d9;">
 					<tr>
 						<th>
-							Bolões
+							Bolões do Grupo
 						</th>
 					</tr>
 					<tr wicket:id="listaBolao">
 						<td>
-							<span wicket:id="nome"></span> - 
-							<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [?] x [?] <img style="height: 30px; width: auto;"
-							 wicket:id="imgTime2" /> - <b>Data</b>: <span wicket:id="data">[data]</span> - <b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
-							- Apostas: <span wicket:id="apostasSize"></span> - <a wicket:id="linkEditar" href="#">editar</a>
-
+							<span wicket:id="nome"></span>
+						</td>
+						<td><img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [<span wicket:id="placar1"></span>] x [<span
+							 wicket:id="placar2"></span>] <img style="height: 30px; width: auto;" wicket:id="imgTime2" /></td>
+						<td><b>Data</b>:<span wicket:id="data">[data]</span></td>
+						<td><b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span></td>
+						<td>Apostas: <span wicket:id="apostasSize"></span></td>
+						<td style="text-align: right;">
+							<a wicket:id="linkEditar" href="#">
+								<i class="icon ion-md-create"></i>
+							</a>
 						</td>
 					</tr>
 				</table>
@@ -55,24 +59,27 @@
 				<table class="table" style="background-color: #d9d9d9;">
 					<tr>
 						<th colspan="2">
-							Participantes
+							Participantes do Grupo
 						</th>
 					</tr>
 					<tr>
 						<td>
-							<form wicket:id="formUsuario">
-								Usuário: <select wicket:id="choiceIntegrante">
-									<option>Usuario 12</option>
-									<option>Usuario 13</option>
-									<option>Usuario 14</option>
-								</select>
-								<input type="submit" value="Adicionar" />
-							</form>
+							<div class="form-group">
+								<form wicket:id="formUsuario" class="form">
+									Usuário: <select class="form-control" wicket:id="choiceIntegrante">
+										<option>Usuario 12</option>
+										<option>Usuario 13</option>
+										<option>Usuario 14</option>
+									</select>
+									<br>
+									<input class="btn btn-primary btn-sm" type="submit" value="Adicionar" />
+								</form>
+							</div>
 						</td>
 						<td>
 							<ul>
 								<li wicket:id="listIntegrantes">
-									<span wicket:id="nome">[nome]</span> - <a wicket:id="remover" href="#">remover</a>
+									<span wicket:id="nome">[nome]</span> - <a class="btn btn-danger btn-sm" wicket:id="remover" href="#">remover</a>
 								</li>
 							</ul>
 						</td>

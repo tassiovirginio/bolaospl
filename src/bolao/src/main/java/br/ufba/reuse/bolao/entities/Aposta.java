@@ -26,7 +26,21 @@ public class Aposta implements Serializable {
     private Bolao bolao;
     
     @ManyToOne
-    private Usuario apostador;  
+	private Usuario apostador;
+	
+	private Integer pontos;
+
+	public Aposta(){
+		pontos = 0;
+	}
+
+	public Integer getPontos() {
+		return pontos;
+	}
+
+	public void setPontos(Integer pontos) {
+		this.pontos = pontos;
+	}
 
     public Bolao getBolao() {
 		return bolao;

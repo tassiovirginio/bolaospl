@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebComponent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.image.Image;
 import org.apache.wicket.markup.html.link.Link;
@@ -37,11 +38,11 @@ public class DashboardPage extends BasePage {
     	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
     	
     	List<Grupo> grupos = grupoBusiness.findAllParticipantGroups(usuarioLogado); //grupoBusiness.listAll();
-    	
+		
     	add(new Link("criaGrupo") {
             @Override
             public void onClick() {
-                setResponsePage(new CreateGrupoPage());
+                setResponsePage(new CreateGrupoPage(DashboardPage.this));
             }
     	});
     	
@@ -59,7 +60,7 @@ public class DashboardPage extends BasePage {
 					private static final long serialVersionUID = 1L;
 					@Override
 					public void onClick() {
-						setResponsePage(new CreateGrupoPage(grupo));
+						setResponsePage(new CreateGrupoPage(grupo,DashboardPage.this));
 					}
 				};
 
@@ -87,6 +88,9 @@ public class DashboardPage extends BasePage {
 						image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
 						item.add(image2);
 
+						item.add(new Label("placar1", bolao.getJogo().getPlacar1()));
+						item.add(new Label("placar2", bolao.getJogo().getPlacar2()));
+
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
 
 						item.add( new Link("linkApostas") {
@@ -96,9 +100,24 @@ public class DashboardPage extends BasePage {
 							}
 						});
 
+						item.add( new Link("linkRanking") {
+							@Override
+							public void onClick() {
+								setResponsePage(new RankinBolaoPage(bolao));
+							}
+						});
+
 						item.add(new Label("data", bolao.getJogo().getData()));
 
-						item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+						item.add(new Label("vencedor", bolao.getJogo().getVencedor().getNome()));
+
+						Label lbAguardando = new Label("lbAguardando", "aguardando");
+						lbAguardando.setVisible(bolao.getProcessado() == null);
+						item.add(lbAguardando);
+
+						Label lbProcessado = new Label("lbProcessado", "processado");
+						lbProcessado.setVisible(bolao.getProcessado() != null);
+						item.add(lbProcessado);
 
 						Link linkApostar = new Link("linkApostar") {
 							@Override
@@ -109,13 +128,6 @@ public class DashboardPage extends BasePage {
 						item.add(linkApostar);
 					}
 				});
-				
-				// item.add(new Link("linkBolao") {
-				// 	@Override
-				// 	public void onClick() {
-				// 		setResponsePage(new ListBolaoPage());
-				// 	}
-				// });
 				
 			}
         });

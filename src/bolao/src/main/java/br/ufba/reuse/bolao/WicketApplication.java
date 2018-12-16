@@ -217,6 +217,9 @@ public class WicketApplication extends WebApplication {
 			campeonato1.getJogos().add(jogo1);
 			jogo1.setTime1(time1);
 			jogo1.setTime2(time2);
+			jogo1.setPlacar1(2);
+			jogo1.setPlacar2(1);
+			jogo1.setVencedor(time1);
 			jogo1.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo1);
 
@@ -225,6 +228,9 @@ public class WicketApplication extends WebApplication {
 			campeonato1.getJogos().add(jogo2);
 			jogo2.setTime1(time3);
 			jogo2.setTime2(time4);
+			jogo2.setPlacar1(2);
+			jogo2.setPlacar2(1);
+			jogo2.setVencedor(time3);
 			jogo2.setData(new Date(new Date().getTime() + (10 * 24 * 60 * 60 * 1000)));
 			jogoBusiness.save(jogo2);
 

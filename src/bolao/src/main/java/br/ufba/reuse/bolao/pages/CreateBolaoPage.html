@@ -2,26 +2,14 @@
 
 
 	<div class="container-fluid">
-		<h1>Bolão</h1>
+		<h1><a wicket:id="linkVoltar" ><i class="icon ion-md-backspace"></i></a>Bolão</h1>
 	</div>
 
 	<hr />
 
 	<div class="container">
 		<div class="row">
-			<div class="col-2">
-				<nav class="navbar bg-light">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" href="#">Lista Participantes</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Adicionar Placar Final</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-			<div class="col-10" style="background-color: #f2f2f2;">
+			<div class="col-12" style="background-color: #f2f2f2;">
 				<span wicket:id="feedbackPanel" style="color: red;"></span>
 				<form wicket:id="form">
 					<div class="form-group">
@@ -50,6 +38,9 @@
 						<span wicket:id="resultado" style="color: red;"></span>
 					</div>
 					<button type="submit" class="btn btn-primary">Salvar</button>
+					<button wicket:id="linkProcessarPontos" class="btn btn-warning">Processar Pontos</button>
+					<button wicket:id="linkApagarPontos" class="btn btn-danger">Apagar Pontos</button>
+					<button wicket:id="linkCancelar" class="btn btn-secondary">Cancelar</button>
 				</form>
 				<br>
 				<div class="container">
@@ -61,12 +52,14 @@
 										<th>Placar1</th>
 										<th>Placar2</th>
 										<th>Ganhador</th>
+										<th>Pontos</th>
 									</tr>
 									<tr wicket:id="listApostas">
 										<td wicket:id="apostador"></td>
 										<td wicket:id="placar1"></td>
 										<td wicket:id="placar2"></td>
 										<td wicket:id="ganhador"></td>
+										<td wicket:id="pontos"></td>
 									</tr>
 								</table>
 							</ul>

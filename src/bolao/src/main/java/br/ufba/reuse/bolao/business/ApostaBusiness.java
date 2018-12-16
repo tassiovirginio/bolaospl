@@ -2,6 +2,7 @@ package br.ufba.reuse.bolao.business;
 
 import java.util.List;
 
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +34,10 @@ public class ApostaBusiness extends BusinessGeneric<ApostaDAO, Aposta> {
 
 	public List<Aposta> listApostasDoBolao(Bolao bolao) {
 		return dao.findByCriteriaReturnList(eq("bolao", bolao));
+	}
+
+	public List<Aposta> listApostasDoBolaoOrderByPontos(Bolao bolao) {
+		return dao.findByCriteria(Order.desc("pontos"),eq("bolao", bolao));
 	}
 
 	public List<Aposta> listApostasPorJogo(Jogo jogo) {

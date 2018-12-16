@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -27,71 +28,82 @@ import br.ufba.reuse.bolao.pages.base.BasePage;
 
 @MountPath("grupo")
 public class CreateGrupoPage extends BasePage {
-    private static final long serialVersionUID = 1L;
-    
-    final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+	private static final long serialVersionUID = 1L;
 
-    @SpringBean
+	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+
+	@SpringBean
 	private GrupoBusiness grupoBusiness;
-	
+
 	@SpringBean
 	private UsuarioBusiness usuarioBusiness;
 
 	@SpringBean
 	private BolaoBusiness bolaoBusiness;
-    
+
 	private Grupo grupoSelecionado;
 
 	private Usuario usuarioSelecionado;
 
-	public CreateGrupoPage() {
-		this(null);
+	public CreateGrupoPage(WebPage paginaAnterior) {
+		this(null,paginaAnterior);
 	}
 
+	public CreateGrupoPage(Grupo grupo, WebPage paginaAnterior) {
 
-    public CreateGrupoPage(Grupo grupo) {
+		add(new Link("linkVoltar"){
+			@Override
+			public void onClick() {
+				setResponsePage(paginaAnterior);
+			}
+		});
+
 		grupoSelecionado = grupo;
 
-		if(grupoSelecionado == null){
+		if (grupoSelecionado == null) {
 			grupoSelecionado = new Grupo();
 		}
 
-    	Form form = new Form("form") {
+		Form form = new Form("form") {
 			protected void onSubmit() {
 				grupoSelecionado.setDono(usuarioLogado);
 				grupoBusiness.save(grupoSelecionado);
 				setResponsePage(new DashboardPage());
 			};
 		};
-		
-    	
-    	form.add(new TextField<String>("nome", new PropertyModel<String>(grupoSelecionado, "nome")));
+
+		form.add(new TextField<String>("nome", new PropertyModel<String>(grupoSelecionado, "nome")));
 
 		form.add(new TextField<String>("descricao", new PropertyModel<String>(grupoSelecionado, "descricao")));
-    	
-		add(form);
 
+		add(form);
 
 		Link linkCreateBolao = new Link("linkCreateBolao") {
 			@Override
 			public void onClick() {
-				setResponsePage(new CreateBolaoPage(grupoSelecionado));
+				setResponsePage(new CreateBolaoPage(grupoSelecionado,CreateGrupoPage.this));
 			}
 		};
 		add(linkCreateBolao);
 
+		List<Usuario> integrantes = grupo.getParticipantes();
 
 		List<Usuario> listUsuario = usuarioBusiness.listAll();
 
+		listUsuario.removeAll(integrantes);
+
 		ChoiceRenderer<Usuario> choiceRendererJogo = new ChoiceRenderer<Usuario>("nome", "id");
-		DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante", new PropertyModel<Usuario>(this,"usuarioSelecionado"), listUsuario, choiceRendererJogo);
+		DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante",
+				new PropertyModel<Usuario>(this, "usuarioSelecionado"), listUsuario, choiceRendererJogo);
 		choiceIntegrante.setOutputMarkupId(true);
 		choiceIntegrante.setRequired(true);
 
-		Form formUsuario = new Form("formUsuario"){
+		Form formUsuario = new Form("formUsuario") {
 			@Override
 			protected void onSubmit() {
 				grupo.getParticipantes().add(usuarioSelecionado);
+				listUsuario.remove(usuarioSelecionado);
+				choiceIntegrante.render();
 				grupoBusiness.save(grupo);
 			}
 		};
@@ -99,16 +111,15 @@ public class CreateGrupoPage extends BasePage {
 
 		add(formUsuario);
 
-		List<Usuario> integrantes = grupo.getParticipantes();
-
-		if(integrantes == null) integrantes = new ArrayList<Usuario>();
+		if (integrantes == null)
+			integrantes = new ArrayList<Usuario>();
 
 		add(new ListView<Usuario>("listIntegrantes", integrantes) {
 			@Override
 			protected void populateItem(ListItem<Usuario> item) {
 				Usuario usuario = item.getModelObject();
 				item.add(new Label("nome", usuario.getNome()));
-				Link linkRemover = new Link("remover"){
+				Link linkRemover = new Link("remover") {
 					@Override
 					public void onClick() {
 						grupo.getParticipantes().remove(usuario);
@@ -119,7 +130,6 @@ public class CreateGrupoPage extends BasePage {
 			}
 		});
 
-
 		List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
 
 		add(new ListView<Bolao>("listaBolao", listaBolao) {
@@ -129,33 +139,35 @@ public class CreateGrupoPage extends BasePage {
 				item.add(new Label("nome", bolao.getNome()));
 
 				WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
-				image1.add(new AttributeModifier("src",bolao.getJogo().getTime1().getImgUrl()));
-				image1.add(new AttributeModifier("alt",bolao.getJogo().getTime1().getNome()));
+				image1.add(new AttributeModifier("src", bolao.getJogo().getTime1().getImgUrl()));
+				image1.add(new AttributeModifier("alt", bolao.getJogo().getTime1().getNome()));
 				item.add(image1);
 
 				WebMarkupContainer image2 = new WebMarkupContainer("imgTime2");
-				image2.add(new AttributeModifier("src",bolao.getJogo().getTime2().getImgUrl()));
-				image2.add(new AttributeModifier("alt",bolao.getJogo().getTime2().getNome()));
+				image2.add(new AttributeModifier("src", bolao.getJogo().getTime2().getImgUrl()));
+				image2.add(new AttributeModifier("alt", bolao.getJogo().getTime2().getNome()));
 				item.add(image2);
 
 				item.add(new Label("apostasSize", bolao.getApostas().size()));
 
 				item.add(new Label("data", bolao.getJogo().getData()));
 
-				item.add(new Label("vencedor", bolao.getJogo().getVencedor()));
+				item.add(new Label("vencedor", bolao.getJogo().getVencedor().getNome()));
+
+				item.add(new Label("placar1", bolao.getJogo().getPlacar1()));
+
+				item.add(new Label("placar2", bolao.getJogo().getPlacar2()));
 
 				Link linkEditar = new Link("linkEditar") {
 					@Override
 					public void onClick() {
-						setResponsePage(new CreateBolaoPage(bolao,grupo));
+						setResponsePage(new CreateBolaoPage(bolao, grupo, CreateGrupoPage.this));
 					}
 				};
 				item.add(linkEditar);
 			}
 		});
 
-
-    	
-    }
+	}
 
 }

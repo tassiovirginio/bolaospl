@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.wicket.extensions.markup.html.form.DateTextField;
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -62,11 +63,20 @@ public class CreateBolaoPage extends BasePage {
 
 	private List<Jogo> jogos;
 
-	public CreateBolaoPage(Grupo grupoDoBolao) {
-		this(null, grupoDoBolao);
+	public CreateBolaoPage(Grupo grupoDoBolao, WebPage paginaAnterior) {
+		this(null, grupoDoBolao, paginaAnterior);
 	}
 
-	public CreateBolaoPage(Bolao bolao, Grupo grupoDoBolao) {
+	public CreateBolaoPage(Bolao bolao, Grupo grupoDoBolao, WebPage paginaAnterior) {
+
+		add(new Link("linkVoltar"){
+			@Override
+			public void onClick() {
+				setResponsePage(paginaAnterior);
+			}
+		});
+
+
 		this.bolaoSelecionado = bolao;
 		this.grupoDoBolao = grupoDoBolao;
 
@@ -113,7 +123,7 @@ public class CreateBolaoPage extends BasePage {
 				bolaoSelecionado.setJogo(jogoSelecionado);
 				bolaoSelecionado.setCampeonato(campeonatoSelecionado);
 				bolaoBusiness.save(bolaoSelecionado);
-				setResponsePage(new CreateGrupoPage(grupoDoBolao));
+				setResponsePage(new CreateGrupoPage(grupoDoBolao,CreateBolaoPage.this));
 			};
 		};
 
@@ -129,10 +139,36 @@ public class CreateBolaoPage extends BasePage {
 
 		if(bolaoSelecionado.getJogo().getPlacar1() != null && bolaoSelecionado.getJogo().getPlacar2() != null){
 			String resultado = bolaoSelecionado.getJogo().getPlacar1() + " x " + bolaoSelecionado.getJogo().getPlacar2();
-			form.add(new Label("resultado", "Resultado: " + resultado + " - Ganhador: " + bolaoSelecionado.getJogo().getVencedor()));
+			form.add(new Label("resultado", "Resultado: " + resultado + " - Ganhador: " + bolaoSelecionado.getJogo().getVencedor().getNome()));
 		}else{
 			form.add(new Label("resultado", "Jogo sem PLACAR FINAL !!!!"));
 		}
+
+		Link linkProcessarPontos = new Link("linkProcessarPontos") {
+			@Override
+			public void onClick() {
+				bolaoBusiness.processarPontos(bolao);
+				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+			}
+		};
+		form.add(linkProcessarPontos);
+
+		Link linkApagarPontos = new Link("linkApagarPontos") {
+			@Override
+			public void onClick() {
+				bolaoBusiness.apagarPontos(bolao);
+				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+			}
+		};
+		form.add(linkApagarPontos);
+
+		Link linkCancelar = new Link("linkCancelar") {
+			@Override
+			public void onClick() {
+				setResponsePage(paginaAnterior);
+			}
+		};
+		form.add(linkCancelar);
 
 		add(form);
 
@@ -155,6 +191,7 @@ public class CreateBolaoPage extends BasePage {
 				item.add(new Label("placar1", aposta.getPlacar01()));
 				item.add(new Label("placar2", aposta.getPlacar02()));
 				item.add(new Label("ganhador", aposta.getTimeApostado().getNome()));
+				item.add(new Label("pontos", aposta.getPontos()));
 			}
 		});
 
