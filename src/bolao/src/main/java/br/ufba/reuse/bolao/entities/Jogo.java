@@ -51,7 +51,16 @@ public class Jogo implements Serializable {
     }
 
     public Time getVencedor(){
-        return vencedor;
+        if(placar1 == null)return null;
+        if(placar2 == null)return null;
+        if(placar1 == placar2) return new Time("Empate");
+        if(placar1 > placar2){
+            vencedor = time1;
+            return time1;
+        }else{
+            vencedor = time2;
+            return time2;
+        }
     }
 
     public void setVencedor(Time vencedor){

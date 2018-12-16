@@ -38,13 +38,19 @@
 								<table wicket:id="listaBolao" class="table" style="background-color: #d9d9d9;">
 									<tr>
 										<td><b>Bolão</b>: <span wicket:id="nome">[nome]</span> </td>
-										<td><b>Apostas</b>: <span wicket:id="apostasSize"></span> </td>
+										<td><b>Apostas</b>:
+											<span wicket:id="apostasSize"></span>
+											<a wicket:id="linkApostas">
+												<i class="icon ion-md-eye"></i>
+											</a>
+										</td>
 										<td><a href="#">Editar</a> - <a href="#">Fechar</a> - <a href="#">Ranking</a></td>
 									</tr>
 									<tr>
 										<td colspan="2">
-											<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [?] x [?] <img
-											 style="height: 30px; width: auto;" wicket:id="imgTime2" /> - <b>Data</b>: <span wicket:id="data">[data]</span> - <b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
+											<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [?] x [?] <img style="height: 30px; width: auto;"
+											 wicket:id="imgTime2" /> - <b>Data</b>: <span wicket:id="data">[data]</span> - <b>Ganhador</b>: <span
+											 wicket:id="vencedor">[vencedor]</span>
 										</td>
 										<td><a wicket:id="linkApostar" href="#">Apostar</a></td>
 									</tr>

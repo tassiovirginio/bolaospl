@@ -18,11 +18,13 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import br.ufba.reuse.bolao.business.ApostaBusiness;
 import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.CampeonatoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.JogoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
+import br.ufba.reuse.bolao.entities.Aposta;
 import br.ufba.reuse.bolao.entities.Bolao;
 import br.ufba.reuse.bolao.entities.Campeonato;
 import br.ufba.reuse.bolao.entities.Grupo;
@@ -32,19 +34,22 @@ import br.ufba.reuse.bolao.pages.base.BasePage;
 
 @MountPath("bolao")
 public class CreateBolaoPage extends BasePage {
-    private static final long serialVersionUID = 1L;
-    
-    final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+	private static final long serialVersionUID = 1L;
 
-    @SpringBean
+	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+
+	@SpringBean
 	private BolaoBusiness bolaoBusiness;
-	
+
 	@SpringBean
 	private JogoBusiness jogoBusiness;
 
 	@SpringBean
+	private ApostaBusiness apostaBusiness;
+
+	@SpringBean
 	private CampeonatoBusiness campeonatoBusiness;
-    
+
 	private Bolao bolaoSelecionado;
 
 	private Grupo grupoDoBolao;
@@ -58,14 +63,14 @@ public class CreateBolaoPage extends BasePage {
 	private List<Jogo> jogos;
 
 	public CreateBolaoPage(Grupo grupoDoBolao) {
-		this(null,grupoDoBolao);
+		this(null, grupoDoBolao);
 	}
 
-    public CreateBolaoPage(Bolao bolao,Grupo grupoDoBolao) {
+	public CreateBolaoPage(Bolao bolao, Grupo grupoDoBolao) {
 		this.bolaoSelecionado = bolao;
 		this.grupoDoBolao = grupoDoBolao;
 
-		if(this.bolaoSelecionado == null){
+		if (this.bolaoSelecionado == null) {
 			this.bolaoSelecionado = new Bolao();
 		}
 
@@ -74,15 +79,15 @@ public class CreateBolaoPage extends BasePage {
 		List<Campeonato> campeonatos = campeonatoBusiness.listAll();
 
 		ChoiceRenderer<Campeonato> choiceRenderer = new ChoiceRenderer<Campeonato>("nome", "id");
-		DropDownChoice<Campeonato> choiceCampeonato = new DropDownChoice<Campeonato>("choiceCampeonato", new PropertyModel<Campeonato>(this,"campeonatoSelecionado"), campeonatos, choiceRenderer){
+		DropDownChoice<Campeonato> choiceCampeonato = new DropDownChoice<Campeonato>("choiceCampeonato",
+				new PropertyModel<Campeonato>(this, "campeonatoSelecionado"), campeonatos, choiceRenderer) {
 			@Override
 			protected void onSelectionChanged(Campeonato campeonato) {
 				super.onSelectionChanged(campeonato);
 				jogos = jogoBusiness.listBy(campeonato);
-				System.out.println(campeonato.getNome());
-				System.out.println(campeonato.getJogos().size());
 				choiceJogo.setChoices(jogos);
 			}
+
 			@Override
 			protected boolean wantOnSelectionChangedNotifications() {
 				return true;
@@ -91,17 +96,17 @@ public class CreateBolaoPage extends BasePage {
 		choiceCampeonato.setOutputMarkupId(true);
 		choiceCampeonato.setRequired(true);
 
-		if(jogos == null){
+		if (jogos == null) {
 			jogos = new ArrayList<>();
 		}
-		
+
 		ChoiceRenderer<Jogo> choiceRendererJogo = new ChoiceRenderer<Jogo>("nome", "id");
-		choiceJogo = new DropDownChoice<Jogo>("choiceJogo", new PropertyModel<Jogo>(this,"jogoSelecionado"), jogos, choiceRendererJogo);
+		choiceJogo = new DropDownChoice<Jogo>("choiceJogo", new PropertyModel<Jogo>(this, "jogoSelecionado"), jogos,
+				choiceRendererJogo);
 		choiceJogo.setOutputMarkupId(true);
 		choiceJogo.setRequired(true);
 
-
-    	Form form = new Form("form") {
+		Form form = new Form("form") {
 			protected void onSubmit() {
 				bolaoSelecionado.setGrupo(grupoDoBolao);
 				bolaoSelecionado.setCriacao(new Date());
@@ -111,9 +116,8 @@ public class CreateBolaoPage extends BasePage {
 				setResponsePage(new CreateGrupoPage(grupoDoBolao));
 			};
 		};
-    	
+
 		form.add(new TextField<String>("nome", new PropertyModel<>(bolaoSelecionado, "nome")).setRequired(true));
-		
 
 		DateTextField dateTextField = new DateTextField("dataFechamento", "dd/MM/yyyy");
 		dateTextField.setRequired(true);
@@ -122,9 +126,38 @@ public class CreateBolaoPage extends BasePage {
 		form.add(dateTextField);
 		form.add(choiceCampeonato);
 		form.add(choiceJogo);
-		
+
+		if(bolaoSelecionado.getJogo().getPlacar1() != null && bolaoSelecionado.getJogo().getPlacar2() != null){
+			String resultado = bolaoSelecionado.getJogo().getPlacar1() + " x " + bolaoSelecionado.getJogo().getPlacar2();
+			form.add(new Label("resultado", "Resultado: " + resultado + " - Ganhador: " + bolaoSelecionado.getJogo().getVencedor()));
+		}else{
+			form.add(new Label("resultado", "Jogo sem PLACAR FINAL !!!!"));
+		}
+
 		add(form);
-    	
-    }
+
+		if (this.bolaoSelecionado != null) {
+			this.campeonatoSelecionado = bolao.getCampeonato();
+			jogos = jogoBusiness.listBy(this.campeonatoSelecionado);
+			choiceJogo.setChoices(jogos);
+			this.jogoSelecionado = bolao.getJogo();
+		}
+
+		List<Aposta> listApostas = apostaBusiness.listApostasDoBolao(bolao);
+
+		add(new ListView<Aposta>("listApostas", listApostas) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void populateItem(ListItem<Aposta> item) {
+				Aposta aposta = item.getModelObject();
+				item.add(new Label("apostador", aposta.getApostador().getNome()));
+				item.add(new Label("placar1", aposta.getPlacar01()));
+				item.add(new Label("placar2", aposta.getPlacar02()));
+				item.add(new Label("ganhador", aposta.getTimeApostado().getNome()));
+			}
+		});
+
+	}
 
 }

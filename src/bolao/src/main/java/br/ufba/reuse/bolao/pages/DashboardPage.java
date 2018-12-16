@@ -89,6 +89,13 @@ public class DashboardPage extends BasePage {
 
 						item.add(new Label("apostasSize", bolao.getApostas().size()));
 
+						item.add( new Link("linkApostas") {
+							@Override
+							public void onClick() {
+								setResponsePage(new ListApostaPage(bolao));
+							}
+						});
+
 						item.add(new Label("data", bolao.getJogo().getData()));
 
 						item.add(new Label("vencedor", bolao.getJogo().getVencedor()));

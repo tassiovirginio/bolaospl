@@ -46,9 +46,35 @@
 							<option>Bahia x Vitoria (05/01/2019)</option>
 						</select>
 					</div>
+					<div class="form-group">
+						<span wicket:id="resultado" style="color: red;"></span>
+					</div>
 					<button type="submit" class="btn btn-primary">Salvar</button>
 				</form>
+				<br>
+				<div class="container">
+						<div class="row">
+							<ul>
+								<table class="table">
+									<tr>
+										<th>Apostador</th>
+										<th>Placar1</th>
+										<th>Placar2</th>
+										<th>Ganhador</th>
+									</tr>
+									<tr wicket:id="listApostas">
+										<td wicket:id="apostador"></td>
+										<td wicket:id="placar1"></td>
+										<td wicket:id="placar2"></td>
+										<td wicket:id="ganhador"></td>
+									</tr>
+								</table>
+							</ul>
+						</div>
+					</div>
 			</div>
+			<hr />
+			
 		</div>
 	</div>
 

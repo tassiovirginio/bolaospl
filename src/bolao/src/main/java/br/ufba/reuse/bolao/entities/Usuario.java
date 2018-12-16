@@ -26,6 +26,16 @@ public class Usuario implements Serializable {
     
     @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Grupo> grupos;
+
+    private Boolean admin;
+
+    public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
     
     public List<Grupo> getGrupos() {
     	if(grupos == null) grupos = new ArrayList<>();

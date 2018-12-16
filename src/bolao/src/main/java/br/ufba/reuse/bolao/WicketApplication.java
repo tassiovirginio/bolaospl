@@ -144,6 +144,7 @@ public class WicketApplication extends WebApplication {
 			uAdmin.setSenha("admin");
 			uAdmin.setCelular("99 9999-9999");
 			uAdmin.setNome("Administrador");
+			uAdmin.setAdmin(true);
 			usuarioBusiness.save(uAdmin);
 
 			Usuario u1 = new Usuario();
@@ -151,6 +152,7 @@ public class WicketApplication extends WebApplication {
 			u1.setSenha("usuario1");
 			u1.setCelular("99 9999-9999");
 			u1.setNome("Usuario1");
+			uAdmin.setAdmin(false);
 			usuarioBusiness.save(u1);
 
 			Usuario u2 = new Usuario();

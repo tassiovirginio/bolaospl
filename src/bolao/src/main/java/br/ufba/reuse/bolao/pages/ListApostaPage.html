@@ -1,0 +1,26 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+    <div class="container-fluid">
+        <h1>Apostas</h1>
+    </div>
+    <hr />
+    <div class="container">
+            <div class="row">
+                <ul>
+                   <table class="table">
+                       <tr>
+                           <th>apostador</th>
+                           <th>placar1</th>
+                           <th>placar2</th>
+                           <th>ganhador</th>
+                       </tr>
+                       <tr wicket:id="listApostas">
+                            <td wicket:id="apostador"></td>
+                            <td wicket:id="placar1"></td>
+                            <td wicket:id="placar2"></td>
+                            <td wicket:id="ganhador"></td>
+                       </tr>
+                   </table>
+                </ul>
+            </div>
+        </div>
+</wicket:extend>

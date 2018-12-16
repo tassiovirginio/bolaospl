@@ -33,7 +33,6 @@ public class Bolao implements Serializable {
     private Date criacao;
     
     private Date fechamento;
-    
 
 	public void setId(Long id) {
         this.id = id;

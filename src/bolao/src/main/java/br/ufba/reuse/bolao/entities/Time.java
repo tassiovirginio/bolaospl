@@ -21,6 +21,12 @@ public class Time implements Serializable {
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL},  mappedBy="times")
     private List<Campeonato> campeonatos;
 
+    public Time(){}
+
+    public Time(String nome){
+        this.nome = nome;
+    }
+
     public List<Campeonato> getCampeonatos() {
     	if(campeonatos == null) campeonatos = new ArrayList<Campeonato>();
 		return campeonatos;
