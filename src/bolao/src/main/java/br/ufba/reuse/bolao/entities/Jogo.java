@@ -29,6 +29,7 @@ public class Jogo implements Serializable {
 
     private Integer placar2;
 
+    @ManyToOne
     private Time vencedor;
     
     @ManyToOne
