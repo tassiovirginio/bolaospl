@@ -1,4 +1,4 @@
-<img src="https://github.com/tassiovirginio/bolaospl/blob/master/images/logo.jpg" width="100"/>
+<img src="https://github.com/tassiovirginio/bolaospl/blob/master/images/logo.png" width="100"/>
 
 # SISBOLAO Project
 	
