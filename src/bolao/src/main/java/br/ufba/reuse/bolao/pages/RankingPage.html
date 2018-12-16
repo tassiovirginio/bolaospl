@@ -1,9 +1,17 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-<br>
-<br>
-<div style="border: 3px;">
-    <h1>Ranking</h1>
-    <br/>
-</div>
+    <div class="container-fluid">
+        <h1>Ranking Geral</h1>
+    </div>
+    <hr />
 
+    <div class="container">
+        <div class="col-12" style="background-color: #f2f2f2; color: red;">
+            <ul>
+                <li wicket:id="listApostas">
+                    <span wicket:id="nome"></span> - <span wicket:id="pontos"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
 </wicket:extend>

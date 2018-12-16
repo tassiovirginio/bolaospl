@@ -1,17 +1,15 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
     <div class="container-fluid">
-        <h1>Ranking Bolão</h1>
+        <h1>Ranking Bolão:</h1> <span wicket:id="bolao"></span>
     </div>
     <hr />
 
     <div class="container">
         <div class="col-12" style="background-color: #f2f2f2; color: red;">
             <ul>
-                <li>Usuario 1 - 10 pontos</li>
-                <li>Usuario 2 - 9 pontos</li>
-                <li>Usuario 3 - 8 pontos</li>
-                <li>Usuario 4 - 7 pontos</li>
-                <li>Usuario 5 - 6 pontos</li>
+                <li wicket:id="listApostas">
+                    <span wicket:id="nome"></span> - <span wicket:id="pontos"></span>
+                </li>
             </ul>
         </div>
     </div>
