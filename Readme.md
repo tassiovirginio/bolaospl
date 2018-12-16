@@ -1,10 +1,10 @@
 <img src="https://raw.githubusercontent.com/tassiovirginio/bolaospl/master/src/bolao/src/main/webapp/img/logo.png" width="100"/>
 
-# Projeto SISBOLAO 
+# SISBOLAO Project
 	
-	É um projeto de linha de produto de software de Bolão.
+	It is a software product line project of Bolão.
 
-### Desenvolvedores: 
+### Developers: 
 
  - Douglésia Thiália dos Santos Rocha
  - Fernando Cezar R. Borges
@@ -18,7 +18,7 @@
 ---
 
 
-Pré-requisitos: 
+Prerequisite: 
  - ter o JDK 8 instalado [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
  - Gradle 5 [download](https://gradle.org/install/) *
  - ou o Maven 3 [download](https://maven.apache.org/download.cgi)
