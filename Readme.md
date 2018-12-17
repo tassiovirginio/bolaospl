@@ -21,11 +21,11 @@
 ### Prerequisite: 
  - have JDK 8 installed [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
  - Gradle 5 [download](https://gradle.org/install/) *
- - or o Maven 3 [download](https://maven.apache.org/download.cgi)
+ - or Maven 3 [download](https://maven.apache.org/download.cgi)
  
 The system runs with Maven and Gradle.
 
-**Tip: Use the Gradle.*
+**Tip: Always use Gradle.*
 
 ---
 
@@ -33,11 +33,11 @@ The system runs with Maven and Gradle.
 
 to do the eclipse configuration:
 
-	gredle eclipse
+	gradle eclipse
 
 to run the system:
 
-	gredle appRun
+	gradle appRun
 
 ---
 
