@@ -30,7 +30,7 @@ public class BasePage extends WebPage {
 
         add(linkDetalhes);
     	
-    	//#if Ranking
+    	//#ifdef Ranking
     	add(new Link("linkRanking") {
             @Override
             public void onClick() {
