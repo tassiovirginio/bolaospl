@@ -19,35 +19,35 @@
 
 
 ### Prerequisite: 
- - ter o JDK 8 instalado [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
+ - have JDK 8 installed [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
  - Gradle 5 [download](https://gradle.org/install/) *
- - ou o Maven 3 [download](https://maven.apache.org/download.cgi)
+ - or Maven 3 [download](https://maven.apache.org/download.cgi)
  
-O sistema roda com o maven e com o gradle.
+The system runs with Maven and Gradle.
 
-**Sugiro utilizar o Grade.*
-
----
-
-### Tutorial Gradle:
-
-para fazer a configuração do eclipse:
-
-	gredle eclipse
-
-para rodar o sistema:
-
-	gredle appRun
+**Tip: Always use Gradle.*
 
 ---
 
-### Tutorial Maven:
+### Gradle Tutorial:
 
-para configurar as dependencias do maven no eclipse.
+to do the eclipse configuration:
+
+	gradle eclipse
+
+to run the system:
+
+	gradle appRun
+
+---
+
+### Maven Tutorial:
+
+to configure the Maven dependencies in Eclipse.
 
 	mvn eclipse:eclipse
 
-configurar o source do projeto no eclipse.
+to configure the project source in Eclipse.
 
 	Properties -> Java Build Path -> Source add (src/bolao/src/main/java)
 
