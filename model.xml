@@ -9,32 +9,32 @@
                 <feature mandatory="true" name="RecoverPassword"/>
                 <alt mandatory="true" name="DataBase">
                     <feature name="H2"/>
-                    <feature name="MYSQL"/>
-                    <feature name="HSQLBD"/>
+                    <feature name="MySql"/>
+                    <feature name="HSBD"/>
                 </alt>
             </and>
             <or mandatory="true" name="Championships">
-                <and name="Cup">
+                <alt name="Cup">
                     <feature name="GroupStage"/>
                     <feature name="PhaseKills"/>
-                </and>
+                </alt>
                 <feature name="RunningPoints"/>
             </or>
             <and mandatory="true" name="Sweepstakes">
                 <and mandatory="true" name="Betting">
-                    <and mandatory="true" name="Winner">
+                    <alt mandatory="true" name="Winner">
                         <feature name="WinnerScore"/>
                         <feature name="TimeWinner"/>
-                    </and>
+                    </alt>
                     <feature mandatory="true" name="Scoreboard"/>
                 </and>
                 <feature mandatory="true" name="Results"/>
                 <feature name="SpecificRanking"/>
                 <feature mandatory="true" name="Members"/>
-                <and name="Awards">
+                <alt name="Awards">
                     <feature name="Online"/>
                     <feature name="Offline"/>
-                </and>
+                </alt>
             </and>
             <feature mandatory="true" name="Ranking"/>
             <and name="Financial">

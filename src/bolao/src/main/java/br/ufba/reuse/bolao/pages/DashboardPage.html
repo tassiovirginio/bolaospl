@@ -2,43 +2,7 @@
 
 	<!-- Infomrções do sistema -->
 	<div class="row">
-		<div class="col-lg-3 col-md-6">
-			<div class="card">
-				<div class="card-body">
-					<div class="stat-widget-five">
-						<div class="stat-icon dib flat-color-1">
-							<i class="pe-7s-cash"></i>
-						</div>
-						<div class="stat-content">
-							<div class="text-left dib">
-								<div class="stat-text">$<span class="count">23569</span></div>
-									<div class="stat-heading">Revenue</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-3 col-md-6">
-			<div class="card">
-				<div class="card-body">
-					<div class="stat-widget-five">
-						<div class="stat-icon dib flat-color-2">
-							<i class="pe-7s-cart"></i>
-						</div>
-						<div class="stat-content">
-							<div class="text-left dib">
-								<div class="stat-text"><span class="count">3435</span></div>
-								<div class="stat-heading">Sales</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="col-lg-3 col-md-6">
+		<div class="col-lg-3 col-md-4">
 			<div class="card">
 				<div class="card-body">
 					<div class="stat-widget-five">
@@ -48,7 +12,7 @@
 						<div class="stat-content">
 							<div class="text-left dib">
 								<div class="stat-text"><span class="count">349</span></div>
-								<div class="stat-heading">Templates</div>
+								<div class="stat-heading">Sweepstakes</div>
 							</div>
 						</div>
 					</div>
@@ -56,7 +20,29 @@
 			</div>
 		</div>
 
-		<div class="col-lg-3 col-md-6">
+		<div class="col-lg-3 col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-2">
+							<i class="pe-7s-ribbon"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text">
+									<span class="count">2986</span>
+								</div>
+								<div class="stat-heading">
+									Bets
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-md-4">
 			<div class="card">
 				<div class="card-body">
 					<div class="stat-widget-five">
@@ -73,11 +59,26 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-lg-3 col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-1">
+							<i class="pe-7s-cash"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text">$<span class="count">23569</span></div>
+								<div class="stat-heading">Points</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- /Widgets -->
 	<!--  Traffic  -->
-
-
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -86,83 +87,80 @@
 					<h4 class="box-title">Dashboard </h4>
 				</div>
 				<div class="row">
+
 					<div class="col-lg-12">
 						<div class="card-body">
 							<!-- corpo aqui -->
+
 							<div class="col-12">
-								<div class="col-12" align="right">
+								<div align="right">
 									<a wicket:id="criaGrupo" class="btn btn-primary" href="#" role="button">Create group</a>
 								</div>
 								<br>
-								<!-- teste -->
-								<div class="col-lg-12">
-									<div class="card">
-										<div class="card-header">
-											<strong class="card-title">Grupos</strong>
-										</div>
-										<div class="card-body">
-											<div wicket:id="listGrupo" class="card-body col-12">
-
+								<!-- Primeiro card -->
+								<div wicket:id="listGrupo" class="card">
+									<div class="card-header">
+										<strong class="card-title">
+											Grupo: <span wicket:id="nome"></span>
+											(Dono: <span wicket:id="dono"></span>)
+											- Integrantes:
+											<span wicket:id="size"></span>
+											<div align="right">
+												<a wicket:id="linkGrupo"   href="#">
+													editar
+												</a>
+											</div>
+										</strong>
+									</div>
+									<div wicket:id="listaBolao" class="card-body">
+										<!-- Card menores -->
+										<div class="col-md-12">
+											<div class="card">
 												<div class="card-header">
 													<strong class="card-title">
-														Grupo: <span wicket:id="nome"></span>
-														(Dono: <span wicket:id="dono"></span>)
-														- Integrantes:
-														<span wicket:id="size"></span>
-														<div align="right">
-															<a wicket:id="linkGrupo"   href="#">
-																editar
-															</a>
-														</div>
+														<span wicket:id="nome">[nome]</span> <!--nome do bolão-->
+														<small>
+															<span wicket:id="lbProcessado" class="badge badge-success float-right mt-1">Processado</span>
+															<span wicket:id="lbAguardando" class="badge badge-danger float-right mt-1">Aguardanddo</span>
+														</small>
 													</strong>
 												</div>
+												<div class="card-body">
+													<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
 
-												<table class="table" >
-													<tr>
-														<td colspan="2">
-															<table wicket:id="listaBolao" class="table" >
-																<tr>
-																	<td>
-																		<b>Bolão</b>: <span wicket:id="nome">[nome]</span>
-																	</td>
-																	<td><b>Apostas</b>:
-																		<span wicket:id="apostasSize"></span>
-																		<a wicket:id="linkApostas">
-																			(-)
-																		</a>
-																	</td>
-																	<td style="text-align: right;">
-																		<a class="btn btn-warning btn-sm" wicket:id="linkRanking" href="#">Ranking</a>
-																		<a class="btn btn-primary btn-sm" wicket:id="linkApostar" href="#">Apostar</a>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [<span wicket:id="placar1"></span>] x [<span
-																			wicket:id="placar2"></span>] <img style="height: 30px; width: auto;" wicket:id="imgTime2" />
-																		<span wicket:id="lbProcessado" class="badge badge-success">Processado</span>
-																		<span wicket:id="lbAguardando" class="badge badge-danger">Aguardanddo</span>
-																	</td>
-																	<td>
-																		<b>Data</b>:
-																		<span wicket:id="data">[data]</span>
-																	</td>
-																	<td>
-																		<b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
-																	</td>
-																</tr>
-															</table>
-														</td>
-													</tr>
-												</table>
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-4" style="">
+																<img style="height: 30px; width: auto;" wicket:id="imgTime1" />
+																[<span wicket:id="placar1"></span>] x [<span wicket:id="placar2"></span>]
+																<img style="height: 30px; width: auto;" wicket:id="imgTime2" />
+																<br>
+																<b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
+
+															</div>
+															<div class="col-sm-4" style="">
+																<span wicket:id="data">[data]</span>
+																<br> Apostas:
+																<span wicket:id="apostasSize"></span>
+																<a wicket:id="linkApostas">
+																	(-)
+																</a>
+															</div>
+															<div align="right" class="col-sm-4">
+
+																<a class="btn btn-warning btn-sm" wicket:id="linkRanking" href="#">Ranking</a>
+																<a class="btn btn-primary btn-sm" wicket:id="linkApostar" href="#">Apostar</a>
+															</div>
+														</div>
+													</div>
+												</div>
+
 											</div>
 										</div>
+										<!-- Fim dos Card menores -->
 									</div>
 								</div>
-								<!--teste-->
-
-
-
+								<!-- Primeiro card -->
 							</div>
 							<!-- finaliza corpo -->
 						</div>
