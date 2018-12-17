@@ -14,10 +14,10 @@
                 </alt>
             </and>
             <or mandatory="true" name="Championships">
-                <and name="Cup">
+                <alt name="Cup">
                     <feature name="GroupStage"/>
                     <feature name="PhaseKills"/>
-                </and>
+                </alt>
                 <feature name="RunningPoints"/>
             </or>
             <and mandatory="true" name="Sweepstakes">
@@ -31,10 +31,10 @@
                 <feature mandatory="true" name="Results"/>
                 <feature name="SpecificRanking"/>
                 <feature mandatory="true" name="Members"/>
-                <and name="Awards">
+                <alt name="Awards">
                     <feature name="Online"/>
                     <feature name="Offline"/>
-                </and>
+                </alt>
             </and>
             <feature mandatory="true" name="Ranking"/>
             <and name="Financial">
