@@ -22,10 +22,10 @@
             </or>
             <and mandatory="true" name="Sweepstakes">
                 <and mandatory="true" name="Betting">
-                    <and mandatory="true" name="Winner">
+                    <alt mandatory="true" name="Winner">
                         <feature name="WinnerScore"/>
                         <feature name="TimeWinner"/>
-                    </and>
+                    </alt>
                     <feature mandatory="true" name="Scoreboard"/>
                 </and>
                 <feature mandatory="true" name="Results"/>
