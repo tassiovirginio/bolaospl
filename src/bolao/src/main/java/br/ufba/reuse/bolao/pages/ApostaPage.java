@@ -27,12 +27,15 @@ public class ApostaPage extends BasePage {
 
 	private Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
 
+	//#ifdef WinnerScore
 	private String placar1;
-
 	private String placar2;
+	//#endif
 
+	//#ifdef TimeWinner
 	private Time vencedor;
-
+	//#endif
+	
 	@SpringBean
 	private ApostaBusiness apostaBusiness;
 
@@ -57,9 +60,13 @@ public class ApostaPage extends BasePage {
 				aposta.setApostador(usuarioLogado);
 				aposta.setBolao(bolao);
 				aposta.setJogo(bolao.getJogo());
+				//#ifdef WinnerScore
 				aposta.setPlacar01(Integer.parseInt(placar1));
 				aposta.setPlacar02(Integer.parseInt(placar2));
+				//#endif
+				//#ifdef TimeWinner
 				aposta.setTimeApostado(vencedor);
+				//#endif
 				bolao.getApostas().add(aposta);
 				apostaBusiness.save(aposta);
 				bolaoBusiness.save(bolao);
@@ -71,19 +78,21 @@ public class ApostaPage extends BasePage {
 		form.add(image1);
 		form.add(image2);
 
+		//#ifdef WinnerScore
 		form.add(new TextField<String>("placar1", new PropertyModel<String>(this, "placar1")));
 		form.add(new TextField<String>("placar2", new PropertyModel<String>(this, "placar2")));
+		//#endif
 
+		//#ifdef TimeWinner
 		List<Time> timesJogo = new ArrayList<>();
 		timesJogo.add(bolao.getJogo().getTime1());
 		timesJogo.add(bolao.getJogo().getTime2());
-		
 		ChoiceRenderer<Time> choice = new ChoiceRenderer<Time>("nome", "id");
 		DropDownChoice<Time> choiceTime = new DropDownChoice<Time>("vencedor", new PropertyModel<Time>(this,"vencedor"), timesJogo, choice);
 		choiceTime.setOutputMarkupId(true);
 		choiceTime.setRequired(true);
-
 		form.add(choiceTime);
+		//#endif
 
 		add(form);
 

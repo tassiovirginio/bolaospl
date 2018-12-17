@@ -86,13 +86,15 @@ public class WicketApplication extends WebApplication {
 		String root = this.getServletContext().getRealPath("/");
 		File file = new File(root);
 		file = file.getParentFile().getParentFile();// .getParentFile();
-		root = file.getAbsolutePath() + "/target/classes";
+//		root = file.getAbsolutePath() + "/target/classes"; //Maven
+		root = file.getAbsolutePath() + "/build"; //Gradle
 		System.out.println("clearCommentsHtml: " + root);
 		listFilesAndFilesSubDirectories(root);
 	}
 
 	public void listFilesAndFilesSubDirectories(String directoryName) {
 		File directory = new File(directoryName);
+		System.out.println("---------> " + directoryName);
 		File[] fList = directory.listFiles();
 		for (File file : fList) {
 			if (file.isFile()) {

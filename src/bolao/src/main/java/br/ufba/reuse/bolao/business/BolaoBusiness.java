@@ -47,15 +47,19 @@ public class BolaoBusiness extends BusinessGeneric<BolaoDAO, Bolao> {
 		Jogo jogo = bolao.getJogo();
 		List<Aposta> apostas = bolao.getApostas();
 		for(Aposta aposta:apostas){
+			//#ifdef WinnerScore
 			if(aposta.getPlacar01().equals(jogo.getPlacar1())){
 				aposta.setPontos(aposta.getPontos() + 5);
 			}
 			if(aposta.getPlacar02().equals(jogo.getPlacar2())){
 				aposta.setPontos(aposta.getPontos() + 5);
 			}
+			//#endif
+			//#ifdef TimeWinner
 			if(aposta.getTimeApostado().equals(jogo.getVencedor())){
 				aposta.setPontos(aposta.getPontos() + 5);
 			}
+			//#endif
 			apostaBusiness.save(aposta);
 		}
 		bolao.setProcessado(new Date());

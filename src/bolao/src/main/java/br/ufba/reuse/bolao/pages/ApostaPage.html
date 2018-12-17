@@ -1,43 +1,75 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-    <div class="container-fluid">
-        <h1>Aposta</h1>
-    </div>
-    <hr />
+	<div class="container-fluid">
+		<h1>Aposta</h1>
+	</div>
+	<hr />
 
-    <div class="container">
-        <div class="col-12" style="background-color: #f2f2f2; color: red;">
-            <ul>
-                <li>Acerta a quantidades de gols do time1 = 5 pontos.</li>
-                <li>Acerta a quantidades de gols do time2 = 5 pontos.</li>
-                <li>Acerta o time ganhador = 5 pontos.</li>
-            </ul>
-        </div>
-    </div>
-    <hr />
-    <div class="container">
-        <div class="col-12" style="background-color: #f2f2f2;">
-            <br>
-            <form class="form" wicket:id="form">
-                <div class="form-group">
-                    <div class="input-group">
-                        <img wicket:id="imgTime1" style="width: 30px; height: 30px;" />
-                        <input class="form-control" style="width: 30px;" wicket:id="placar1" type="text" max="2"
-                            maxlength="2" size="3" /> x
-                        <input class="form-control" style="width: 30px;" wicket:id="placar2" type="text" max="2"
-                            maxlength="2" size="3" />
-                        <img wicket:id="imgTime2" style="width: 30px; height: 30px;" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    Ganhador: <select wicket:id="vencedor" class="form-control">
-                        <option>Time1</option>
-                        <option>Time2</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="btn btn-success" type="submit" value="apostar" />
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="container">
+		<div class="col-12" style="background-color: #f2f2f2; color: red;">
+			<ul>
+				<!--
+            	//#ifdef WinnerScore
+            	-->
+				<li>Acerta a quantidades de gols do time1 = 5 pontos.</li>
+				<li>Acerta a quantidades de gols do time2 = 5 pontos.</li>
+				<!--
+                //#endif
+                -->
+				<!--
+            	//#ifdef TimeWinner
+            	-->
+				<li>Acerta o time ganhador = 5 pontos.</li>
+				<!--
+                //#endif
+                -->
+			</ul>
+		</div>
+	</div>
+	<hr />
+	<div class="container">
+		<div class="col-12" style="background-color: #f2f2f2;">
+			<br>
+			<form class="form" wicket:id="form">
+
+				<div class="form-group">
+					<div class="input-group">
+						<img wicket:id="imgTime1" style="width: 30px; height: 30px;" />
+						<!--
+            	//#ifdef WinnerScore
+            	-->
+						<input class="form-control" style="width: 30px;"
+							wicket:id="placar1" type="text" max="2" maxlength="2" size="3" />
+						<!--
+                //#endif
+                -->
+						x
+						<!--
+            	//#ifdef WinnerScore
+            	--> 
+						<input class="form-control" style="width: 30px;" wicket:id="placar2" type="text" max="2" maxlength="2" size="3" />
+						<!--
+                //#endif
+                -->
+						<img wicket:id="imgTime2" style="width: 30px; height: 30px;" />
+					</div>
+				</div>
+
+				<!--
+            	//#ifdef TimeWinner
+            	-->
+				<div class="form-group">
+					Ganhador: <select wicket:id="vencedor" class="form-control">
+						<option>Time1</option>
+						<option>Time2</option>
+					</select>
+				</div>
+				<!--
+                //#endif
+                -->
+				<div class="form-group">
+					<input class="btn btn-success" type="submit" value="apostar" />
+				</div>
+			</form>
+		</div>
+	</div>
 </wicket:extend>

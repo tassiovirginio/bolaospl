@@ -41,7 +41,7 @@ targetCompatibility = '1.8'
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-project.webAppDirName = 'src/bolao/src/main/webapp'
+project.webAppDirName = 'src/main/webapp'
 
 gretty {
   httpPort = 8081
@@ -52,12 +52,12 @@ gretty {
 sourceSets {
     main {
         java {
-            srcDir "src/bolao/src/main/java"
+            srcDir "src/main/java"
         }
         resources {
-            srcDir 'src/bolao/src/main/resources'
-            srcDir 'src/bolao/src/main/webapp'
-            srcDir "src/bolao/src/main/java"
+            srcDir 'src/main/resources'
+            srcDir 'src/main/webapp'
+            srcDir "src/main/java"
         }
     }
 }
@@ -65,7 +65,7 @@ sourceSets {
 task moveHtml {
     println "Movendo HTML"
     copy {
-            from 'src/bolao/src/main/java'
+            from 'src/main/java'
             into "build/classes/java/main"
             include '**/*.html'
         }

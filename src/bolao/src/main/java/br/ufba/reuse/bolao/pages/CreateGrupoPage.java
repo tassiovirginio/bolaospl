@@ -59,7 +59,6 @@ public class CreateGrupoPage extends BasePage {
 		});
 
 		grupoSelecionado = grupo;
-
 		if (grupoSelecionado == null) {
 			grupoSelecionado = new Grupo();
 		}
@@ -86,7 +85,7 @@ public class CreateGrupoPage extends BasePage {
 		};
 		add(linkCreateBolao);
 
-		List<Usuario> integrantes = grupo.getParticipantes();
+		List<Usuario> integrantes = grupoSelecionado.getParticipantes();
 
 		List<Usuario> listUsuario = usuarioBusiness.listAll();
 
@@ -101,10 +100,10 @@ public class CreateGrupoPage extends BasePage {
 		Form formUsuario = new Form("formUsuario") {
 			@Override
 			protected void onSubmit() {
-				grupo.getParticipantes().add(usuarioSelecionado);
+				grupoSelecionado.getParticipantes().add(usuarioSelecionado);
 				listUsuario.remove(usuarioSelecionado);
 				choiceIntegrante.render();
-				grupoBusiness.save(grupo);
+				grupoBusiness.save(grupoSelecionado);
 			}
 		};
 		formUsuario.add(choiceIntegrante);
@@ -122,15 +121,15 @@ public class CreateGrupoPage extends BasePage {
 				Link linkRemover = new Link("remover") {
 					@Override
 					public void onClick() {
-						grupo.getParticipantes().remove(usuario);
-						grupoBusiness.save(grupo);
+						grupoSelecionado.getParticipantes().remove(usuario);
+						grupoBusiness.save(grupoSelecionado);
 					}
 				};
 				item.add(linkRemover);
 			}
 		});
 
-		List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
+		List<Bolao> listaBolao = bolaoBusiness.listBy(grupoSelecionado);
 
 		add(new ListView<Bolao>("listaBolao", listaBolao) {
 			@Override
@@ -161,7 +160,7 @@ public class CreateGrupoPage extends BasePage {
 				Link linkEditar = new Link("linkEditar") {
 					@Override
 					public void onClick() {
-						setResponsePage(new CreateBolaoPage(bolao, grupo, CreateGrupoPage.this));
+						setResponsePage(new CreateBolaoPage(bolao, grupoSelecionado, CreateGrupoPage.this));
 					}
 				};
 				item.add(linkEditar);

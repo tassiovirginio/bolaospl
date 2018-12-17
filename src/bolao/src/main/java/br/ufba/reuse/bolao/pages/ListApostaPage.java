@@ -45,9 +45,13 @@ public class ListApostaPage extends BasePage {
 			protected void populateItem(ListItem<Aposta> item) {
 				Aposta aposta = item.getModelObject();
 				item.add(new Label("apostador", aposta.getApostador().getNome()));
+				//#ifdef WinnerScore
 				item.add(new Label("placar1", aposta.getPlacar01()));
 				item.add(new Label("placar2", aposta.getPlacar02()));
+				//#endif
+				//#ifdef TimeWinner
 				item.add(new Label("ganhador", aposta.getTimeApostado().getNome()));
+				//#endif
 			}
         });
 

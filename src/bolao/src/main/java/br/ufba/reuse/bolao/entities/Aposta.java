@@ -15,12 +15,15 @@ public class Aposta implements Serializable {
     @ManyToOne
     private Jogo jogo;
     
+    //#ifdef WinnerScore
     private Integer placar01;
-    
     private Integer placar02;
+    //#endif
     
+    //#ifdef TimeWinner
     @ManyToOne
     private Time timeApostado;
+    //#endif
     
     @ManyToOne
     private Bolao bolao;
@@ -70,6 +73,7 @@ public class Aposta implements Serializable {
 		this.jogo = jogo;
 	}
 	
+	//#ifdef WinnerScore
 	public Integer getPlacar01() {
 		return placar01;
 	}
@@ -85,7 +89,9 @@ public class Aposta implements Serializable {
 	public void setPlacar02(Integer placar02) {
 		this.placar02 = placar02;
 	}
+	//#endif
 
+	//#ifdef TimeWinner
 	public Time getTimeApostado() {
 		return timeApostado;
 	}
@@ -93,6 +99,7 @@ public class Aposta implements Serializable {
 	public void setTimeApostado(Time timeApostado) {
 		this.timeApostado = timeApostado;
 	}
+	//#endif
 
 	public void setId(Long id) {
         this.id = id;

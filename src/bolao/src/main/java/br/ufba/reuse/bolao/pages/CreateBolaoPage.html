@@ -49,16 +49,40 @@
 								<table class="table">
 									<tr>
 										<th>Apostador</th>
+										<!--
+			                            //#ifdef WinnerScore
+			                             -->
 										<th>Placar1</th>
 										<th>Placar2</th>
+										<!--
+			                            //#endif
+			                            -->
+			                            <!--
+										//#ifdef TimeWinner
+										-->
 										<th>Ganhador</th>
+										<!--
+			                            //#endif
+			                            -->
 										<th>Pontos</th>
 									</tr>
 									<tr wicket:id="listApostas">
 										<td wicket:id="apostador"></td>
+										<!--
+			                            //#ifdef WinnerScore
+			                             -->
 										<td wicket:id="placar1"></td>
 										<td wicket:id="placar2"></td>
+										<!--
+			                            //#endif
+			                            -->
+			                            <!--
+										//#ifdef TimeWinner
+										-->
 										<td wicket:id="ganhador"></td>
+										<!--
+			                            //#endif
+			                            -->
 										<td wicket:id="pontos"></td>
 									</tr>
 								</table>

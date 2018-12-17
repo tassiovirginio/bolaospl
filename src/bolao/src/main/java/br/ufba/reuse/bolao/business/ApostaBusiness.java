@@ -24,9 +24,11 @@ public class ApostaBusiness extends BusinessGeneric<ApostaDAO, Aposta> {
 		return dao.findByCriteriaReturnList(eq("apostador", user));
 	}
 
+	//#ifdef TimeWinner
 	public List<Aposta> listApostasPorTime(Time time) {
 		return dao.findByCriteriaReturnList(eq("timeApostado", time));
 	}
+	//#endif
 
 	public List<Aposta> listApostasUsuarioBolao(Usuario user, Bolao bolao) {
 		return dao.findByCriteriaReturnList(eq("bolao", bolao),eq("apostador",user));

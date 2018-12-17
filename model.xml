@@ -9,8 +9,8 @@
                 <feature mandatory="true" name="RecoverPassword"/>
                 <alt mandatory="true" name="DataBase">
                     <feature name="H2"/>
-                    <feature name="MySql"/>
-                    <feature name="HSBD"/>
+                    <feature name="MYSQL"/>
+                    <feature name="HSQLBD"/>
                 </alt>
             </and>
             <or mandatory="true" name="Championships">
