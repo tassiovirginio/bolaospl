@@ -1,76 +1,172 @@
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
 
-	<div class="container-fluid">
-		<h1>Dashboard</h1>
-	</div>
-
-	<hr />
-
-	<div class="container">
-		<div class="row">
-			<div class="col-2">
-				<nav class="navbar bg-light">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a wicket:id="criaGrupo" class="btn btn-success" href="#">Criar Grupo</a>
-						</li>
-					</ul>
-				</nav>
+	<!-- Infomrções do sistema -->
+	<div class="row">
+		<div class="col-lg-3 col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-1">
+							<i class="pe-7s-cash"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text">$<span class="count">23569</span></div>
+									<div class="stat-heading">Revenue</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-10">
-				<div wicket:id="listGrupo" class="col-10">
-					<br>
-					<table class="table" style="background-color: #f2f2f2;">
-						<tr>
-							<th>
-								Grupo: <span wicket:id="nome"></span>
-								(Dono: <span wicket:id="dono"></span>)
-								- Integrantes:
-								<span wicket:id="size"></span>
-							</th>
-							<th style="text-align: right;">
-								<a wicket:id="linkGrupo" href="#">
-									editar
-								</a>
-							</th>
-						</tr>
+		</div>
 
-						<tr>
-							<td colspan="2">
-								<table wicket:id="listaBolao" class="table" style="background-color: #d9d9d9;">
-									<tr>
-										<td>
-											<b>Bolão</b>: <span wicket:id="nome">[nome]</span> </td>
-										<td><b>Apostas</b>:
-											<span wicket:id="apostasSize"></span>
-											<a wicket:id="linkApostas">
-												(-)
-											</a>
-										</td>
-										<td style="text-align: right;">
-											<a class="btn btn-warning btn-sm" wicket:id="linkRanking" href="#">Ranking</a>
-											<a class="btn btn-primary btn-sm" wicket:id="linkApostar" href="#">Apostar</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [<span wicket:id="placar1"></span>] x [<span
-											 wicket:id="placar2"></span>] <img style="height: 30px; width: auto;" wicket:id="imgTime2" />
-											<span wicket:id="lbProcessado" class="badge badge-success">Processado</span>
-											<span wicket:id="lbAguardando" class="badge badge-danger">Aguardanddo</span>
-										</td>
-										<td>
-											<b>Data</b>:
-											<span wicket:id="data">[data]</span>
-										</td>
-										<td>
-											<b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
+		<div class="col-lg-3 col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-2">
+							<i class="pe-7s-cart"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text"><span class="count">3435</span></div>
+								<div class="stat-heading">Sales</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-3">
+							<i class="pe-7s-browser"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text"><span class="count">349</span></div>
+								<div class="stat-heading">Templates</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<div class="stat-widget-five">
+						<div class="stat-icon dib flat-color-4">
+							<i class="pe-7s-users"></i>
+						</div>
+						<div class="stat-content">
+							<div class="text-left dib">
+								<div class="stat-text"><span class="count">2986</span></div>
+								<div class="stat-heading">Bettors</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Widgets -->
+	<!--  Traffic  -->
+
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="box-title">Dashboard </h4>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card-body">
+							<!-- corpo aqui -->
+							<div class="col-12">
+								<div class="col-12" align="right">
+									<a wicket:id="criaGrupo" class="btn btn-primary" href="#" role="button">Create group</a>
+								</div>
+								<br>
+								<!-- teste -->
+								<div class="col-lg-12">
+									<div class="card">
+										<div class="card-header">
+											<strong class="card-title">Grupos</strong>
+										</div>
+										<div class="card-body">
+											<div wicket:id="listGrupo" class="card-body col-12">
+
+												<div class="card-header">
+													<strong class="card-title">
+														Grupo: <span wicket:id="nome"></span>
+														(Dono: <span wicket:id="dono"></span>)
+														- Integrantes:
+														<span wicket:id="size"></span>
+														<div align="right">
+															<a wicket:id="linkGrupo"   href="#">
+																editar
+															</a>
+														</div>
+													</strong>
+												</div>
+
+												<table class="table" >
+													<tr>
+														<td colspan="2">
+															<table wicket:id="listaBolao" class="table" >
+																<tr>
+																	<td>
+																		<b>Bolão</b>: <span wicket:id="nome">[nome]</span>
+																	</td>
+																	<td><b>Apostas</b>:
+																		<span wicket:id="apostasSize"></span>
+																		<a wicket:id="linkApostas">
+																			(-)
+																		</a>
+																	</td>
+																	<td style="text-align: right;">
+																		<a class="btn btn-warning btn-sm" wicket:id="linkRanking" href="#">Ranking</a>
+																		<a class="btn btn-primary btn-sm" wicket:id="linkApostar" href="#">Apostar</a>
+																	</td>
+																</tr>
+																<tr>
+																	<td>
+																		<img style="height: 30px; width: auto;" wicket:id="imgTime1" /> [<span wicket:id="placar1"></span>] x [<span
+																			wicket:id="placar2"></span>] <img style="height: 30px; width: auto;" wicket:id="imgTime2" />
+																		<span wicket:id="lbProcessado" class="badge badge-success">Processado</span>
+																		<span wicket:id="lbAguardando" class="badge badge-danger">Aguardanddo</span>
+																	</td>
+																	<td>
+																		<b>Data</b>:
+																		<span wicket:id="data">[data]</span>
+																	</td>
+																	<td>
+																		<b>Ganhador</b>: <span wicket:id="vencedor">[vencedor]</span>
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--teste-->
+
+
+
+							</div>
+							<!-- finaliza corpo -->
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
