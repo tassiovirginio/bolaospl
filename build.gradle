@@ -12,9 +12,10 @@ repositories {
 	google()
 }
 
+
 dependencies {
     compile 'org.wicketstuff:wicketstuff-annotation:6.20.0'
-    compile 'org.apache.wicket:wicket-core:6.20.0'
+    compile('org.apache.wicket:wicket-core:6.20.0') { exclude group: 'org.apache.wicket', module: 'wicket-6.20.0.pom' }
     compile 'org.apache.wicket:wicket-auth-roles:6.20.0'
     compile 'org.apache.wicket:wicket-extensions:6.20.0'
     compile 'org.apache.wicket:wicket-datetime:6.20.0'
@@ -54,6 +55,21 @@ eclipse {
   	name = 'BolaoSPL'
   	comment = 'Sistema de bolão para futebol, utilizando os conceitos de SPL.'
   	natures = ['org.eclipse.jdt.core.javanature', 'de.ovgu.featureide.core.featureProjectNature', 'org.eclipse.wst.common.project.facet.core.nature', 'org.eclipse.wst.common.modulecore.ModuleCoreNature','org.eclipse.jem.workbench.JavaEMFNature']
+  }
+  
+  classpath {
+    file {
+        whenMerged { classpath ->
+        	Object list = classpath.getEntries();
+        	Object remove;
+        	for (item in list) {
+        		if(item.toString().contains(".pom")){
+        			remove = item;
+        		}
+			}
+			classpath.getEntries().remove(remove);
+        }
+      }
   }
 }
 
