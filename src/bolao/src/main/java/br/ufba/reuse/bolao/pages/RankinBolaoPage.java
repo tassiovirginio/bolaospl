@@ -24,7 +24,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-@MountPath("rankingbolao")
+@MountPath("rankingsweepstake")
 public class RankinBolaoPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 	private Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");

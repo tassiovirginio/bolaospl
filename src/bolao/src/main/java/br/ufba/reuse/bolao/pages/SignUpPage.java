@@ -16,7 +16,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.entities.Usuario;
 
-@MountPath("signUp")
+@MountPath("signup")
 public class SignUpPage extends WebPage {
 	private static final long serialVersionUID = 1L;
 

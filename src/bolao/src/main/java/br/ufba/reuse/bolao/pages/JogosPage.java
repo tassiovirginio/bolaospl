@@ -28,7 +28,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-@MountPath("jogos")
+@MountPath("games")
 public class JogosPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 

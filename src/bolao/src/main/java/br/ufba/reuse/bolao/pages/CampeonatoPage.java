@@ -26,7 +26,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-@MountPath("campeonatos")
+@MountPath("championships")
 public class CampeonatoPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 

@@ -21,7 +21,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-@MountPath("aposta")
+@MountPath("bet")
 public class ApostaPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 

@@ -11,7 +11,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
 
-@MountPath("recuperar")
+@MountPath("recover")
 public class RecuperarPage extends WebPage {
     private static final long serialVersionUID = 1L;
 

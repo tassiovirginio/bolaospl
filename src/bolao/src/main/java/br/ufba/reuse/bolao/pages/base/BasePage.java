@@ -13,6 +13,7 @@ import br.ufba.reuse.bolao.pages.DashboardPage;
 import br.ufba.reuse.bolao.pages.DetalhesUsuarioPage;
 import br.ufba.reuse.bolao.pages.JogosPage;
 import br.ufba.reuse.bolao.pages.RankingPage;
+import br.ufba.reuse.bolao.pages.UsuariosPage;
 
 public class BasePage extends WebPage {
 
@@ -38,6 +39,7 @@ public class BasePage extends WebPage {
                 setResponsePage(new CampeonatoPage());
             }
         };
+        linkCampeonato.setVisible(usuarioLogado.getAdmin());
         add(linkCampeonato);
 
         Link linkJogos = new Link("linkJogos") {
@@ -46,7 +48,17 @@ public class BasePage extends WebPage {
                 setResponsePage(new JogosPage());
             }
         };
+        linkJogos.setVisible(usuarioLogado.getAdmin());
         add(linkJogos);
+
+        Link linkUsuarios = new Link("linkUsuarios") {
+            @Override
+            public void onClick() {
+                setResponsePage(new UsuariosPage());
+            }
+        };
+        linkUsuarios.setVisible(usuarioLogado.getAdmin());
+        add(linkUsuarios);
 
         Link linkDetalhes = new Link("linkDetalhes") {
             @Override

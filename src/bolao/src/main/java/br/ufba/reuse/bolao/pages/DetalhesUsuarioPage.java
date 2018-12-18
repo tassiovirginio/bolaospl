@@ -12,7 +12,7 @@ import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("detalhes")
+@MountPath("details")
 public class DetalhesUsuarioPage extends BasePage {
     private static final long serialVersionUID = 1L;
 

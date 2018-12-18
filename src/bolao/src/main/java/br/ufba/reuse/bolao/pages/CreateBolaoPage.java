@@ -33,7 +33,7 @@ import br.ufba.reuse.bolao.entities.Jogo;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("bolao")
+@MountPath("sweepstake")
 public class CreateBolaoPage extends BasePage {
 	private static final long serialVersionUID = 1L;
 

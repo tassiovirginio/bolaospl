@@ -14,7 +14,7 @@ import br.ufba.reuse.bolao.entities.Bolao;
 import br.ufba.reuse.bolao.entities.Grupo;
 import br.ufba.reuse.bolao.pages.base.BasePage;
 
-@MountPath("boloes")
+@MountPath("sweepstakes")
 public class ListBolaoPage extends BasePage {
     private static final long serialVersionUID = 1L;
 
