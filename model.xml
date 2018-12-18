@@ -16,7 +16,7 @@
             <or mandatory="true" name="Championships">
                 <alt name="Cup">
                     <feature name="GroupStage"/>
-                    <feature name="PhaseKills"/>
+                    <feature name="PlayOff"/>
                 </alt>
                 <feature name="RunningPoints"/>
             </or>
