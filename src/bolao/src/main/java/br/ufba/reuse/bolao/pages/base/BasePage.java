@@ -6,12 +6,11 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 
-import br.ufba.reuse.bolao.business.daos.util.MD5Util;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
+import br.ufba.reuse.bolao.pages.CampeonatoPage;
 import br.ufba.reuse.bolao.pages.DashboardPage;
 import br.ufba.reuse.bolao.pages.DetalhesUsuarioPage;
-import br.ufba.reuse.bolao.pages.Pagina02;
 import br.ufba.reuse.bolao.pages.RankingPage;
 
 public class BasePage extends WebPage {
@@ -32,6 +31,14 @@ public class BasePage extends WebPage {
 		gravatar.add(new AttributeModifier("src",gravatarUrl));
 		add(gravatar);
         
+        Link linkCampeonato = new Link("linkCampeonato") {
+            @Override
+            public void onClick() {
+                setResponsePage(new CampeonatoPage());
+            }
+        };
+        add(linkCampeonato);
+
         Link linkDetalhes = new Link("linkDetalhes") {
             @Override
             public void onClick() {
