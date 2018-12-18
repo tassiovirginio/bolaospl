@@ -20,12 +20,7 @@
 
 ### Prerequisite: 
  - have JDK 8 installed [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
- - Gradle 5 [download](https://gradle.org/install/) *
- - or Maven 3 [download](https://maven.apache.org/download.cgi)
- 
-The system runs with Maven and Gradle.
-
-**Tip: Always use Gradle.*
+ - Gradle 5 [download](https://gradle.org/install/)
 
 ---
 
@@ -39,15 +34,4 @@ to run the system:
 
 	gradle appRun
 
----
-
-### Maven Tutorial:
-
-to configure the Maven dependencies in Eclipse.
-
-	mvn eclipse:eclipse
-
-to configure the project source in Eclipse.
-
-	Properties -> Java Build Path -> Source add (src/bolao/src/main/java)
 
