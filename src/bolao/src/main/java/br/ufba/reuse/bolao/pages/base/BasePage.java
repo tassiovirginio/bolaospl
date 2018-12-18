@@ -11,6 +11,7 @@ import br.ufba.reuse.bolao.pages.LoginPage;
 import br.ufba.reuse.bolao.pages.CampeonatoPage;
 import br.ufba.reuse.bolao.pages.DashboardPage;
 import br.ufba.reuse.bolao.pages.DetalhesUsuarioPage;
+import br.ufba.reuse.bolao.pages.JogosPage;
 import br.ufba.reuse.bolao.pages.RankingPage;
 
 public class BasePage extends WebPage {
@@ -38,6 +39,14 @@ public class BasePage extends WebPage {
             }
         };
         add(linkCampeonato);
+
+        Link linkJogos = new Link("linkJogos") {
+            @Override
+            public void onClick() {
+                setResponsePage(new JogosPage());
+            }
+        };
+        add(linkJogos);
 
         Link linkDetalhes = new Link("linkDetalhes") {
             @Override

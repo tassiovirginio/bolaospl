@@ -1,0 +1,33 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<div class="container-fluid">
+		<h1>Games</h1>
+	</div>
+	<hr />
+
+	<div class="container">
+		<div class="col-12" style="background-color: #f2f2f2;">
+			
+			<table class="table">
+				<tr>
+					<th>Jogo</th>
+					<th>Data</th>
+					<th>Placar</th>
+					<th></th>
+				</tr>
+				<tr wicket:id="list">
+					<td wicket:id="nome"></td>
+					<td wicket:id="data"></td>
+					<td>
+						<input type="text" size="3">x<input type="text" size="3"><a class="btn btn-success btn-sm" href="#">salvar</a>
+					</td>
+					<td>
+						<a class="btn btn-success btn-sm" href="#">edit</a>
+						<a class="btn btn-danger btn-sm" href="#">delete</a>
+					</td>
+				</tr>
+
+			</table>
+
+		</div>
+	</div>
+</wicket:extend>
