@@ -16,6 +16,7 @@ import org.apache.wicket.request.resource.ContextRelativeResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import br.ufba.reuse.bolao.business.ApostaBusiness;
 import br.ufba.reuse.bolao.business.BolaoBusiness;
 import br.ufba.reuse.bolao.business.GrupoBusiness;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
@@ -30,12 +31,23 @@ public class DashboardPage extends BasePage {
 
     @SpringBean
 	private GrupoBusiness grupoBusiness;
-	
+
 	@SpringBean
+	private ApostaBusiness apostaBusiness;
+
+	@SpringBean
+	private UsuarioBusiness usuarioBusiness;
+	
+	@SpringBean 
 	private BolaoBusiness bolaoBusiness;
 
     public DashboardPage() {
-    	final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+		final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+		
+		add(new Label("sweepstakes", bolaoBusiness.size()));
+		add(new Label("bets",apostaBusiness.size()));
+		add(new Label("bettors",usuarioBusiness.size()));
+		add(new Label("points", apostaBusiness.pontosTotais()));
     	
     	List<Grupo> grupos = grupoBusiness.findAllParticipantGroups(usuarioLogado); //grupoBusiness.listAll();
 		

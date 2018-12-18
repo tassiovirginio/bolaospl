@@ -46,4 +46,10 @@ public class ApostaBusiness extends BusinessGeneric<ApostaDAO, Aposta> {
 		return dao.findByCriteriaReturnList(eq("jogo", jogo));
 	}
 
+	public Long pontosTotais() {
+		return dao.sumColunm("pontos");
+	}
+
+
+
 }

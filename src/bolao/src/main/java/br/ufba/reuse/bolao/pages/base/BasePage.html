@@ -196,13 +196,13 @@
 
 				<div class="user-area dropdown float-right">
 
-					<a wicket:id="linkDetalhes" href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<span wicket:id="usuarioLogado"></span> &nbsp &nbsp
-						<img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+						<img wicket:id="gravatar" class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
 					</a>
 
 					<div class="user-menu dropdown-menu">
-						<a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+						<a wicket:id="linkDetalhes" class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
 						<!--<a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
 

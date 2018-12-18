@@ -1,9 +1,12 @@
 package br.ufba.reuse.bolao.pages.base;
 
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 
+import br.ufba.reuse.bolao.business.daos.util.MD5Util;
 import br.ufba.reuse.bolao.entities.Usuario;
 import br.ufba.reuse.bolao.pages.LoginPage;
 import br.ufba.reuse.bolao.pages.DashboardPage;
@@ -17,7 +20,17 @@ public class BasePage extends WebPage {
     
     public BasePage(){
     	
-    	Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+        Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+
+
+        String gravatarUrl = "images/admin.jpg";
+        if(usuarioLogado.getGravatar() != null){
+            gravatarUrl  = "https://www.gravatar.com/avatar/" + usuarioLogado.getGravatar();
+        }
+        
+        WebMarkupContainer gravatar = new WebMarkupContainer("gravatar");
+		gravatar.add(new AttributeModifier("src",gravatarUrl));
+		add(gravatar);
         
         Link linkDetalhes = new Link("linkDetalhes") {
             @Override
@@ -26,7 +39,7 @@ public class BasePage extends WebPage {
             }
         };
         
-        linkDetalhes.add(new Label("usuarioLogado",usuarioLogado.getNome()));
+        add(new Label("usuarioLogado",usuarioLogado.getNome()));
 
         add(linkDetalhes);
     	

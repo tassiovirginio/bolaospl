@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
@@ -59,6 +60,14 @@ public class DAOGeneric<T, ID extends Serializable> {
 
     public List<T> listAllHQL() {
         return findByHQL("FROM " + clazz().getSimpleName());
+    }
+
+    public long sumColunm(String coluna){
+        Criteria criteria = session().createCriteria(clazz())   
+        .setProjection(Projections.sum(coluna));
+        Long valorTotal = (Long) criteria.uniqueResult();
+        if(valorTotal == null) valorTotal = 0l;
+        return valorTotal;
     }
 
     public int size() {

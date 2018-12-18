@@ -23,11 +23,21 @@ public class Usuario implements Serializable {
 
     @Column(name = "email",unique=true)
     private String email;
+
+    private String gravatar;
     
     @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Grupo> grupos;
 
     private Boolean admin;
+
+    public String getGravatar() {
+		return gravatar;
+	}
+
+	public void setGravatar(String gravatar) {
+		this.gravatar = gravatar;
+	}
 
     public Boolean getAdmin() {
 		return admin;

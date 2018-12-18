@@ -146,6 +146,7 @@ public class WicketApplication extends WebApplication {
 			uAdmin.setSenha("admin");
 			uAdmin.setCelular("99 9999-9999");
 			uAdmin.setNome("Administrador");
+			uAdmin.setGravatar("7e3f21b54410bfde1c7de0be354ef867");
 			uAdmin.setAdmin(true);
 			usuarioBusiness.save(uAdmin);
 
