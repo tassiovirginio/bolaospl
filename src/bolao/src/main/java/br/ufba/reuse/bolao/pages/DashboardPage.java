@@ -75,10 +75,19 @@ public class DashboardPage extends BasePage {
 						setResponsePage(new CreateGrupoPage(grupo,DashboardPage.this));
 					}
 				};
-
 				linkGrupo.setVisible(usuarioLogado.equals(grupo.getDono()));
-
 				item.add(linkGrupo);
+
+				Link linkGrupoApagar = new Link("linkGrupoApagar") {
+					private static final long serialVersionUID = 1L;
+					@Override
+					public void onClick() {
+						grupoBusiness.delete(grupo);
+						setResponsePage(new DashboardPage());
+					}
+				};
+				linkGrupoApagar.setVisible(usuarioLogado.equals(grupo.getDono()));
+				item.add(linkGrupoApagar);
 
 				List<Bolao> listaBolao = bolaoBusiness.listBy(grupo);
 

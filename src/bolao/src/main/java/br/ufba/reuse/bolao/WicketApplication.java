@@ -155,7 +155,8 @@ public class WicketApplication extends WebApplication {
 			u1.setSenha("usuario1");
 			u1.setCelular("99 9999-9999");
 			u1.setNome("Usuario1");
-			uAdmin.setAdmin(false);
+			u1.setGravatar("7e3f21b54410bfde1c7de0be354ef867");
+			u1.setAdmin(false);
 			usuarioBusiness.save(u1);
 
 			Usuario u2 = new Usuario();
@@ -163,6 +164,8 @@ public class WicketApplication extends WebApplication {
 			u2.setSenha("usuario2");
 			u2.setCelular("99 9999-9999");
 			u2.setNome("Usuario2");
+			u2.setGravatar("7e3f21b54410bfde1c7de0be354ef867");
+			u2.setAdmin(false);
 			usuarioBusiness.save(u2);
 			
 			Grupo grupo1 = new Grupo();

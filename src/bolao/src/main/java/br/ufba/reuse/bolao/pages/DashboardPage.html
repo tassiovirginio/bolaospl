@@ -106,10 +106,15 @@
 											- Integrantes:
 											<span wicket:id="size"></span>
 											<div align="right">
-												<a wicket:id="linkGrupo"   href="#">
-													editar
+												<a class="btn btn-success btn-sm" wicket:id="linkGrupo"   href="#">
+													edit
+												</a>
+												 - 
+												<a class="btn btn-danger btn-sm" wicket:id="linkGrupoApagar"   href="#">
+													delete
 												</a>
 											</div>
+											
 										</strong>
 									</div>
 									<div wicket:id="listaBolao" class="card-body">
@@ -142,8 +147,8 @@
 																<span wicket:id="data">[data]</span>
 																<br> Apostas:
 																<span wicket:id="apostasSize"></span>
-																<a wicket:id="linkApostas">
-																	(-)
+																<a class="btn btn-warning btn-sm" wicket:id="linkApostas">
+																	view
 																</a>
 															</div>
 															<div align="right" class="col-sm-4">

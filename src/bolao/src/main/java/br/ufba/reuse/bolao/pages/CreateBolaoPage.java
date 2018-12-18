@@ -82,6 +82,10 @@ public class CreateBolaoPage extends BasePage {
 
 		if (this.bolaoSelecionado == null) {
 			this.bolaoSelecionado = new Bolao();
+			this.bolaoSelecionado.setGrupo(this.grupoDoBolao);
+			this.bolaoSelecionado.setCriacao(new Date());
+			this.bolaoSelecionado.setNome("Nome do Bolão");
+			bolaoBusiness.save(this.bolaoSelecionado);
 		}
 
 		add(new FeedbackPanel("feedbackPanel"));
@@ -137,18 +141,24 @@ public class CreateBolaoPage extends BasePage {
 		form.add(choiceCampeonato);
 		form.add(choiceJogo);
 
-		if(bolaoSelecionado.getJogo().getPlacar1() != null && bolaoSelecionado.getJogo().getPlacar2() != null){
-			String resultado = bolaoSelecionado.getJogo().getPlacar1() + " x " + bolaoSelecionado.getJogo().getPlacar2();
-			form.add(new Label("resultado", "Resultado: " + resultado + " - Ganhador: " + bolaoSelecionado.getJogo().getVencedor().getNome()));
+		if(bolaoSelecionado.getJogo() != null){
+			if (bolaoSelecionado.getJogo().getPlacar1() != null && bolaoSelecionado.getJogo().getPlacar2() != null) {
+				String resultado = bolaoSelecionado.getJogo().getPlacar1() + " x "
+						+ bolaoSelecionado.getJogo().getPlacar2();
+				form.add(new Label("resultado", "Resultado: " + resultado + " - Ganhador: "
+						+ bolaoSelecionado.getJogo().getVencedor().getNome()));
+			} else {
+				form.add(new Label("resultado", "Jogo sem PLACAR FINAL !!!!"));
+			}
 		}else{
-			form.add(new Label("resultado", "Jogo sem PLACAR FINAL !!!!"));
+			form.add(new Label("resultado", ""));
 		}
 
 		Link linkProcessarPontos = new Link("linkProcessarPontos") {
 			@Override
 			public void onClick() {
-				bolaoBusiness.processarPontos(bolao);
-				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+				bolaoBusiness.processarPontos(CreateBolaoPage.this.bolaoSelecionado);
+				setResponsePage(new CreateBolaoPage(CreateBolaoPage.this.bolaoSelecionado,grupoDoBolao,paginaAnterior));
 			}
 		};
 		form.add(linkProcessarPontos);
@@ -156,8 +166,8 @@ public class CreateBolaoPage extends BasePage {
 		Link linkApagarPontos = new Link("linkApagarPontos") {
 			@Override
 			public void onClick() {
-				bolaoBusiness.apagarPontos(bolao);
-				setResponsePage(new CreateBolaoPage(bolao,grupoDoBolao,paginaAnterior));
+				bolaoBusiness.apagarPontos(CreateBolaoPage.this.bolaoSelecionado);
+				setResponsePage(new CreateBolaoPage(CreateBolaoPage.this.bolaoSelecionado,grupoDoBolao,paginaAnterior));
 			}
 		};
 		form.add(linkApagarPontos);
@@ -173,13 +183,13 @@ public class CreateBolaoPage extends BasePage {
 		add(form);
 
 		if (this.bolaoSelecionado != null) {
-			this.campeonatoSelecionado = bolao.getCampeonato();
+			this.campeonatoSelecionado = this.bolaoSelecionado.getCampeonato();
 			jogos = jogoBusiness.listBy(this.campeonatoSelecionado);
 			choiceJogo.setChoices(jogos);
-			this.jogoSelecionado = bolao.getJogo();
+			this.jogoSelecionado = this.bolaoSelecionado.getJogo();
 		}
 
-		List<Aposta> listApostas = apostaBusiness.listApostasDoBolao(bolao);
+		List<Aposta> listApostas = apostaBusiness.listApostasDoBolao(this.bolaoSelecionado);
 
 		add(new ListView<Aposta>("listApostas", listApostas) {
 			private static final long serialVersionUID = 1L;

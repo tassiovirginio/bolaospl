@@ -42,6 +42,10 @@ public class BasePage extends WebPage {
         linkCampeonato.setVisible(usuarioLogado.getAdmin());
         add(linkCampeonato);
 
+        WebMarkupContainer webMarkupContainer = new WebMarkupContainer("labelAdmin");
+        webMarkupContainer.setVisible(usuarioLogado.getAdmin());
+        add(webMarkupContainer);
+
         Link linkJogos = new Link("linkJogos") {
             @Override
             public void onClick() {
