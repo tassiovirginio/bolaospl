@@ -21,12 +21,13 @@
 ### Prerequisite: 
  - have JDK 8 installed [download](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
  - Gradle 5 [download](https://gradle.org/install/)
+ - FeatureIDE [download](http://www.featureide.com)
 
 ---
 
 ### Gradle Tutorial:
 
-to do the eclipse configuration:
+to do the FeatureIDE(Eclipse) configuration:
 
 	gradle eclipse
 
