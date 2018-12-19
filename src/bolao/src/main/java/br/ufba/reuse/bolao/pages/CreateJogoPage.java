@@ -12,7 +12,10 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import br.ufba.reuse.bolao.business.CampeonatoBusiness;
+import br.ufba.reuse.bolao.business.JogoBusiness;
 import br.ufba.reuse.bolao.business.TimeBusiness;
+import br.ufba.reuse.bolao.entities.Campeonato;
+import br.ufba.reuse.bolao.entities.Jogo;
 import br.ufba.reuse.bolao.entities.Time;
 import br.ufba.reuse.bolao.business.UsuarioBusiness;
 import br.ufba.reuse.bolao.entities.Usuario;
@@ -33,10 +36,14 @@ public class CreateJogoPage extends BasePage {
 	@SpringBean
 	private UsuarioBusiness usuarioBusiness;
 	
+	@SpringBean
+	private JogoBusiness jogoBusiness;
+	
 
 	private Time timeSelecionado;
 	private Time timeSelecionado2;
 	private Time vencedor;
+	private Campeonato campeonatoSelecionado;
 
 	private String nome;
 	private String data;
@@ -51,6 +58,35 @@ public class CreateJogoPage extends BasePage {
 
 		add(new FeedbackPanel("feedback"));
 		
+		
+		
+		List<Time> times = timeBusiness.listAll();
+		List<Campeonato> campeonato = campeonatoBusiness.listAll();
+		
+		ChoiceRenderer<Campeonato> choiceRendererCampeonato = new ChoiceRenderer<Campeonato>("nome", "id");
+		final DropDownChoice<Campeonato> choiceCampeonato = new DropDownChoice<Campeonato>("choiceCampeonato",
+				new PropertyModel<Campeonato>(this, "campeonatoSelecionado"), campeonato, choiceRendererCampeonato);
+		choiceCampeonato.setOutputMarkupId(true);
+		choiceCampeonato.setRequired(true);
+		
+		ChoiceRenderer<Time> choiceRendererTime = new ChoiceRenderer<Time>("nome", "id");
+		final DropDownChoice<Time> choiceTime = new DropDownChoice<Time>("choiceTime1",
+				new PropertyModel<Time>(this, "timeSelecionado"), times, choiceRendererTime);
+		choiceTime.setOutputMarkupId(true);
+		choiceTime.setRequired(true);
+		
+		ChoiceRenderer<Time> choiceRendererTime2 = new ChoiceRenderer<Time>("nome", "id");
+		final DropDownChoice<Time> choiceTime2 = new DropDownChoice<Time>("choiceTime2",
+				new PropertyModel<Time>(this, "timeSelecionado2"), times, choiceRendererTime2);
+		choiceTime.setOutputMarkupId(true);
+		choiceTime.setRequired(true);
+		
+		ChoiceRenderer<Time> choiceRenderervencedor = new ChoiceRenderer<Time>("nome", "id");
+		final DropDownChoice<Time> choicevencedor = new DropDownChoice<Time>("vencedor",
+				new PropertyModel<Time>(this, "vencedor"), times, choiceRenderervencedor);
+		choiceTime.setOutputMarkupId(true);
+		//choiceTime.setRequired(true);
+		
 		Form form = new Form("form") {
 			/**
 			 * 
@@ -58,31 +94,29 @@ public class CreateJogoPage extends BasePage {
 			private static final long serialVersionUID = 1L;
 
 			protected void onSubmit() {
-		
+				Jogo jogo = new Jogo();
+				
+				jogo.setPlacar1(Integer.parseInt(placar1));
+				jogo.setPlacar2(Integer.parseInt(placar2));
+				//jogo.setData(data);
+				choiceTime.render();
+				choiceTime2.render();
+				choicevencedor.render();
+				choiceCampeonato.render();
+				
+				jogo.setCampeonato(campeonatoSelecionado);
+				jogo.setTime1(timeSelecionado);
+				jogo.setTime2(timeSelecionado2);
+				jogo.setVencedor(vencedor);
+				
+				jogoBusiness.save(jogo);
+				
+				setResponsePage(new JogosPage());
+				
 			};
 		};
-		
-		List<Time> times = timeBusiness.listAll();
-		
-		ChoiceRenderer<Time> choiceRendererTime = new ChoiceRenderer<Time>("nome", "id");
-		DropDownChoice<Time> choiceTime = new DropDownChoice<Time>("choiceTime1",
-				new PropertyModel<Time>(this, "timeSelecionado"), times, choiceRendererTime);
-		choiceTime.setOutputMarkupId(true);
-		choiceTime.setRequired(true);
-		
-		ChoiceRenderer<Time> choiceRendererTime2 = new ChoiceRenderer<Time>("nome", "id");
-		DropDownChoice<Time> choiceTime2 = new DropDownChoice<Time>("choiceTime2",
-				new PropertyModel<Time>(this, "timeSelecionado2"), times, choiceRendererTime2);
-		choiceTime.setOutputMarkupId(true);
-		choiceTime.setRequired(true);
-		
-		ChoiceRenderer<Time> choiceRenderervencedor = new ChoiceRenderer<Time>("nome", "id");
-		DropDownChoice<Time> choicevencedor = new DropDownChoice<Time>("vencedor",
-				new PropertyModel<Time>(this, "vencedor"), times, choiceRenderervencedor);
-		choiceTime.setOutputMarkupId(true);
-		//choiceTime.setRequired(true);
 
-		form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
+		//form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
 		form.add(new TextField<String>("data", new PropertyModel<String>(this, "data")));
 		//form.add(new TextField<String>("time1", new PropertyModel<String>(this, "time1")));
 		//form.add(new TextField<String>("time2", new PropertyModel<String>(this, "time2")));
@@ -92,6 +126,7 @@ public class CreateJogoPage extends BasePage {
 		form.add(choiceTime);
 		form.add(choiceTime2);
 		form.add(choicevencedor);
+		form.add(choiceCampeonato);
 		add(form);	
 
 	}
