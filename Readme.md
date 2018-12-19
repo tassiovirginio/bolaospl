@@ -7,7 +7,6 @@
 ### Developers: 
 
  - Douglésia Thiália dos Santos Rocha
- - Fernando Cezar R. Borges
  - Franklin de Jesus Silva
  - Joselito Mota Júnior
  - Railana dos Santos Santana
