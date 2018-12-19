@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.wicket.Page;
@@ -212,6 +213,80 @@ public class WicketApplication extends WebApplication {
 			time4.getCampeonatos().add(campeonato1);
 			timeBusiness.save(time4);
 			
+			ArrayList<String> nomesTimes = new ArrayList<String>(){
+	            /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				{
+	             add("Athletico Paranaense");
+	             add("Atletico Mineiro");
+	             add("Avaí");
+	             add("Botafogo");
+	             add("Ceará");
+	             add("Chapecoense");
+	             add("Corinthians");
+	             add("Cruzeiro");
+	             add("CSA");
+	             add("Flamengo");
+	             add("Fluminense");
+	             add("Fortaleza");
+	             add("Goiás");
+	             add("Internacional");
+	             add("Palmeiras");
+	             add("Santos");
+	             add("São Paulo");
+	             add("Vasco da Gama");
+	             add("América Mineiro");
+	             add("Atlético Goianiense");
+	             add("Bragantino");
+	             add("Coritiba");
+	            }
+			};
+			
+			ArrayList<String> linkEscudo = new ArrayList<String>(){
+	            /**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
+
+				{
+	             add("https://www.escudosfc.com.br/images/atlpr.png");
+	             add("https://www.escudosfc.com.br/images/atletico.png");
+	             add("https://www.escudosfc.com.br/images/avai.gif");
+	             add("https://www.escudosfc.com.br/images/botafogo.gif");
+	             add("https://www.escudosfc.com.br/images/ceara.png");
+	             add("https://www.escudosfc.com.br/images/chapeco.png");
+	             add("https://www.escudosfc.com.br/images/corinthians.png");
+	             add("https://www.escudosfc.com.br/images/cruzeiro.png");
+	             add("https://www.escudosfc.com.br/images/csa.png");
+	             add("https://www.escudosfc.com.br/images/fla.png");
+	             add("https://www.escudosfc.com.br/images/fluminense.png");
+	             add("https://www.escudosfc.com.br/images/fortaleza.png");
+	             add("https://www.escudosfc.com.br/images/goias.png");
+	             add("https://www.escudosfc.com.br/images/interrs.png");
+	             add("https://www.escudosfc.com.br/images/palmeiras.png");
+	             add("https://www.escudosfc.com.br/images/santos.png");
+	             add("https://www.escudosfc.com.br/images/saopaulo.png");
+	             add("https://www.escudosfc.com.br/images/vasco.png");
+	             add("https://www.escudosfc.com.br/images/ammg.gif");
+	             add("https://www.escudosfc.com.br/images/atlego.png");
+	             add("https://www.escudosfc.com.br/images/bragantino.png");
+	             add("https://www.escudosfc.com.br/images/coritiba.png");
+	            }
+			};
+			
+			for(int i = 0; i<nomesTimes.size();i++)
+			{
+				Time t = new Time();
+				t.setNome(nomesTimes.get(i));
+				t.setImgUrl(linkEscudo.get(i));
+				t.getCampeonatos().add(campeonato1);
+				campeonato1.getTimes().add(t);
+				timeBusiness.save(t);
+			}
+			
 			campeonato1.getTimes().add(time1);
 			campeonato1.getTimes().add(time2);
 			campeonato1.getTimes().add(time3);
@@ -281,5 +356,4 @@ public class WicketApplication extends WebApplication {
 		
 		
 	}
-
 }
