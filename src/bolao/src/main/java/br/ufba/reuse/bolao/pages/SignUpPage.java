@@ -23,24 +23,17 @@ public class SignUpPage extends WebPage {
 	@SpringBean
 	private UsuarioBusiness usuarioBusiness;
 
-	private String nome;
-
-	private String email;
-
-	private String senha;
-
-	private Date dataNascimento;
-	
-	private String celular;
+	private Usuario usuario;
 
 	public SignUpPage() {
 
 		add(new FeedbackPanel("feedback"));
 
+		usuario = new Usuario();
+
 		add(new Link("LoginPage") {
 			@Override
 			public void onClick() {
-
 				setResponsePage(new LoginPage());
 			}
 		});
@@ -48,27 +41,14 @@ public class SignUpPage extends WebPage {
 		Form form = new Form("form") {
 			protected void onSubmit() {
 
-				Usuario usuarioLogado = usuarioBusiness.getByEmail(email);
-
-				if (usuarioLogado != null) {
+				Usuario usuarioExistente = usuarioBusiness.getByEmail(usuario.getEmail());
+				
+				if (usuarioExistente != null) {
 					error("Usuário já cadastrado. Por favor, faça o login!");
-					nome = null;
-					email = null;
-					senha = null;
-					dataNascimento = null;
-					celular = null;
 				} else {
-					Usuario user = new Usuario();
-
-					user.setNome(nome);
-					user.setEmail(email);
-					user.setSenha(senha);
-					user.setCelular(celular);
-					
-					usuarioBusiness.save(user);
-
-					Usuario usuario = usuarioBusiness.realizarLogin(email, senha);
-					
+					usuario.setAdmin(false);
+					usuarioBusiness.save(usuario);
+					usuario = usuarioBusiness.realizarLogin(usuario.getEmail(), usuario.getSenha());
 					setResponsePage(DetalhesUsuarioPage.class);
 					getSession().setAttribute("usuario", usuario);
 					setResponsePage(new DashboardPage());
@@ -76,15 +56,10 @@ public class SignUpPage extends WebPage {
 			};
 		};
 
-		form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
-
-		form.add(new TextField<String>("email", new PropertyModel<String>(this, "email")));
-		
-		form.add(new TextField<String>("celular", new PropertyModel<String>(this, "celular")));
-
-		form.add(new PasswordTextField("senha", new PropertyModel<String>(this, "senha")));
-
-		form.add(new DateTextField("dataNascimento", new PropertyModel<Date>(this, "dataNascimento")));
+		form.add(new TextField<String>("nome", new PropertyModel<String>(usuario, "nome")));
+		form.add(new TextField<String>("email", new PropertyModel<String>(usuario, "email")));
+		form.add(new TextField<String>("celular", new PropertyModel<String>(usuario, "celular")));
+		form.add(new PasswordTextField("senha", new PropertyModel<String>(usuario, "senha")));
 
 		add(form);
 	}
