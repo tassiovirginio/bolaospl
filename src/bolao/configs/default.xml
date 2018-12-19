@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-    <feature automatic="selected" name="SISBOLAO"/>
-    <feature automatic="selected" name="Base"/>
-    <feature automatic="selected" name="Login"/>
-    <feature automatic="selected" name="UserRegistration"/>
-    <feature automatic="selected" name="RecoverPassword"/>
-    <feature automatic="selected" name="DataBase"/>
+    <feature automatic="selected" manual="selected" name="SISBOLAO"/>
+    <feature automatic="selected" manual="selected" name="Base"/>
+    <feature automatic="selected" manual="selected" name="Login"/>
+    <feature automatic="selected" manual="selected" name="UserRegistration"/>
+    <feature automatic="selected" manual="selected" name="RecoverPassword"/>
+    <feature automatic="selected" manual="selected" name="DataBase"/>
     <feature manual="selected" name="H2"/>
-    <feature automatic="unselected" name="MYSQL"/>
-    <feature automatic="unselected" name="HSQLBD"/>
-    <feature automatic="selected" name="Championships"/>
-    <feature manual="selected" name="Cup"/>
-    <feature automatic="selected" name="Sweepstakes"/>
-    <feature automatic="selected" name="Betting"/>
-    <feature automatic="selected" name="Winner"/>
+    <feature automatic="unselected" name="MySql"/>
+    <feature automatic="unselected" name="HSBD"/>
+    <feature automatic="selected" manual="selected" name="Championships"/>
+    <feature automatic="selected" manual="selected" name="Cup"/>
+    <feature manual="selected" name="GroupStage"/>
+    <feature automatic="unselected" name="PlayOff"/>
+    <feature manual="selected" name="RunningPoints"/>
+    <feature automatic="selected" manual="selected" name="Sweepstakes"/>
+    <feature automatic="selected" manual="selected" name="Betting"/>
+    <feature automatic="selected" manual="selected" name="Winner"/>
     <feature manual="selected" name="WinnerScore"/>
     <feature manual="selected" name="TimeWinner"/>
-    <feature automatic="selected" name="Scoreboard"/>
-    <feature automatic="selected" name="Results"/>
-    <feature automatic="selected" name="Members"/>
-    <feature automatic="selected" name="Awards"/>
+    <feature automatic="selected" manual="selected" name="Scoreboard"/>
+    <feature automatic="selected" manual="selected" name="Results"/>
+    <feature manual="selected" name="SpecificRanking"/>
+    <feature automatic="selected" manual="selected" name="Members"/>
+    <feature automatic="selected" manual="selected" name="Awards"/>
     <feature manual="selected" name="Online"/>
-    <feature automatic="selected" name="Ranking"/>
-    <feature automatic="selected" name="Financial"/>
+    <feature automatic="unselected" name="Offline"/>
+    <feature manual="selected" name="Ranking"/>
+    <feature automatic="selected" manual="selected" name="Financial"/>
+    <feature manual="selected" name="Contribuition"/>
 </configuration>
