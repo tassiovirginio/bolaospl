@@ -1,7 +1,15 @@
 package br.ufba.reuse.bolao.pages;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
+import org.apache.wicket.extensions.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -46,7 +54,7 @@ public class CreateJogoPage extends BasePage {
 	private Campeonato campeonatoSelecionado;
 
 	private String nome;
-	private String data;
+	private Date data;
 	private String time1;
 	private String time2;
 	private String placar1;
@@ -103,12 +111,13 @@ public class CreateJogoPage extends BasePage {
 				choiceTime2.render();
 				choicevencedor.render();
 				choiceCampeonato.render();
+								
 				
 				jogo.setCampeonato(campeonatoSelecionado);
 				jogo.setTime1(timeSelecionado);
 				jogo.setTime2(timeSelecionado2);
 				jogo.setVencedor(vencedor);
-				
+				jogo.setData(data);
 				jogoBusiness.save(jogo);
 				
 				setResponsePage(new JogosPage());
@@ -116,13 +125,17 @@ public class CreateJogoPage extends BasePage {
 			};
 		};
 
-		//form.add(new TextField<String>("nome", new PropertyModel<String>(this, "nome")));
-		form.add(new TextField<String>("data", new PropertyModel<String>(this, "data")));
-		//form.add(new TextField<String>("time1", new PropertyModel<String>(this, "time1")));
-		//form.add(new TextField<String>("time2", new PropertyModel<String>(this, "time2")));
+
+		DateTextField dateTextField = new DateTextField("data", "dd/MM/yyyy");
+		dateTextField.setRequired(true);
+		dateTextField.setDefaultModel(new PropertyModel<>(this, "data"));
+		
+		
+		form.add(dateTextField);
+		
 		form.add(new TextField<String>("placar1", new PropertyModel<String>(this, "placar1")));
 		form.add(new TextField<String>("placar2", new PropertyModel<String>(this, "placar2")));
-		//form.add(new TextField<String>("vencedor", new PropertyModel<String>(this, "vencedor")));
+		
 		form.add(choiceTime);
 		form.add(choiceTime2);
 		form.add(choicevencedor);

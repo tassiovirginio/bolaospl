@@ -23,15 +23,15 @@
 					<td wicket:id="nome"></td>
 					<td wicket:id="data"></td>
 					<td>
-						<input type="text" size="3">x<input type="text" size="3"><a class="btn btn-success btn-sm" href="#">salvar</a>
+					<form wicket:id="form">	
+						<input wicket:id="pCorrente01" class="form-control" type="text" size="3" />
+						<label for="email">x</label>
+						<input wicket:id="pCorrente02" class="form-control" type="text" size="3" />
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</form>
 					</td>
-					<td>
-						<a class="btn btn-success btn-sm" href="#">edit</a>
-						<a class="btn btn-danger btn-sm" href="#">delete</a>
-					</td>
-				</tr>
-				
-			</table>
+				</tr>			
+			</table>			
 			<a class="btn btn-primary btn-sm" wicket:id="addNovoJogo" >Adicionar novo jogo</a>
 		</div>
 	</div>

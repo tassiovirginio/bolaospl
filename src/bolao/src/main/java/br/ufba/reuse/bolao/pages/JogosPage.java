@@ -40,17 +40,36 @@ public class JogosPage extends BasePage {
 
 	@SpringBean
 	private JogoBusiness jogoBusiness;
-
+	
+	private String pCorrente01;
+	
+	private String pCorrente02;
+	
 	public JogosPage() {
 
 		List<Jogo> lista = jogoBusiness.listAll();
+		
 
 		add(new ListView<Jogo>("list", lista) {
 			@Override
 			protected void populateItem(ListItem<Jogo> item) {
-				Jogo jogo = item.getModelObject();
+				final Jogo jogo = item.getModelObject();
 				item.add(new Label("nome", jogo.getTime1().getNome() + " x " + jogo.getTime2().getNome()));
 				item.add(new Label("data", jogo.getData()));
+				
+				Form form = new Form("form") {
+					@Override
+					protected void onSubmit() {
+						System.out.println(" ----------------------- "+jogo.getNome()+" -----------------------");
+						jogoBusiness.save(jogo);
+						setResponsePage(new JogosPage());
+					}
+				};				
+				
+				form.add(new TextField<String>("pCorrente01", new PropertyModel<String>(jogo, "placar1")));
+				form.add(new TextField<String>("pCorrente02", new PropertyModel<String>(jogo, "placar2")));			
+					
+				item.add(form);
 			}
 		});
 		
@@ -60,7 +79,11 @@ public class JogosPage extends BasePage {
                 setResponsePage(new CreateJogoPage());
             }
     	});
-
+		
+		
+		
+		//add(form);
+		
 	}
 
 }
