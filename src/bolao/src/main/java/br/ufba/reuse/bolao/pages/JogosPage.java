@@ -22,6 +22,7 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
@@ -52,8 +53,13 @@ public class JogosPage extends BasePage {
 				item.add(new Label("data", jogo.getData()));
 			}
 		});
-
-
+		
+		add(new Link("addNovoJogo") {
+            @Override
+            public void onClick() {
+                setResponsePage(new CreateJogoPage());
+            }
+    	});
 
 	}
 
