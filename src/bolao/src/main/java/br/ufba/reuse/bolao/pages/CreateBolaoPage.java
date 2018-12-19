@@ -67,7 +67,7 @@ public class CreateBolaoPage extends BasePage {
 		this(null, grupoDoBolao, paginaAnterior);
 	}
 
-	public CreateBolaoPage(Bolao bolao, Grupo grupoDoBolao, WebPage paginaAnterior) {
+	public CreateBolaoPage(Bolao bolao, final Grupo grupoDoBolao, final WebPage paginaAnterior) {
 
 		add(new Link("linkVoltar"){
 			@Override
