@@ -23,4 +23,16 @@ public class CampeonatoBusiness extends BusinessGeneric<CampeonatoDAO, Campeonat
         return lista;
 	}
 	
+	public Campeonato findCampeonato(String c)
+	{
+		List<Campeonato> lista = dao.listAll();
+		
+		for (Campeonato campeonato : lista) {
+			if(campeonato.getNome().equals(c))
+				return campeonato;
+		}
+		
+		return null;
+	}
+	
 }
