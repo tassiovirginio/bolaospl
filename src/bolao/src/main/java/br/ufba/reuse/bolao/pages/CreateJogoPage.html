@@ -1,0 +1,58 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+
+	<div class="container-fluid">
+		<h1><i class="icon ion-md-backspace"></i>Group</h1>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<div class="row">
+			<div style="color: red;" wicket:id="feedback">
+				[Feedback Panel]
+			</div>
+			<div class="col-10" style="background-color: #f2f2f2;">
+				<form wicket:id="form">
+					<div class="form-group">
+						<label for="email">Nome do Campeonato:</label>
+						<input type="text" class="form-control" wicket:id="nome"/>
+						<label for="email">Data:</label>
+						<input type="text" class="form-control" wicket:id="data"/>
+						<label for="email">Time 01:</label>
+						<select class="form-control" wicket:id="choiceTime1">
+							<option>Time 1</option>
+							<option>Time 2</option>
+							<option>Time 3</option>
+						</select>
+						<label for="email">Placar Time 01:</label>
+						<input type="text" class="form-control" wicket:id="placar1"/>			
+						<label for="email">Time 02:</label>
+						<select class="form-control" wicket:id="choiceTime2">
+							<option>Time 1</option>
+							<option>Time 2</option>
+							<option>Time 3</option>
+						</select>
+						<label for="email">Placar Time 02:</label>
+						<input type="text" class="form-control" wicket:id="placar2"/>
+						<label for="email">Time Vencedor:</label>
+						<select class="form-control" wicket:id="vencedor">
+							<option>Time 1</option>
+							<option>Time 2</option>
+							<option>Time 3</option>
+						</select>
+		
+					</div>	
+					<button type="submit" class="btn btn-primary">Salvar</button>	
+				</form>
+
+				<br>
+			</div>
+			
+			
+				
+		</div>
+		
+	</div>
+
+</wicket:extend>
