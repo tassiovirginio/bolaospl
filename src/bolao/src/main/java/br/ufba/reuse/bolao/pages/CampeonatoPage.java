@@ -20,6 +20,7 @@ import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.PropertyModel;
@@ -54,7 +55,13 @@ public class CampeonatoPage extends BasePage {
 				// item.add(linkRemover);
 			}
 		});
-
+		
+		add(new Link("addNovoCampeonato") {
+            @Override
+            public void onClick() {
+                setResponsePage(new CreateCampeonatoPage());
+            }
+    	});
 
 
 	}
