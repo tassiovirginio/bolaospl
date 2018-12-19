@@ -67,8 +67,7 @@ public class JogosPage extends BasePage {
 				};				
 				
 				form.add(new TextField<String>("pCorrente01", new PropertyModel<String>(jogo, "placar1")));
-				form.add(new TextField<String>("pCorrente02", new PropertyModel<String>(jogo, "placar2")));
-				
+				form.add(new TextField<String>("pCorrente02", new PropertyModel<String>(jogo, "placar2")));			
 					
 				item.add(form);
 			}
