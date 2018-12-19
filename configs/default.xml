@@ -17,7 +17,6 @@
     <feature automatic="selected" manual="selected" name="Sweepstakes"/>
     <feature automatic="selected" manual="selected" name="Betting"/>
     <feature automatic="selected" manual="selected" name="Winner"/>
-    <feature manual="selected" name="WinnerScore"/>
     <feature manual="selected" name="TimeWinner"/>
     <feature automatic="selected" manual="selected" name="Scoreboard"/>
     <feature automatic="selected" manual="selected" name="Results"/>

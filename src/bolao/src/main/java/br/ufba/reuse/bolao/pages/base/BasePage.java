@@ -21,7 +21,7 @@ public class BasePage extends WebPage {
     
     public BasePage(){
     	
-        Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
+        final Usuario usuarioLogado = (Usuario) getSession().getAttribute("usuario");
 
 
         String gravatarUrl = "images/admin.jpg";

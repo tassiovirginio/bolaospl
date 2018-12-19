@@ -32,14 +32,6 @@ public class UsuariosPage extends BasePage {
 				item.add(new Label("nome", usuario.getNome()));
 				item.add(new Label("email", usuario.getEmail()));
 				item.add(new Label("admin", usuario.getAdmin()));
-				// Link linkRemover = new Link("remover") {
-				// 	@Override
-				// 	public void onClick() {
-				// 		grupoSelecionado.getParticipantes().remove(usuario);
-				// 		grupoBusiness.save(grupoSelecionado);
-				// 	}
-				// };
-				// item.add(linkRemover);
 			}
 		});
 

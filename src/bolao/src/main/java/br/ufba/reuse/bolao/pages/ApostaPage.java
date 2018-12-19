@@ -42,7 +42,7 @@ public class ApostaPage extends BasePage {
 	@SpringBean
 	private BolaoBusiness bolaoBusiness;
 
-	public ApostaPage(Bolao bolao) {
+	public ApostaPage(final Bolao bolao) {
 
 		WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");
 		image1.add(new AttributeModifier("src", bolao.getJogo().getTime1().getImgUrl()));
@@ -56,7 +56,7 @@ public class ApostaPage extends BasePage {
 		Form form = new Form("form"){
 			@Override
 			protected void onSubmit() {
-				Aposta aposta = new Aposta();
+				final Aposta aposta = new Aposta();
 				aposta.setApostador(usuarioLogado);
 				aposta.setBolao(bolao);
 				aposta.setJogo(bolao.getJogo());

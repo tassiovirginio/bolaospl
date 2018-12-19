@@ -135,7 +135,7 @@ public class CreateBolaoPage extends BasePage {
 
 		DateTextField dateTextField = new DateTextField("dataFechamento", "dd/MM/yyyy");
 		dateTextField.setRequired(true);
-		dateTextField.setModel(new PropertyModel<>(bolaoSelecionado, "fechamento"));
+		dateTextField.setModel(new PropertyModel<Date>(bolaoSelecionado, "fechamento"));
 
 		form.add(dateTextField);
 		form.add(choiceCampeonato);

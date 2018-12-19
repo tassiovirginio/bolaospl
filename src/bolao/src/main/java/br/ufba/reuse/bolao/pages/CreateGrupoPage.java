@@ -92,7 +92,7 @@ public class CreateGrupoPage extends BasePage {
 		listUsuario.removeAll(integrantes);
 
 		ChoiceRenderer<Usuario> choiceRendererJogo = new ChoiceRenderer<Usuario>("nome", "id");
-		DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante",
+		final DropDownChoice<Usuario> choiceIntegrante = new DropDownChoice<Usuario>("choiceIntegrante",
 				new PropertyModel<Usuario>(this, "usuarioSelecionado"), listUsuario, choiceRendererJogo);
 		choiceIntegrante.setOutputMarkupId(true);
 		choiceIntegrante.setRequired(true);
@@ -134,7 +134,7 @@ public class CreateGrupoPage extends BasePage {
 		add(new ListView<Bolao>("listaBolao", listaBolao) {
 			@Override
 			protected void populateItem(ListItem<Bolao> item) {
-				Bolao bolao = item.getModelObject();
+				final Bolao bolao = item.getModelObject();
 				item.add(new Label("nome", bolao.getNome()));
 
 				WebMarkupContainer image1 = new WebMarkupContainer("imgTime1");

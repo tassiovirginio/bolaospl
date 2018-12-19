@@ -4492,7 +4492,7 @@ function createSafeFragment( document ) {
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 
-	// #11217 - WebKit loses check when the name is after the checked attribute
+	// 11217 - WebKit loses check when the name is after the checked attribute
 	fragment.appendChild( div );
 
 	// Support: Windows Web Apps (WWA)
@@ -5502,7 +5502,7 @@ jQuery.removeEvent = document.removeEventListener ?
 
 		if ( elem.detachEvent ) {
 
-			// #8545, #7054, preventing memory leaks for custom events in IE6-8
+			// 8545, 7054, preventing memory leaks for custom events in IE6-8
 			// detachEvent needed property on element, by name of that event,
 			// to properly expose it to GC
 			if ( typeof elem[ name ] === "undefined" ) {
@@ -9078,7 +9078,7 @@ var
 	// IE leaves an \r character at EOL
 	rheaders = /^(.*?):[ \t]*([^\r\n]*)\r?$/mg,
 
-	// #7653, #8125, #8152: local protocol detection
+	// 7653, #8125, #8152: local protocol detection
 	rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
 	rnoContent = /^(?:GET|HEAD)$/,
 	rprotocol = /^\/\//,
@@ -9646,7 +9646,7 @@ jQuery.extend( {
 			if ( s.data ) {
 				cacheURL = ( s.url += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data );
 
-				// #9682: remove data so that it's not used in an eventual retry
+				// 9682: remove data so that it's not used in an eventual retry
 				delete s.data;
 			}
 

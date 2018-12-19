@@ -45,14 +45,6 @@ public class CampeonatoPage extends BasePage {
 			protected void populateItem(ListItem<Campeonato> item) {
 				Campeonato campeonato = item.getModelObject();
 				item.add(new Label("nome", campeonato.getNome()));
-				// Link linkRemover = new Link("remover") {
-				// 	@Override
-				// 	public void onClick() {
-				// 		grupoSelecionado.getParticipantes().remove(usuario);
-				// 		grupoBusiness.save(grupoSelecionado);
-				// 	}
-				// };
-				// item.add(linkRemover);
 			}
 		});
 		

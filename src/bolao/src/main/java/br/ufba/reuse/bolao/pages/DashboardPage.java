@@ -94,7 +94,7 @@ public class DashboardPage extends BasePage {
 				item.add(new ListView<Bolao>("listaBolao", listaBolao) {
 					@Override
 					protected void populateItem(ListItem<Bolao> item) {
-						Bolao bolao = item.getModelObject();
+						final Bolao bolao = item.getModelObject();
 						item.add(new Label("nome", bolao.getNome()));
 						// item.add(new Label("time1", bolao.getJogo().getTime1().getNome()));
 						// item.add(new Label("time2", bolao.getJogo().getTime2().getNome()));
