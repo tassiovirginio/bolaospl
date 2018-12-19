@@ -1,0 +1,53 @@
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+
+	<div class="container-fluid">
+		<h1><i class="icon ion-md-backspace"></i>Group</h1>
+	</div>
+
+	<hr />
+
+	<div class="container">
+		<div class="row">
+			<div style="color: red;" wicket:id="feedback">
+				[Feedback Panel]
+			</div>
+			<div class="col-10" style="background-color: #f2f2f2;">
+				<form wicket:id="form">
+					<div class="form-group">
+						<label for="email">Nome do Campeonato:</label>
+						<input wicket:id="nome" type="text" class="form-control" />
+					</div>
+					<table class="table" style="background-color: #d9d9d9;">
+						<tr>
+							<th colspan="2">
+								Times do Campeonato
+							</th>
+						</tr>
+						<tr>
+							<td>
+								<div class="form-group">
+								
+								</div>
+							</td>
+							<td>
+								<ul>
+								
+								</ul>
+							</td>
+					   </tr>
+					</table>	
+					
+					<button type="submit" class="btn btn-primary">Salvar</button>	
+				</form>
+
+				<br>
+			</div>
+			
+			
+				
+		</div>
+		
+	</div>
+
+</wicket:extend>
